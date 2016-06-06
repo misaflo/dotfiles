@@ -1,0 +1,176 @@
+#====================
+# Prompt
+#====================
+
+autoload colors; colors;
+setopt prompt_subst
+autoload -Uz vcs_info
+
+get_git_status() {
+  number_of_changes="$(git status -s | wc -l)"
+
+  if [[ "$number_of_changes" == '0' ]]; then
+    echo -n " %{$fg[green]✓%}"
+  else
+    echo -n " %{$fg[red]$number_of_changes%}"
+  fi
+}
+
+# or use pre_cmd, see man zshcontrib
+vcs_info_wrapper() {
+  vcs_info
+  if [[ -n "$vcs_info_msg_0_" ]]; then
+    echo -n "${vcs_info_msg_0_}"
+    get_git_status
+    echo "%{$fg[grey])%}"
+  fi
+}
+
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats " %{$fg[grey]%}(%s: %{$fg[yellow]%}%b"
+
+PROMPT='%m %{${fg_bold[red]}%}:: %{${fg[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
+
+#====================
+# Completion
+#====================
+
+# Modern completion system
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+if [ -f /usr/bin/aptitude ]; then
+  compdef apti=aptitude
+fi
+
+
+#====================
+# General
+#====================
+
+# Keeps 1 000 lines of history, saved in ~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# ctrl + r : search in history
+bindkey '^R' history-incremental-search-backward
+
+# Move with ctrl + arrow
+bindkey '^[[1;5C' emacs-forward-word
+bindkey '^[[1;5D' emacs-backward-word
+
+# Move with beginning-of-line and end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+
+# "cd" optional
+#setopt autocd
+
+# Corrects bad commands
+#setopt correctall
+
+# No duplication in history
+setopt hist_ignore_all_dups
+
+# Shared history between sessions, ignoring duplicates
+setopt histignorealldups sharehistory
+
+# Syntax highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+#====================
+# Exports
+#====================
+
+# coloring man pages (with less)
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+export VISUAL=view
+export EDITOR=vim
+export PAGER='less -iR'
+
+# 256 colors
+export TERM='xterm-256color'
+
+
+#====================
+# Aliases
+#====================
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias ls='ls --color --group-directories-first -Fh'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ll -A'
+alias grep='grep --color -I --exclude-dir=.git'
+alias tree='tree -C --dirsfirst'
+alias df='df -hT'
+alias du='du -sh'
+alias vim='vim -p'
+alias pingg="ping www.google.com"
+
+alias -s pdf='okular'
+
+alias -s odt='libreoffice'
+alias -s doc='libreoffice'
+alias -s docx='libreoffice'
+alias -s ods='libreoffice'
+alias -s xls='libreoffice'
+alias -s xlsx='libreoffice'
+alias -s odp='libreoffice'
+alias -s ppt='libreoffice'
+alias -s pptx='libreoffice'
+
+alias -s jpg='gwenview'
+alias -s jpeg='gwenview'
+alias -s png='gwenview'
+alias -s gif='gwenview'
+
+
+function set_brightness() {
+  screen="$(xrandr | grep -w connected | cut -d ' ' -f 1 | head -n 1)"
+  brightness=$1
+
+  if ((brightness > 1)); then
+    brightness=1
+  elif ((brightness < 0.3)); then
+    brightness=0.3
+  fi
+
+  $(xrandr --output $screen --brightness $brightness)
+}
+
+
+if [ -f ~/.zsh_aliases ]; then
+  source ~/.zsh_aliases
+fi
+
+if [ -f ~/.zsh_functions ]; then
+  source ~/.zsh_functions
+fi

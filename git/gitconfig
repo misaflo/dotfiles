@@ -1,0 +1,18 @@
+[user]
+  # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
+  useConfigOnly = true
+
+[color]
+  diff   = auto
+  status = auto
+  branch = auto
+
+[alias]
+  co  = commit
+  st  = status
+  br  = branch
+  di  = diff
+  div = difftool --tool=vimdiff
+
+[push]
+  default = simple
