@@ -29,6 +29,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'docteurklein/php-getter-setter.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
@@ -87,7 +88,6 @@ endif
 
 " Map CTRL+k S N (non-breaking space) to CTRL+space
 imap <Nul> <C-k>NS
-
 
 "====================
 " Syntax
@@ -202,3 +202,7 @@ let g:jscomplete_use = ['dom', 'es6th']
 " easy-align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
+
+" nerdcommenter
+nnoremap ,c :call NERDComment(0,"toggle")<CR>
+vnoremap ,c :call NERDComment(0,"toggle")<CR>
