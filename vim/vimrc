@@ -89,6 +89,7 @@ endif
 " Map CTRL+k S N (non-breaking space) to CTRL+space
 imap <Nul> <C-k>NS
 
+
 "====================
 " Syntax
 "====================
@@ -198,6 +199,9 @@ autocmd FileType eruby let g:syntastic_quiet_messages = {"level": "warnings"}
 " jscomplete-vim
 autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
 let g:jscomplete_use = ['dom', 'es6th']
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 
 " easy-align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
