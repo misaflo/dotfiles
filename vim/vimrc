@@ -31,7 +31,6 @@ Plugin 'noprompt/vim-yardoc'
 Plugin 'docteurklein/php-getter-setter.vim'
 Plugin 'scrooloose/nerdcommenter'
 
-Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
 
 Plugin 'tomtom/tlib_vim'
@@ -94,6 +93,10 @@ if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 
   set inccommand=nosplit
+
+  if has("termguicolors")
+    set termguicolors
+  endif
 endif
 
 
@@ -202,7 +205,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 " Ignore warings for eruby
 autocmd FileType eruby let g:syntastic_quiet_messages = {"level": "warnings"}
-let g:syntastic_html_checkers=[''] "pour dev SPIP
 
 " jscomplete-vim
 autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
