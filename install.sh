@@ -25,7 +25,6 @@ ln -sf $DOTFILES/vim/vimrc ~/.vimrc
 
 # neovim
 ln -sf $DOTFILES/vim ~/.config/nvim
-ln -sf $DOTFILES/vim/vimrc ~/.config/nvim/init.vim
 
 
 #
