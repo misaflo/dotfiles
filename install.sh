@@ -23,6 +23,10 @@ ln -sf $DOTFILES/vim/vimrc ~/.vimrc
 [[ ! -h ~/.vim/header ]] && ln -sf $DOTFILES/vim/header ~/.vim/header
 [[ ! -h ~/.vim/syntax ]] && ln -sf $DOTFILES/vim/syntax ~/.vim/syntax
 
+# neovim
+ln -sf $DOTFILES/vim ~/.config/nvim
+ln -sf $DOTFILES/vim/vimrc ~/.config/nvim/init.vim
+
 
 #
 # zsh

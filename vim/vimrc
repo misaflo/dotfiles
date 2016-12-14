@@ -89,6 +89,13 @@ endif
 " Map CTRL+k S N (non-breaking space) to CTRL+space
 imap <Nul> <C-k>NS
 
+" ==== neovim ====
+if has("nvim")
+  tnoremap <Esc> <C-\><C-n>
+
+  set inccommand=nosplit
+endif
+
 
 "====================
 " Syntax
@@ -195,6 +202,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 " Ignore warings for eruby
 autocmd FileType eruby let g:syntastic_quiet_messages = {"level": "warnings"}
+let g:syntastic_html_checkers=[''] "pour dev SPIP
 
 " jscomplete-vim
 autocmd FileType javascript set omnifunc=jscomplete#CompleteJS
