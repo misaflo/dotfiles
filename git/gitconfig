@@ -1,6 +1,7 @@
 [user]
   # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
   useConfigOnly = true
+	name = Florent Lévigne
 
 [color]
   diff   = auto
@@ -13,6 +14,8 @@
   br  = branch
   di  = diff
   div = difftool --tool=vimdiff
+  # https://coderwall.com/p/euwpig/a-better-git-log
+  lg  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 [push]
   default = simple
