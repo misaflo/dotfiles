@@ -135,8 +135,8 @@ alias du='du -sh'
 alias vim='vim -p'
 alias pingg="ping www.google.com"
 # Display the 20 biggest files, in Gb or Mb.
-alias dug='du -h * | grep "^[0-9.]*G" | sort -rn | head -n 20'
-alias dum='du -h * | grep "^[0-9.]*M" | sort -rn | head -n 20'
+alias dug='du -h * | grep "^[0-9.,]*G" | sort -rn | head -n 20'
+alias dum='du -h * | grep "^[0-9.,]*M" | sort -rn | head -n 20'
 
 alias -s pdf='okular'
 
