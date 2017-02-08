@@ -15,7 +15,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar' " require exuberant-ctags
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-signify'
 Plugin 'garbas/vim-snipmate'
@@ -30,7 +31,6 @@ Plugin 'slim-template/vim-slim'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'docteurklein/php-getter-setter.vim'
 Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'morhetz/gruvbox'
 
 Plugin 'tomtom/tlib_vim'
@@ -184,9 +184,8 @@ nmap <silent> <F9> :NERDTreeTabsToggle<RETURN>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " vim-airline
-" patched font: https://github.com/Lokaltog/powerline-fonts
-let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme='raven'
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
@@ -195,9 +194,6 @@ let g:signify_vcs_list = [ 'git' ]
 nmap <F8> :TagbarToggle<CR>
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
