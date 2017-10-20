@@ -133,7 +133,7 @@ alias pingg="ping www.google.com"
 # Display the 20 biggest files
 alias dub='du -h * | sort -rh | head -n 20'
 
-alias -s pdf='okular'
+alias -s pdf='evince'
 
 alias -s odt='libreoffice'
 alias -s doc='libreoffice'
@@ -145,10 +145,10 @@ alias -s odp='libreoffice'
 alias -s ppt='libreoffice'
 alias -s pptx='libreoffice'
 
-alias -s jpg='gwenview'
-alias -s jpeg='gwenview'
-alias -s png='gwenview'
-alias -s gif='gwenview'
+alias -s jpg='eog'
+alias -s jpeg='eog'
+alias -s png='eog'
+alias -s gif='eog'
 
 
 function set_brightness() {
