@@ -70,9 +70,6 @@ set tabstop=2         " Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2      " Alignment with '<' and '>'
 set expandtab         " Use spaces instead of tab
 
-highlight NoSpacesEOL ctermbg=red ctermfg=white guibg=#592929
-match NoSpacesEOL / \+$/
-
 if !has("gui_running")
   hi SpellBad cterm=underline ctermfg=red
   hi SpellCap cterm=underline ctermfg=33
@@ -85,8 +82,13 @@ if &diff
   set cursorline!
 endif
 
-" Map CTRL+k S N (non-breaking space) to CTRL+space
-imap <Nul> <C-k>NS
+" Show special characters
+" Insert a non-breaking space: <C-k> <space> <space>
+set list
+set listchars=tab:>\ ,trail:\ ,nbsp:+
+highlight NoSpacesEOL ctermbg=red ctermfg=white guibg=#592929
+match NoSpacesEOL / \+$/
+
 
 " ==== neovim ====
 if has("nvim")
