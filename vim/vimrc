@@ -92,10 +92,13 @@ match NoSpacesEOL / \+$/
 
 " ==== neovim ====
 if has("nvim")
+  " Map <Esc> to exit terminal-mode
   tnoremap <Esc> <C-\><C-n>
 
-  set inccommand=nosplit
+  " Live substitution
+  se inccommand=nosplit
 
+  " 24-bit color
   if has("termguicolors")
     set termguicolors
   endif
