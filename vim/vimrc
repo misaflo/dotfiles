@@ -70,13 +70,8 @@ set tabstop=2         " Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2      " Alignment with '<' and '>'
 set expandtab         " Use spaces instead of tab
 
-if !has("gui_running")
-  hi SpellBad cterm=underline ctermfg=red
-  hi SpellCap cterm=underline ctermfg=33
-else
-  " Maximize gvim window
-  set lines=999 columns=999
-end
+hi SpellBad cterm=underline ctermfg=red
+hi SpellCap cterm=underline ctermfg=33
 
 if &diff
   set cursorline!
