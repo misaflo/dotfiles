@@ -44,6 +44,7 @@ filetype plugin indent on
 " General
 "====================
 
+let mapleader=","
 set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
@@ -152,9 +153,9 @@ set dictionary+=/usr/share/dict/words
 " Vim spell checker (z=)
 if has("spell")
   setlocal spell spelllang=
-  map ,lf :setlocal spell spelllang=fr<cr>
-  map ,le :setlocal spell spelllang=en<cr>
-  map ,ln :setlocal spell spelllang=<cr>
+  map <leader>lf :setlocal spell spelllang=fr<cr>
+  map <leader>le :setlocal spell spelllang=en<cr>
+  map <leader>ln :setlocal spell spelllang=<cr>
 endif
 
 set spellsuggest=5
@@ -210,5 +211,5 @@ let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 vmap <Enter> <Plug>(EasyAlign)
 
 " nerdcommenter
-nnoremap ,c :call NERDComment(0,"toggle")<CR>
-vnoremap ,c :call NERDComment(0,"toggle")<CR>
+nnoremap <leader>c :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>c :call NERDComment(0,"toggle")<CR>
