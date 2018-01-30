@@ -71,6 +71,9 @@ set tabstop=2         " Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2      " Alignment with '<' and '>'
 set expandtab         " Use spaces instead of tab
 
+" Highlighted off
+nmap <silent> <leader><space> :noh<CR>
+
 hi SpellBad cterm=underline ctermfg=red
 hi SpellCap cterm=underline ctermfg=33
 
