@@ -152,7 +152,7 @@ alias -s png='eog'
 alias -s gif='eog'
 
 # Debian
-if [ -f /etc/debian_versiona ]; then
+if [ -f /etc/debian_version ]; then
   alias update="sudo apt update && apt list --upgradable"
   alias upgrade="sudo apt upgrade"
 fi
