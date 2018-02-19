@@ -151,6 +151,12 @@ alias -s jpeg='eog'
 alias -s png='eog'
 alias -s gif='eog'
 
+# Debian
+if [ -f /etc/debian_versiona ]; then
+  alias update="sudo apt update && apt list --upgradable"
+  alias upgrade="sudo apt upgrade"
+fi
+
 
 function set_brightness() {
   screen="$(xrandr | grep -w connected | cut -d ' ' -f 1 | head -n 1)"
