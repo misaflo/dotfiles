@@ -88,6 +88,9 @@ set listchars=tab:>\ ,trail:\ ,nbsp:+
 highlight NoSpacesEOL ctermbg=red ctermfg=white guibg=#592929
 match NoSpacesEOL / \+$/
 
+" :W sudo saves the file
+command W w !sudo tee % > /dev/null
+
 
 " ==== neovim ====
 if has("nvim")
