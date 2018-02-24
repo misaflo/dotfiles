@@ -130,7 +130,6 @@ alias df='df -hT'
 alias du='du -sh'
 alias vim='vim -p'
 alias pingg="ping www.google.com"
-alias apt='noglob apt'
 # Display the 20 biggest files
 alias dub='du -h * | sort -rh | head -n 20'
 
@@ -153,6 +152,7 @@ alias -s gif='eog'
 
 # Debian
 if [ -f /etc/debian_version ]; then
+  alias apt='noglob apt'
   alias update="sudo apt update && apt list --upgradable"
   alias upgrade="sudo apt upgrade"
 fi
