@@ -1,43 +1,31 @@
+":====================
+" Plugins (vim-plug)
 "====================
-" Vundle
-"====================
 
-set nocompatible
-filetype off
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar' " require exuberant-ctags
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mhinz/vim-signify'
+Plug 'garbas/vim-snipmate' | Plug 'honza/vim-snippets' | Plug 'tomtom/tlib_vim' | Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'junegunn/vim-easy-align'
+Plug 'othree/html5.vim'
+Plug 'ap/vim-css-color'
+Plug 'pangloss/vim-javascript'
+Plug '1995eaton/vim-better-javascript-completion'
+Plug 'vim-ruby/vim-ruby'
+Plug 'slim-template/vim-slim'
+Plug 'noprompt/vim-yardoc'
+Plug 'scrooloose/nerdcommenter'
+Plug 'morhetz/gruvbox'
 
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar' " require exuberant-ctags
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mhinz/vim-signify'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'othree/html5.vim'
-Plugin 'ap/vim-css-color'
-Plugin 'pangloss/vim-javascript'
-Plugin '1995eaton/vim-better-javascript-completion'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'slim-template/vim-slim'
-Plugin 'noprompt/vim-yardoc'
-Plugin 'docteurklein/php-getter-setter.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'morhetz/gruvbox'
-
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 
 "====================
@@ -49,7 +37,6 @@ set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
-syntax on " before vim-signify configuration
 set number
 set encoding=utf-8
 set fileencoding=utf-8
@@ -171,9 +158,9 @@ set spellsuggest=5
 " Automatic headers
 "====================
 
-autocmd bufnewfile *.sh   so ~/.vim/header/sh
-autocmd bufnewfile *.php  so ~/.vim/header/php
-autocmd bufnewfile *.rb   so ~/.vim/header/ruby
+autocmd bufnewfile *.sh   so ~/.config/nvim/header/sh
+autocmd bufnewfile *.php  so ~/.config/nvim/header/php
+autocmd bufnewfile *.rb   so ~/.config/nvim/header/ruby
 
 
 "====================
@@ -192,7 +179,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " vim-airline
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme='raven'
+let g:airline_theme='base16_grayscale'
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
