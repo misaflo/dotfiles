@@ -6,7 +6,8 @@ DOTFILES=~/.dotfiles
 # neovim
 #
 if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkdir -p ~/.local/share/nvim/site/autoload
+  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
 fi
 if [[ ! -L ~/.config/nvim ]]; then
   ln -sf $DOTFILES/vim ~/.config/nvim
