@@ -8,6 +8,10 @@
   status = auto
   branch = auto
 
+[color "grep"]
+  linenumber = green
+  filename = magenta
+
 [alias]
   co  = commit
   st  = status
