@@ -24,6 +24,7 @@ Plug 'slim-template/vim-slim'
 Plug 'noprompt/vim-yardoc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'morhetz/gruvbox'
+Plug 'Misaflo/vim-markdown-preview', { 'branch': 'markdown_preview_pandoc_css' } " require pandoc
 
 call plug#end()
 
@@ -206,3 +207,9 @@ vmap <Enter> <Plug>(EasyAlign)
 " nerdcommenter
 nnoremap <leader>c :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>c :call NERDComment(0,"toggle")<CR>
+
+" vim-markdown-preview
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_pandoc=1
+let vim_markdown_preview_pandoc_css='$HOME/.dotfiles/vim/github-pandoc.css'
+let vim_markdown_preview_use_xdg_open=1
