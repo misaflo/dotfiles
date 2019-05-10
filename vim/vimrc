@@ -27,7 +27,6 @@ Plug 'dpelle/vim-Grammalecte'
 
 call plug#end()
 
-
 "====================
 " General
 "====================
@@ -107,7 +106,6 @@ nmap <leader>p :bprevious!<CR>
 " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
 
-
 "====================
 " File explorer (netrw)
 "====================
@@ -117,8 +115,26 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 16
-nmap <silent> <F9> :Lexplore<CR>
 
+" https://www.reddit.com/r/vim/comments/6jcyfj/toggle_lexplore_properly/
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+  if g:NetrwIsOpen
+    let i = bufnr("$")
+    while (i >= 1)
+      if (getbufvar(i, "&filetype") == "netrw")
+        silent exe "bwipeout " . i
+      endif
+      let i-=1
+    endwhile
+    let g:NetrwIsOpen=0
+  else
+    let g:NetrwIsOpen=1
+    silent Lexplore
+  endif
+endfunction
+
+nmap <silent> <F9> :call ToggleNetrw()<CR>
 
 "====================
 " Syntax
@@ -126,14 +142,12 @@ nmap <silent> <F9> :Lexplore<CR>
 
 autocmd BufEnter todo set filetype=todo
 
-
 "====================
 " PHP
 "====================
 
 let php_sql_query=1       " SQL syntax highlighting inside Strings
 let php_htmlInStrings=1   " Enable HTML syntax highlighting inside strings
-
 
 "====================
 " Ruby
@@ -147,7 +161,6 @@ let php_htmlInStrings=1   " Enable HTML syntax highlighting inside strings
 "autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 let ruby_spellcheck_strings = 1
-
 
 "====================
 " Completion
@@ -164,7 +177,6 @@ autocmd InsertLeave   * if pumvisible() == 0|pclose|endif
 " For completion of words (ctrl + x ctrl + k)
 set dictionary+=/usr/share/dict/words
 
-
 "====================
 " Spellchecking
 "====================
@@ -180,7 +192,6 @@ endif
 
 set spellsuggest=5
 
-
 "====================
 " Automatic headers
 "====================
@@ -188,7 +199,6 @@ set spellsuggest=5
 autocmd bufnewfile *.sh   so ~/.config/nvim/header/sh
 autocmd bufnewfile *.php  so ~/.config/nvim/header/php
 autocmd bufnewfile *.rb   so ~/.config/nvim/header/ruby
-
 
 "====================
 " Plugins configuration
