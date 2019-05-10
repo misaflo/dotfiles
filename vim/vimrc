@@ -6,7 +6,6 @@ call plug#begin()
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar' " require exuberant-ctags
 Plug 'vim-airline/vim-airline'
@@ -97,6 +96,19 @@ endif
 
 
 "====================
+" Buffer
+"====================
+
+" Move to the next buffer
+nmap <leader>n :bnext!<CR>
+" Move to the previous buffer
+nmap <leader>p :bprevious!<CR>
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>q :bp <BAR> bd #<CR>
+
+
+"====================
 " Syntax
 "====================
 
@@ -176,13 +188,14 @@ hi link yardType        Type
 hi link yardLiteral     Type
 
 " nerdtree and nerdtree-tabs
-nmap <silent> <F9> :NERDTreeTabsToggle<RETURN>
+nmap <silent> <F9> :NERDTreeToggle<RETURN>
 " Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim-airline
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='base16_grayscale'
+let g:airline#extensions#tabline#enabled = 1
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
