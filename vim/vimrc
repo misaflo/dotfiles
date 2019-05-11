@@ -186,10 +186,9 @@ set dictionary+=/usr/share/dict/words
 " Vim spell checker (z=)
 hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red term=underline cterm=none
 if has("spell")
-  setlocal spell spelllang=
-  map <leader>lf :setlocal spell spelllang=fr<cr>
-  map <leader>le :setlocal spell spelllang=en<cr>
-  map <leader>ln :setlocal spell spelllang=<cr>
+  map <leader>lf :set spell spelllang=fr<cr>
+  map <leader>le :set spell spelllang=en<cr>
+  map <leader>ln :set nospell<cr>
 endif
 
 set spellsuggest=5
