@@ -98,6 +98,8 @@ endif
 "====================
 
 " https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+" This allows buffers to be hidden if you've modified a buffer
+set hidden
 " Move to the next buffer
 nmap <leader>n :bnext!<CR>
 " Move to the previous buffer
