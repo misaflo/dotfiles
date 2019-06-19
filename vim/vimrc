@@ -117,6 +117,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 16
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+' " https://vi.stackexchange.com/questions/18650/how-to-make-netrw-start-with-dotfiles-hidden/
 
 " https://www.reddit.com/r/vim/comments/6jcyfj/toggle_lexplore_properly/
 let g:NetrwIsOpen=0
