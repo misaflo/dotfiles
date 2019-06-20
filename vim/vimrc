@@ -21,6 +21,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim'
 Plug 'noprompt/vim-yardoc'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'Misaflo/vim-markdown-preview', { 'branch': 'markdown_preview_pandoc_css' } " require pandoc
 Plug 'dpelle/vim-Grammalecte'
@@ -107,37 +108,6 @@ nmap <leader>p :bprevious!<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
-
-"====================
-" File explorer (netrw)
-"====================
-
-" https://shapeshed.com/vim-netrw/
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 16
-let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+' " https://vi.stackexchange.com/questions/18650/how-to-make-netrw-start-with-dotfiles-hidden/
-
-" https://www.reddit.com/r/vim/comments/6jcyfj/toggle_lexplore_properly/
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-  if g:NetrwIsOpen
-    let i = bufnr("$")
-    while (i >= 1)
-      if (getbufvar(i, "&filetype") == "netrw")
-        silent exe "bwipeout " . i
-      endif
-      let i-=1
-    endwhile
-    let g:NetrwIsOpen=0
-  else
-    let g:NetrwIsOpen=1
-    silent Lexplore
-  endif
-endfunction
-
-nmap <silent> <F9> :call ToggleNetrw()<CR>
 
 "====================
 " Syntax
@@ -241,6 +211,11 @@ vmap <Enter> <Plug>(EasyAlign)
 " nerdcommenter
 nnoremap <leader>c :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>c :call NERDComment(0,"toggle")<CR>
+
+" nerdtree
+nmap <F9> :NERDTreeToggle<CR>
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim-markdown-preview
 let vim_markdown_preview_hotkey='<C-m>'
