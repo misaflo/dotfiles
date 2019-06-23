@@ -156,6 +156,11 @@ if [ -f /etc/debian_version ]; then
   alias upgrade="sudo apt upgrade"
 fi
 
+# Arch Linux
+if [ -f /etc/arch-release ]; then
+  alias pacnew_find='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
+fi
+
 
 function set_brightness() {
   screen="$(xrandr | grep -w connected | cut -d ' ' -f 1 | head -n 1)"
