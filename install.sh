@@ -10,6 +10,7 @@ if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
   wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
 fi
 if [[ ! -L ~/.config/nvim ]]; then
+  mkdir ~/.config
   ln -sf $DOTFILES/vim ~/.config/nvim
 fi
 if [[ ! -f ~/.dotfiles/vim/github-pandoc.css ]]; then
