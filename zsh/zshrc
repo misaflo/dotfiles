@@ -160,7 +160,7 @@ fi
 
 # Arch Linux
 if [ -f /etc/arch-release ]; then
-  alias pacnew_find='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
+  alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
 fi
 
 
