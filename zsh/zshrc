@@ -154,6 +154,8 @@ if [ -f /etc/debian_version ]; then
   alias apt='noglob apt'
   alias update="sudo apt update && apt list --upgradable"
   alias upgrade="sudo apt upgrade"
+
+  alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
 fi
 
 # Arch Linux
