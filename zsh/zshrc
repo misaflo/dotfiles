@@ -128,6 +128,7 @@ alias grep='grep --color -I --exclude-dir=.git'
 alias tree='tree -C --dirsfirst'
 alias df='df -hT'
 alias du='du -sh'
+alias find='noglob find'
 alias pingg="ping www.google.com"
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
@@ -156,11 +157,15 @@ if [ -f /etc/debian_version ]; then
   alias upgrade="sudo apt upgrade"
 
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
+
+  alias fd='noglob fdfind'
 fi
 
 # Arch Linux
 if [ -f /etc/arch-release ]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
+
+  alias fd='noglob fd'
 fi
 
 
