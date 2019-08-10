@@ -130,6 +130,7 @@ alias df='df -hT'
 alias du='du -sh'
 alias find='noglob find'
 alias pingg="ping www.google.com"
+alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 
