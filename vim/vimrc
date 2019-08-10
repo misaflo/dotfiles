@@ -84,8 +84,11 @@ if has("nvim")
   " Map <Esc> to exit terminal-mode
   tnoremap <Esc> <C-\><C-n>
 
+  " Disable line number in terminal-mode
+  autocmd TermOpen * setlocal nonumber norelativenumber
+
   " Live substitution
-  se inccommand=nosplit
+  set inccommand=nosplit
 
   " 24-bit color
   if has("termguicolors")
