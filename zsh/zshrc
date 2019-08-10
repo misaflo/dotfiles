@@ -133,22 +133,9 @@ alias pingg="ping www.google.com"
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 
-alias -s pdf='evince'
-
-alias -s odt='libreoffice'
-alias -s doc='libreoffice'
-alias -s docx='libreoffice'
-alias -s ods='libreoffice'
-alias -s xls='libreoffice'
-alias -s xlsx='libreoffice'
-alias -s odp='libreoffice'
-alias -s ppt='libreoffice'
-alias -s pptx='libreoffice'
-
-alias -s jpg='eog'
-alias -s jpeg='eog'
-alias -s png='eog'
-alias -s gif='eog'
+alias -s pdf='xdg-open'
+alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
+alias -s {jpg,jpeg,png,gif}='xdg-open'
 
 # Debian
 if [ -f /etc/debian_version ]; then
