@@ -23,7 +23,7 @@ Plug 'noprompt/vim-yardoc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
-Plug 'Misaflo/vim-markdown-preview', { 'branch': 'markdown_preview_pandoc_css' } " require pandoc
+Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
 
 call plug#end()
@@ -217,11 +217,8 @@ nmap <F9> :NERDTreeToggle<CR>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" vim-markdown-preview
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_pandoc=1
-let vim_markdown_preview_pandoc_css='$HOME/.dotfiles/vim/github-pandoc.css'
-let vim_markdown_preview_use_xdg_open=1
+" previm (markdown preview)
+let g:previm_open_cmd = 'xdg-open'
 
 " vim-Grammalecte
 let g:grammalecte_cli_py='~/.dotfiles/vim/grammalecte/grammalecte-cli.py'
