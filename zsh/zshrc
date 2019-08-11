@@ -89,6 +89,11 @@ setopt hist_ignore_all_dups
 # Shared history between sessions, ignoring duplicates
 setopt histignorealldups sharehistory
 
+# Use ESC to edit the current command line:
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\033' edit-command-line
+
 # Syntax highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
