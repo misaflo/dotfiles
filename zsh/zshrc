@@ -7,12 +7,19 @@ setopt prompt_subst
 autoload -Uz vcs_info
 
 get_git_status() {
-  number_of_changes="$(git status -s | wc -l)"
+  changes="$(git status -s)"
 
-  if [[ "$number_of_changes" == '0' ]]; then
-    echo -n " %{$fg[green]%}✓"
+  untracked="$(echo $changes | grep '^??' | wc -l)"
+  modifed="$(echo $changes | grep -E '^ (D|M)' | wc -l)"
+  new="$(echo $changes | grep -E '^(A|M)' | wc -l)"
+
+  if [[ -z $changes ]]; then
+    echo -n " %{$fg_bold[green]%}✓"
   else
-    echo -n " %{$fg[red]%}$number_of_changes"
+    echo -n ' '
+    ((untracked > 0 )) && echo -n "%{$fg_bold[red]%}●"
+    ((modifed > 0 ))   && echo -n "%{$fg_bold[yellow]%}●"
+    ((new > 0 ))       && echo -n "%{$fg_bold[green]%}●"
   fi
 }
 
@@ -22,15 +29,15 @@ vcs_info_wrapper() {
   if [[ -n "$vcs_info_msg_0_" ]]; then
     echo -n "${vcs_info_msg_0_}"
     get_git_status
-    echo "%{$fg[grey]%})"
+    echo "%{$fg_bold[grey]%})"
   fi
 }
 
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats " %{$fg[grey]%}(%s: %{$fg[yellow]%}%b"
+zstyle ':vcs_info:git*' formats " %{$fg_bold[grey]%}(%{$reset_color%}%b"
 
-PROMPT='%m %{${fg_bold[red]}%}:: %{${fg[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
+PROMPT='%m %{${fg_bold[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
 
 #====================
 # Completion
