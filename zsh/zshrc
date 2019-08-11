@@ -10,9 +10,9 @@ get_git_status() {
   number_of_changes="$(git status -s | wc -l)"
 
   if [[ "$number_of_changes" == '0' ]]; then
-    echo -n " %{$fg[green]✓%}"
+    echo -n " %{$fg[green]%}✓"
   else
-    echo -n " %{$fg[red]$number_of_changes%}"
+    echo -n " %{$fg[red]%}$number_of_changes"
   fi
 }
 
@@ -22,7 +22,7 @@ vcs_info_wrapper() {
   if [[ -n "$vcs_info_msg_0_" ]]; then
     echo -n "${vcs_info_msg_0_}"
     get_git_status
-    echo "%{$fg[grey])%}"
+    echo "%{$fg[grey]%})"
   fi
 }
 
