@@ -9,11 +9,11 @@ autoload -Uz vcs_info
 get_git_status() {
   changes="$(git status -s)"
 
-  untracked="$(echo $changes | grep '^??' | wc -l)"
-  modifed="$(echo $changes | grep -E '^ (D|M)' | wc -l)"
-  new="$(echo $changes | grep -E '^(A|M)' | wc -l)"
+  untracked="$(echo "$changes" | grep '^??' | wc -l)"
+  modifed="$(echo "$changes" | grep -E '^ (D|M)' | wc -l)"
+  new="$(echo "$changes" | grep -E '^(A|M)' | wc -l)"
 
-  if [[ -z $changes ]]; then
+  if [[ -z "$changes" ]]; then
     echo -n " %{$fg_bold[green]%}✓"
   else
     echo -n ' '
@@ -27,9 +27,9 @@ get_git_status() {
 vcs_info_wrapper() {
   vcs_info
   if [[ -n "$vcs_info_msg_0_" ]]; then
-    echo -n "${vcs_info_msg_0_}"
-    get_git_status
-    echo "%{$fg_bold[grey]%})"
+    echo -n "${vcs_info_msg_0_}" # (branch
+    get_git_status               # ✓|●
+    echo "%{$fg_bold[grey]%})"   # )
   fi
 }
 
