@@ -13,10 +13,6 @@ if [[ ! -L ~/.config/nvim ]]; then
   mkdir ~/.config
   ln -sf $DOTFILES/vim ~/.config/nvim
 fi
-if [[ ! -f ~/.dotfiles/vim/github-pandoc.css ]]; then
-  wget https://gist.githubusercontent.com/dashed/6714393/raw/ae966d9d0806eb1e24462d88082a0264438adc50/github-pandoc.css -O ~/.dotfiles/vim/github-pandoc.css
-  echo "html,body {max-width: 65em;}" >> ~/.dotfiles/vim/github-pandoc.css
-fi
 
 
 #
