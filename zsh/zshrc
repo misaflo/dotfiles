@@ -96,7 +96,7 @@ setopt hist_ignore_all_dups
 # Shared history between sessions, ignoring duplicates
 setopt histignorealldups sharehistory
 
-# Use ESC to edit the current command line:
+# Use Ctrl-x-e to edit the current command line
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
