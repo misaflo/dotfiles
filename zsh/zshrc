@@ -156,7 +156,10 @@ if [ -f /etc/debian_version ]; then
   alias apt='noglob apt'
   alias upgrade="sudo apt upgrade"
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
-  alias fd='noglob fdfind'
+
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=934587#25
+  export PATH="$PATH:/usr/lib/cargo/bin/"
+  alias fd='noglob fd'
 
   if [[ -x "$(whence -p aptlu)" ]] ; then
     alias update="sudo apt update && aptlu"
