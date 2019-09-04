@@ -3,12 +3,26 @@
 DOTFILES=~/.dotfiles
 
 #
-# neovim
+# (neo)vim
 #
-if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-  mkdir -p ~/.local/share/nvim/site/autoload
-  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
+
+# vim-plug (vim)
+if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
+  mkdir -p ~/.vim/autoload
+  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.vim/autoload/plug.vim
 fi
+
+# vim-plug (neovim)
+if [[ ! -L ~/.local/share/nvim/site/autoload/plug.vim ]]; then
+  mkdir -p ~/.local/share/nvim/site/autoload
+  ln -sf ~/.vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/plug.vim
+fi
+
+# vim
+ln -sf $DOTFILES/vim ~/.vim
+ln -sf $DOTFILES/vim/vimrc ~/.vimrc
+
+# neovim
 if [[ ! -L ~/.config/nvim ]]; then
   mkdir ~/.config
   ln -sf $DOTFILES/vim ~/.config/nvim
