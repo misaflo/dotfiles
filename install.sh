@@ -8,8 +8,8 @@ DOTFILES=~/.dotfiles
 
 # vim-plug (vim)
 if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
-  mkdir -p ~/.vim/autoload
-  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.vim/autoload/plug.vim
+  mkdir $DOTFILES/vim/autoload
+  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O $DOTFILES/vim/autoload/plug.vim
 fi
 
 # vim-plug (neovim)
