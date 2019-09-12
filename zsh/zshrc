@@ -145,6 +145,7 @@ alias grep='grep --color -I --exclude-dir=.git'
 alias tree='tree -C --dirsfirst'
 alias df='df -hT'
 alias du='du -sh'
+alias ip='ip -c'
 alias find='noglob find'
 alias pingg="ping www.google.com"
 alias o='xdg-open'
