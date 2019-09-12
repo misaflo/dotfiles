@@ -33,11 +33,15 @@ vcs_info_wrapper() {
   fi
 }
 
+# print username@ when connected over SSH
+username() {
+  [[ ! -z "$SSH_CONNECTION" ]] && echo "%n%B%F{004}@%f%b"
+}
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats " %{$fg_bold[grey]%}(%{$reset_color%}%b"
 
-PROMPT='%m %{${fg_bold[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
+PROMPT='$(username)%m %{${fg_bold[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
 
 #====================
 # Completion
