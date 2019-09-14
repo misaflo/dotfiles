@@ -146,6 +146,7 @@ alias tree='tree -C --dirsfirst'
 alias df='df -hT'
 alias du='du -sh'
 alias ip='ip -c'
+alias ipaddr='ip -c -4 -br addr'
 alias find='noglob find'
 alias pingg="ping www.google.com"
 alias o='xdg-open'
