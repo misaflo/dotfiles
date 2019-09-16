@@ -78,6 +78,7 @@ match NoSpacesEOL / \+$/
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
+autocmd FileType mail set spell spelllang=fr
 
 " ==== neovim ====
 if has("nvim")
