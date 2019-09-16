@@ -159,7 +159,7 @@ alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
 
 # Debian
-if [ -f /etc/debian_version ]; then
+if [[ -f /etc/debian_version ]]; then
   alias apt='noglob apt'
   alias upgrade="sudo apt upgrade"
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
@@ -179,7 +179,7 @@ if [ -f /etc/debian_version ]; then
 fi
 
 # Arch Linux
-if [ -f /etc/arch-release ]; then
+if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
   alias fd='noglob fd'
 
@@ -189,10 +189,5 @@ fi
 # Syntax highlighting with less
 [[ -f "$hlfile" ]] && export LESSOPEN="| "$hlfile" %s"
 
-if [ -f ~/.zsh_aliases ]; then
-  source ~/.zsh_aliases
-fi
-
-if [ -f ~/.zsh_functions ]; then
-  source ~/.zsh_functions
-fi
+[[ -f ~/.zsh_aliases ]]   && source ~/.zsh_aliases
+[[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
