@@ -23,8 +23,8 @@ get_git_status() {
   fi
 }
 
-# or use pre_cmd, see man zshcontrib
-vcs_info_wrapper() {
+# Also see pre_cmd (man zshcontrib)
+git_info() {
   vcs_info
   if [[ -n "$vcs_info_msg_0_" ]]; then
     echo -n "${vcs_info_msg_0_}" # (branch
@@ -33,15 +33,26 @@ vcs_info_wrapper() {
   fi
 }
 
-# print username@ when connected over SSH
-username() {
-  [[ ! -z "$SSH_CONNECTION" ]] && echo "%n%B%F{004}@%f%b"
-}
-
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats " %{$fg_bold[grey]%}(%{$reset_color%}%b"
 
-PROMPT='$(username)%m %{${fg_bold[green]}%}%5~$(vcs_info_wrapper)%{${fg_bold[blue]}%} »%{$reset_color%} '
+# If connected over SSH
+if [[ ! -z "$SSH_CONNECTION" ]]; then
+  username='%n'
+  at="%{${fg_bold[blue]}%}@%{$reset_color%}"
+  hostname='%m'
+
+  if [[ -x "$(whence -p lsb_release)" ]] ; then
+    RPROMPT="$(lsb_release -ds)"
+  else
+    RPROMPT="$(uname -o)"
+  fi
+fi
+
+dir_path="%{${fg_bold[green]}%}%8~"
+symbol="%{${fg_bold[magenta]}%} >%{$reset_color%}"
+
+PROMPT='$username$at$hostname $dir_path$(git_info)$symbol '
 
 #====================
 # Completion
