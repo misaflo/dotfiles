@@ -177,7 +177,7 @@ if [[ -f /etc/debian_version ]]; then
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
 
   # From package source-highlight
-  hlfile='/usr/share/source-highlight/src-hilite-lesspipe.sh'
+  hlless='/usr/share/source-highlight/src-hilite-lesspipe.sh'
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=934587#25
   export PATH="$PATH:/usr/lib/cargo/bin/"
@@ -195,11 +195,11 @@ if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
   alias fd='noglob fd'
 
-  hlfile='/usr/bin/source-highlight-esc.sh'
+  hlless='/usr/bin/source-highlight-esc.sh'
 fi
 
 # Syntax highlighting with less
-[[ -f "$hlfile" ]] && export LESSOPEN="| "$hlfile" %s"
+[[ -f "$hlless" ]] && export LESSOPEN="| "$hlless" %s"
 
 [[ -f ~/.zsh_aliases ]]   && source ~/.zsh_aliases
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
