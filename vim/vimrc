@@ -6,7 +6,7 @@ call plug#begin()
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar' " require exuberant-ctags
+Plug 'majutsushi/tagbar' " require exuberant-ctags or universal-ctags
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
@@ -25,6 +25,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
+Plug 'rodjek/vim-puppet'
 
 call plug#end()
 
