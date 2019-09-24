@@ -41,12 +41,6 @@ if [[ ! -z "$SSH_CONNECTION" ]]; then
   username='%n'
   at="%{${fg_bold[blue]}%}@%{$reset_color%}"
   hostname='%m'
-
-  if [[ -x "$(whence -p lsb_release)" ]] ; then
-    RPROMPT="$(lsb_release -ds)"
-  else
-    RPROMPT="$(uname -o)"
-  fi
 fi
 
 dir_path="%{${fg_bold[green]}%}%8~"
