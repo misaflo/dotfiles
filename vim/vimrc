@@ -79,7 +79,11 @@ match NoSpacesEOL / \+$/
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
-autocmd FileType mail set spell spelllang=fr
+" Search email in LDAP
+function LDAPLookup()
+  let @a = system('ldap_search_email '.expand('<cword>'))
+endfunction
+map <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$
 
 " ==== neovim ====
 if has("nvim")
@@ -97,7 +101,6 @@ if has("nvim")
     set termguicolors
   endif
 endif
-
 
 "====================
 " Buffer
@@ -118,7 +121,13 @@ nmap <leader>q :bp <BAR> bd #<CR>
 " Syntax
 "====================
 
-autocmd BufEnter todo set filetype=todo
+autocmd BufEnter todo set syntax=todo
+
+"====================
+" Mail
+"====================
+
+autocmd FileType mail set spell spelllang=fr syntax=mailrt
 
 "====================
 " PHP
