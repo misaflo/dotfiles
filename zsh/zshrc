@@ -130,8 +130,9 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 export VISUAL='nvim -R'
-export EDITOR=nvim
-export PAGER='less -iR'
+export EDITOR='nvim'
+export PAGER='less'
+export LESS='-FSRXim'
 
 # 256 colors
 export TERM='xterm-256color'
@@ -148,7 +149,6 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lla='ll -A'
 alias grep='grep --color -I --exclude-dir=.git'
-alias less='less -imR'
 alias tree='tree -C --dirsfirst'
 alias df='df -hT'
 alias du='du -sh'
