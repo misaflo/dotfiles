@@ -82,16 +82,12 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# ctrl + r : search in history
-bindkey '^R' history-incremental-search-backward
+# Emacs editing mode
+bindkey -e
 
 # Move with ctrl + arrow
 bindkey '^[[1;5C' emacs-forward-word
 bindkey '^[[1;5D' emacs-backward-word
-
-# Move with beginning-of-line and end-of-line
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
 
 # "cd" optional
 #setopt autocd
