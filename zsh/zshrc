@@ -89,6 +89,10 @@ bindkey -e
 bindkey '^[[1;5C' emacs-forward-word
 bindkey '^[[1;5D' emacs-backward-word
 
+# Move with beginning-of-line and end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+
 # "cd" optional
 #setopt autocd
 
