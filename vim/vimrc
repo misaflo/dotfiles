@@ -5,7 +5,7 @@
 call plug#begin()
 
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'majutsushi/tagbar' " require exuberant-ctags or universal-ctags
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -206,15 +206,6 @@ let g:signify_vcs_list = [ 'git' ]
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-" Ignore warings for eruby
-autocmd FileType eruby let g:syntastic_quiet_messages = {"level": "warnings"}
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
