@@ -26,6 +26,7 @@ Plug 'morhetz/gruvbox'
 Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
