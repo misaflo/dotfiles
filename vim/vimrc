@@ -77,6 +77,11 @@ set listchars=tab:>\ ,trail:\ ,nbsp:+
 highlight NoSpacesEOL ctermbg=red ctermfg=white guibg=#592929
 match NoSpacesEOL / \+$/
 
+" 24-bit color
+if has("termguicolors")
+  set termguicolors
+endif
+
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
@@ -90,11 +95,6 @@ map <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<
 if has("nvim")
   " Live substitution
   set inccommand=nosplit
-
-  " 24-bit color
-  if has("termguicolors")
-    set termguicolors
-  endif
 endif
 
 "====================
