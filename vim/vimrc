@@ -4,7 +4,7 @@
 
 call plug#begin()
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
 Plug 'dense-analysis/ale'
 Plug 'majutsushi/tagbar' " require exuberant-ctags or universal-ctags
 Plug 'vim-airline/vim-airline'
@@ -202,6 +202,11 @@ autocmd bufnewfile *.rb   so ~/.config/nvim/header/ruby
 "====================
 " Plugins configuration
 "====================
+
+" fzf
+noremap <silent> <leader>f :FZF<CR>
+autocmd  FileType fzf set laststatus=0 noshowmode noruler " Hide statusline
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
