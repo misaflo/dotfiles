@@ -169,6 +169,8 @@ alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
 
+[[ -x "$(whence -p bat)" ]] && alias cat='bat'
+
 # Debian
 if [[ -f /etc/debian_version ]]; then
   alias apt='noglob apt'
