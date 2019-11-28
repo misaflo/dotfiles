@@ -160,6 +160,7 @@ alias ipaddr='ip -c -4 -br addr'
 alias find='noglob find'
 alias findn='noglob find . -name'
 alias findi='noglob find . -iname'
+alias vimf="$EDITOR +'let g:fzf_layout = { \"window\": \"enew\" }' +'FZF' +'unlet g:fzf_layout'"
 alias pingg="ping www.google.com"
 alias o='xdg-open'
 # Display the 20 biggest files
