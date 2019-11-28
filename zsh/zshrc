@@ -166,6 +166,8 @@ alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 
+alias -g F='$(fzf)'
+
 alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
