@@ -165,11 +165,14 @@ alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 
+if [[ -x "$(whence -p bat)" ]]; then
+  alias cat='bat'
+  alias less='bat --plain'
+fi
+
 alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
-
-[[ -x "$(whence -p bat)" ]] && alias cat='bat'
 
 # fzf
 function fzf_preview() {
