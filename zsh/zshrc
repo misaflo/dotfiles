@@ -160,19 +160,27 @@ alias ipaddr='ip -c -4 -br addr'
 alias find='noglob find'
 alias findn='noglob find . -name'
 alias findi='noglob find . -iname'
-alias vimf="$EDITOR +'let g:fzf_layout = { \"window\": \"enew\" }' +'FZF' +'unlet g:fzf_layout'"
 alias pingg="ping www.google.com"
 alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
-
-alias -g F='$(fzf)'
 
 alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
 
 [[ -x "$(whence -p bat)" ]] && alias cat='bat'
+
+# fzf
+function fzf_preview() {
+  fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+    echo {} is a binary file ||
+    (bat --style=numbers --color=always {} ||
+    cat {}) 2> /dev/null | head -200'
+}
+
+alias -g f='$(fzf -m)'
+alias -g F='$(fzf_preview)'
 
 # Debian
 if [[ -f /etc/debian_version ]]; then
