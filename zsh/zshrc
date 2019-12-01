@@ -48,6 +48,7 @@ symbol="%{${fg_bold[magenta]}%} >%{$reset_color%}"
 
 PROMPT='$username$at$hostname $dir_path$(git_info)$symbol '
 
+
 #====================
 # Completion
 #====================
@@ -92,12 +93,6 @@ bindkey '^[[1;5D' emacs-backward-word
 # Move with beginning-of-line and end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
-
-# "cd" optional
-#setopt autocd
-
-# Corrects bad commands
-#setopt correctall
 
 # No duplication in history
 setopt hist_ignore_all_dups
@@ -160,6 +155,7 @@ alias ipaddr='ip -c -4 -br addr'
 alias find='noglob find'
 alias findn='noglob find . -name'
 alias findi='noglob find . -iname'
+alias fd='noglob fd'
 alias pingg="ping www.google.com"
 alias o='xdg-open'
 # Display the 20 biggest files
@@ -189,7 +185,10 @@ function fzf_preview() {
 alias -g F='$(fzf -m --height 40% --reverse)'
 alias -g FP='$(fzf_preview)'
 
+
+#====================
 # Debian
+#====================
 if [[ -f /etc/debian_version ]]; then
   alias apt='noglob apt'
   alias upgrade="sudo apt upgrade"
@@ -197,7 +196,6 @@ if [[ -f /etc/debian_version ]]; then
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=934587#25
   export PATH="$PATH:/usr/lib/cargo/bin/"
-  alias fd='noglob fd'
 
   if [[ -x "$(whence -p aptlu)" ]] ; then
     alias update="sudo apt update && aptlu"
@@ -206,10 +204,12 @@ if [[ -f /etc/debian_version ]]; then
   fi
 fi
 
+
+#====================
 # Arch Linux
+#====================
 if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
-  alias fd='noglob fd'
 fi
 
 [[ -f ~/.zsh_aliases ]]   && source ~/.zsh_aliases
