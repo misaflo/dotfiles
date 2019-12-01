@@ -94,6 +94,9 @@ bindkey '^[[1;5D' emacs-backward-word
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
+# Delete key
+bindkey "\e[3~" delete-char
+
 # No duplication in history
 setopt hist_ignore_all_dups
 
