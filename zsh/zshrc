@@ -179,8 +179,8 @@ function fzf_preview() {
     cat {}) 2> /dev/null | head -100'
 }
 
-alias -g f='$(fzf -m --height 40% --reverse)'
-alias -g F='$(fzf_preview)'
+alias -g F='$(fzf -m --height 40% --reverse)'
+alias -g FP='$(fzf_preview)'
 
 # Debian
 if [[ -f /etc/debian_version ]]; then
