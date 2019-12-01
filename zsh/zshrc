@@ -173,13 +173,13 @@ alias -s {jpg,jpeg,png,gif}='xdg-open'
 
 # fzf
 function fzf_preview() {
-  fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+  fzf -m --height 95% --reverse --preview '[[ $(file --mime {}) =~ binary ]] &&
     echo {} is a binary file ||
     (bat --style=numbers --color=always {} ||
-    cat {}) 2> /dev/null | head -200'
+    cat {}) 2> /dev/null | head -100'
 }
 
-alias -g f='$(fzf -m)'
+alias -g f='$(fzf -m --height 40% --reverse)'
 alias -g F='$(fzf_preview)'
 
 # Debian
