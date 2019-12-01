@@ -171,7 +171,14 @@ alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
 alias -s {jpg,jpeg,png,gif}='xdg-open'
 
-# fzf
+
+#====================
+# fuzzy finder
+#====================
+
+# Setting fd as the default source for fzf (respect .gitignore)
+[[ -x "$(whence -p fd)" ]] && export FZF_DEFAULT_COMMAND='fd --type f'
+
 function fzf_preview() {
   fzf -m --height 95% --reverse --preview '[[ $(file --mime {}) =~ binary ]] &&
     echo {} is a binary file ||
