@@ -164,7 +164,7 @@ alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 
-if [[ -x "$(whence -p bat)" ]]; && alias less='bat --plain'
+[[ -x "$(whence -p bat)" ]] && alias less='bat --plain'
 
 alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
