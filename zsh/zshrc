@@ -149,7 +149,7 @@ if [[ -x "$(whence exa)" ]]; then
   alias lla='ll -a'
   alias lsd='ls -D'
   alias lsda='ls -Da'
-  alias lst='exa -lFs new'
+  alias llt='exa -lFs new'
 else
   alias ls='ls --color --group-directories-first -Fh'
   alias la='ls -A'
@@ -157,7 +157,7 @@ else
   # https://unix.stackexchange.com/questions/1645/is-there-any-option-with-ls-command-that-i-see-only-the-directories#answer-502028
   alias lsd='ls -d -- *(/)'
   alias lsda='ls -d -- *(D-/)'
-  alias lst='ls -lrt'
+  alias llt='ls -lrt'
 fi
 alias grep='grep --color -I --exclude-dir=.git'
 alias tree='tree -C --dirsfirst'
