@@ -6,5 +6,9 @@ syn match rtValue /\%<6lnew\|\%<6lopen\|\%<6lstalled\|\%<6lresolved\|\%<6lreject
 " values for Queue
 syn match rtValue /\%<6lcm.info\|\%<6lreseau.info\|\%<6lsi.info\|\%<6lsys.info\|\%<6ltel.info/
 
-hi def link rtCommand Identifier
-hi def link rtValue String
+" And most usefull!
+syntax match smiley "[:;]-[)(pPsS|D]"
+
+highlight smiley guibg=yellow guifg=black ctermbg=yellow ctermfg=black
+highlight default link rtCommand Identifier
+highlight default link rtValue String
