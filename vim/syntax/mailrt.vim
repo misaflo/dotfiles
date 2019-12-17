@@ -9,6 +9,6 @@ syn match rtValue /\%<6lcm.info\|\%<6lreseau.info\|\%<6lsi.info\|\%<6lsys.info\|
 " And most usefull!
 syntax match smiley "[:;]-[)(pPsS|D]"
 
-highlight smiley guibg=#fffc50 guifg=black ctermbg=yellow ctermfg=black
+highlight smiley guibg=#ffaf00 guifg=black ctermbg=yellow ctermfg=black
 highlight default link rtCommand Identifier
 highlight default link rtValue String
