@@ -251,3 +251,5 @@ let g:previm_open_cmd = 'xdg-open'
 let g:grammalecte_cli_py='~/.dotfiles/vim/grammalecte/grammalecte-cli.py'
 hi GrammalecteGrammarError  guisp=lightBlue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
 hi GrammalecteSpellingError guisp=red       gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
+noremap <silent> <leader>gc :GrammalecteCheck<CR>
+noremap <silent> <leader>gl :GrammalecteClear<CR>
