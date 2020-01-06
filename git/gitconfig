@@ -4,10 +4,16 @@
   name = Florent Lévigne
 
 [color]
-  diff   = auto
-  status = auto
-  branch = auto
-
+  ui = true
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 [color "grep"]
   linenumber = green
   filename = magenta
