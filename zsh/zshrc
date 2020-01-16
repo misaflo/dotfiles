@@ -11,7 +11,7 @@ get_git_status() {
 
   untracked="$(echo "$changes" | grep '^??' | wc -l)"
   modifed="$(echo "$changes" | grep -E '^ (D|M)' | wc -l)"
-  new="$(echo "$changes" | grep -E '^(A|M|R)' | wc -l)"
+  new="$(echo "$changes" | grep -E '^(A|M|R|D)' | wc -l)"
 
   if [[ -z "$changes" ]]; then
     echo -n " %{$fg_bold[green]%}✓"
