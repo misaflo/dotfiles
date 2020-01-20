@@ -27,6 +27,7 @@ Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-surround'
+Plug 'nishigori/increment-activator'
 
 call plug#end()
 
@@ -253,3 +254,10 @@ hi GrammalecteGrammarError  guisp=lightBlue gui=undercurl guifg=NONE guibg=NONE 
 hi GrammalecteSpellingError guisp=red       gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
 noremap <silent> <leader>gc :GrammalecteCheck<CR>
 noremap <silent> <leader>gl :GrammalecteClear<CR>
+
+" increment-activator
+let g:increment_activator_filetype_candidates = {
+  \   'puppet': [
+  \     ['present', 'absent'],
+  \   ],
+  \ }
