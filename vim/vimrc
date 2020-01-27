@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'garbas/vim-snipmate' | Plug 'honza/vim-snippets' | Plug 'tomtom/tlib_vim' | Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
@@ -225,6 +225,11 @@ let g:airline_symbols_ascii = 1
 
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
