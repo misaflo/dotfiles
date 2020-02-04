@@ -28,6 +28,7 @@ Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-surround'
 Plug 'nishigori/increment-activator'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()
 
