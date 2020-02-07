@@ -44,6 +44,7 @@ colorscheme gruvbox
 set number
 set encoding=utf-8
 set fileencoding=utf-8
+set nofoldenable      " Disable folding
 
 set showmatch         " When a bracket is inserted, briefly jump to the matching one
 set laststatus=2      " Always display the status line
