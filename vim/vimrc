@@ -30,6 +30,7 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'nishigori/increment-activator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
