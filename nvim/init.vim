@@ -189,14 +189,6 @@ endif
 set spellsuggest=5
 
 "====================
-" Automatic headers
-"====================
-
-autocmd bufnewfile *.sh   so ~/.config/nvim/header/sh
-autocmd bufnewfile *.php  so ~/.config/nvim/header/php
-autocmd bufnewfile *.rb   so ~/.config/nvim/header/ruby
-
-"====================
 " Plugins configuration
 "====================
 
