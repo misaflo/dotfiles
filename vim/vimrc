@@ -22,7 +22,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
