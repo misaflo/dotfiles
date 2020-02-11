@@ -211,9 +211,8 @@ autocmd bufnewfile *.rb   so ~/.config/nvim/header/ruby
 "====================
 
 " fzf
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 noremap <silent> <leader>f :FZF<CR>
-autocmd  FileType fzf set laststatus=0 noshowmode noruler " Hide statusline
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
