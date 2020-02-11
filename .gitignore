@@ -1,4 +1,4 @@
-vim/plugged/
-vim/grammalecte/
-vim/autoload/
-vim/.netrwhist
+nvim/plugged/
+nvim/grammalecte/
+nvim/autoload/
+nvim/.netrwhist

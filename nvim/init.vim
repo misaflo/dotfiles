@@ -98,29 +98,19 @@ function LDAPLookup()
 endfunction
 map <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$
 
-" ==== neovim ====
-if has("nvim")
-  " Live substitution
-  set inccommand=nosplit
-endif
+" Live substitution
+set inccommand=nosplit
 
 "====================
 " Terminal
 "====================
 
-if exists(":tnoremap")
-  " Map <Esc> to exit terminal-mode
-  tnoremap <Esc> <C-\><C-n>
-end
-
-if has("nvim")
-  " Open a terminal at the bottom
-  map <Leader>t :belowright split +terminal<CR>:resize -4<CR>i
-  " Disable line number in terminal-mode
-  autocmd TermOpen * setlocal nonumber norelativenumber
-else
-  map <Leader>t :belowright terminal<CR><C-\><C-n>:res -4<CR>:set nonumber<CR>i
-end
+" Map <Esc> to exit terminal-mode
+tnoremap <Esc> <C-\><C-n>
+" Open a terminal at the bottom
+map <Leader>t :belowright split +terminal<CR>:resize -4<CR>i
+" Disable line number in terminal-mode
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 "====================
 " Buffer
