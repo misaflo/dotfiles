@@ -70,8 +70,8 @@ set expandtab         " Use spaces instead of tab
 " Highlighted off
 nmap <silent> <leader><space> :noh<CR>
 
-hi SpellBad cterm=underline ctermfg=red
-hi SpellCap cterm=underline ctermfg=33
+hi SpellBad gui=none guifg=#ebdbb2 guibg=#cc241d
+hi SpellCap gui=none guifg=#ebdbb2 guibg=#458588
 
 if &diff
   set cursorline!
@@ -179,7 +179,6 @@ set dictionary+=/usr/share/dict/words
 "====================
 
 " Vim spell checker (z=)
-hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red term=underline cterm=none
 if has("spell")
   map <leader>lf :set spell spelllang=fr<cr>
   map <leader>le :set spell spelllang=en<cr>
@@ -241,9 +240,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:previm_open_cmd = 'xdg-open'
 
 " vim-Grammalecte
-let g:grammalecte_cli_py='~/.dotfiles/vim/grammalecte/grammalecte-cli.py'
-hi GrammalecteGrammarError  guisp=lightBlue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
-hi GrammalecteSpellingError guisp=red       gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
+let g:grammalecte_cli_py='~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
+hi GrammalecteGrammarError  gui=none guifg=#ebdbb2 guibg=#cc241d
+hi GrammalecteSpellingError gui=none guifg=#ebdbb2 guibg=#458588
 noremap <silent> <leader>gc :GrammalecteCheck<CR>
 noremap <silent> <leader>gl :GrammalecteClear<CR>
 
