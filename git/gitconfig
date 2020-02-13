@@ -3,6 +3,9 @@
   useConfigOnly = true
   name = Florent Lévigne
 
+[core]
+  editor = nvim
+
 [color]
   ui = true
 [color "diff-highlight"]
