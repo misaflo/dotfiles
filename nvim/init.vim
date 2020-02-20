@@ -70,8 +70,8 @@ set expandtab         " Use spaces instead of tab
 " Highlighted off
 nmap <silent> <leader><space> :noh<CR>
 
-hi SpellBad gui=none guifg=#ebdbb2 guibg=#cc241d
-hi SpellCap gui=none guifg=#ebdbb2 guibg=#458588
+hi SpellBad gui=underline guifg=#fb4934
+hi SpellCap gui=underline guifg=#83a598
 
 if &diff
   set cursorline!
@@ -233,8 +233,8 @@ let g:previm_open_cmd = 'xdg-open'
 
 " vim-Grammalecte
 let g:grammalecte_cli_py='~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
-hi GrammalecteGrammarError  gui=none guifg=#ebdbb2 guibg=#cc241d
-hi GrammalecteSpellingError gui=none guifg=#ebdbb2 guibg=#458588
+hi GrammalecteGrammarError  gui=underline guifg=#83a598
+hi GrammalecteSpellingError gui=underline guifg=#fb4934
 noremap <silent> <leader>gc :GrammalecteCheck<CR>
 noremap <silent> <leader>gl :GrammalecteClear<CR>
 
