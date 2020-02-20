@@ -1,0 +1,35 @@
+window {
+  margin: 5px;
+  background-color: transparent;
+  color: grey;
+}
+
+#input {
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid grey;
+  color: #ebdbb2;
+  background-color: #32302f;
+}
+
+#inner-box *:focus {
+  background-color: #458588;
+  color: #ebdbb2;
+}
+
+#scroll {
+  margin: 5px;
+  border: 2px solid grey;
+  background-color: #32302f;
+}
+
+#inner-box {
+  margin: 20px;
+}
+
+#text {
+  margin: 5px;
+  color: #ebdbb2;
+}

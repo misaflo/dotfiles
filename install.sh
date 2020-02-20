@@ -31,3 +31,11 @@ ln -sf "$DOTFILES/zsh/zshrc" ~/.zshrc
 # git
 #
 ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
+
+
+#
+# wofi
+#
+[[ ! -d ~/.config/wofi ]] && mkdir ~/.config/wofi
+ln -sf "$DOTFILES/wofi/config" ~/.config/wofi/config
+ln -sf "$DOTFILES/wofi/style.css" ~/.config/wofi/style.css
