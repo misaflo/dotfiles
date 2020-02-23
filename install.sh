@@ -37,3 +37,9 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 # wofi
 #
 [[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
+
+
+#
+# alacritty
+#
+[[ ! -L ~/.config/alacritty ]] && ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
