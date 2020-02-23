@@ -203,10 +203,6 @@ bar {
 # Disable windows title bars
 default_border pixel
 
-# Redshift
-# Defaut color temperature: Daytime: 6500K, night: 4500K
-exec redshift -l geoclue2 -t 6500:4200
-
 # Gruvbox colorscheme
 # (from https://github.com/a-schaefers/i3-wm-gruvbox-theme/blob/master/i3/config)
 set $bg #282828

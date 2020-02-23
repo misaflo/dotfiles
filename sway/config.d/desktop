@@ -3,3 +3,7 @@
 exec swayidle -w \
          timeout 300 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"'
+
+# Redshift
+# Defaut color temperature: Daytime: 6500K, night: 4500K
+exec redshift -l geoclue2 -t 6500:4100
