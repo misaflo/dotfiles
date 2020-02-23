@@ -1,0 +1,89 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif, "FontAwesome 5 Free Solid";
+    font-size: 13px;
+    min-height: 0;
+}
+
+@import "gruvbox.css";
+
+window#waybar {
+    background: rgba(40, 40, 40, 1);
+    color: @white_b;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: @white_b;
+}
+
+#workspaces button.focused {
+    background: @blue;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+#mode {
+    background-color: @orange;
+    border-bottom: 3px solid @white_b;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 6px;
+    margin: 0 4px;
+}
+
+#battery {
+    background-color: @white_b;
+    color: @background;
+}
+
+#battery.charging {
+    color: @background;
+    background-color: @green;
+}
+
+@keyframes blink {
+    to {
+        background-color: @foreground;
+        color: @background;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @red;
+    color: @foreground;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: @background;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
