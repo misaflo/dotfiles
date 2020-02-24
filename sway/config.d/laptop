@@ -5,3 +5,9 @@ exec swayidle -w \
               resume 'swaymsg "output * dpms on"' \
          timeout 480 'swaylock -f -c 000000' \
          before-sleep 'swaylock -f -c 000000'
+
+
+# https://github.com/swaywm/sway/wiki#clamshell-mode
+set $laptop eDP-1
+bindswitch --reload lid:on output $laptop disable
+bindswitch --reload lid:off output $laptop enable
