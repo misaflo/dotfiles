@@ -14,7 +14,7 @@ window {
   background-color: #32302f;
 }
 
-#inner-box *:focus {
+#inner-box *:focus,*:selected {
   background-color: #458588;
   color: #ebdbb2;
 }
