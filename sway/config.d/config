@@ -206,6 +206,7 @@ default_border pixel
 # Gruvbox colorscheme
 # (from https://github.com/a-schaefers/i3-wm-gruvbox-theme/blob/master/i3/config)
 set $bg #282828
+set $bg-light #32302f
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
@@ -218,7 +219,7 @@ set $white #edbbb2
 set $text #ebdbb2
 
 # Notification
-exec mako --margin 12 --padding 6 --border-color "$text" --text-color "$text" --background-color "$bg" --border-size 3
+exec mako --margin 12 --padding 6 --border-color "$text" --text-color "$text" --background-color "$bg-light" --border-size 3
 
 # blue gruvbox
 # class                 border   |backgr   |text     |indicator|child_border
