@@ -1,3 +1,6 @@
+font:
+  size: 12
+
 # Colors (Gruvbox dark)
 colors:
   # Default colors
