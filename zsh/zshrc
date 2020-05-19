@@ -152,6 +152,7 @@ if [[ -x "$(whence exa)" ]]; then
   alias lsd='ls -D'
   alias lsda='ls -Da'
   alias llt='exa -lFs new'
+  alias tree='exa --tree --group-directories-first'
 else
   alias ls='ls --color --group-directories-first -Fh'
   alias la='ls -A'
@@ -160,9 +161,9 @@ else
   alias lsd='ls -d -- *(/)'
   alias lsda='ls -d -- *(D-/)'
   alias llt='ls -lrt'
+  alias tree='tree -C --dirsfirst'
 fi
 alias grep='grep --color -I --exclude-dir=.git'
-alias tree='tree -C --dirsfirst'
 alias df='df -hT'
 alias du='du -sh'
 alias ip='ip -c'
