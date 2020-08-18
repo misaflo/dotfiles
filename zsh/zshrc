@@ -135,7 +135,7 @@ export LESS='-FSRXim'
 # 256 colors
 export TERM='xterm-256color'
 
-export BAT_THEME='TwoDark'
+export BAT_THEME='gruvbox'
 
 
 #====================
