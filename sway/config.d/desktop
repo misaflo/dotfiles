@@ -6,4 +6,4 @@ exec swayidle -w \
 
 # Redshift
 # Defaut color temperature: Daytime: 6500K, night: 4500K
-exec redshift -l geoclue2 -t 6500:4100
+exec gammastep -l geoclue2 -t 6400:4000
