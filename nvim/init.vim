@@ -244,3 +244,6 @@ let g:increment_activator_filetype_candidates = {
   \     ['present', 'absent'],
   \   ],
   \ }
+
+" vim-markdown
+let g:markdown_fenced_languages = ['sh', 'bash=sh', 'sql']
