@@ -176,6 +176,7 @@ alias pingg="ping www.google.com"
 alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
+alias cal='ncal -bM'
 
 [[ -x "$(whence batcat)" ]] && alias less='batcat --plain' # Debian package
 [[ -x "$(whence bat)" ]]    && alias less='bat --plain'
