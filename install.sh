@@ -43,3 +43,10 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 # alacritty
 #
 [[ ! -L ~/.config/alacritty ]] && ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
+
+
+#
+# bat
+#
+[[ ! -d ~/.config/bat ]] && mkdir ~/.config/bat
+[[ ! -L ~/.config/bat/config ]] && ln -sf "$DOTFILES/bat/config" ~/.config/bat/config

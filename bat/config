@@ -1,0 +1,3 @@
+--theme="gruvbox"
+--map-syntax "*.mdwn:Markdown"
+--italic-text=always

@@ -135,8 +135,6 @@ export LESS='-FSRXim'
 # 256 colors
 export TERM='xterm-256color'
 
-export BAT_THEME='gruvbox'
-
 
 #====================
 # Aliases
@@ -178,8 +176,8 @@ alias o='xdg-open'
 alias dub='du -sh * | sort -rh | head -n 20'
 alias cal='ncal -bM'
 
-[[ -x "$(whence batcat)" ]] && alias less='batcat --plain' # Debian package
-[[ -x "$(whence bat)" ]]    && alias less='bat --plain'
+[[ -x "$(whence batcat)" ]] && alias less='batcat --style=plain' # Debian package
+[[ -x "$(whence bat)" ]]    && alias less='bat --style=plain'
 
 alias -s pdf='xdg-open'
 alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
