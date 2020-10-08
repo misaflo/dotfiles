@@ -9,8 +9,8 @@ exec swayidle -w \
 
 # https://github.com/swaywm/sway/wiki#clamshell-mode
 set $laptop eDP-1
-bindswitch --reload lid:on output $laptop disable
-bindswitch --reload lid:off output $laptop enable
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 # https://wiki.archlinux.org/index.php/Sway#Custom_keybindings
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
