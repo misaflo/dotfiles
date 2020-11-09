@@ -89,7 +89,7 @@
         "on-click": "pavucontrol"
     },
     "custom/clock": {
-        "exec": "date '+%a %d/%m %H:%M'",
+        "exec": "date '+%a %d %b %H:%M'",
         "format": "{}",
         "interval": 45
     }
