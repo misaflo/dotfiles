@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "temperature", "battery", "clock", "tray"],
+    "modules-right": ["pulseaudio", "cpu", "memory", "temperature", "battery", "custom/clock", "tray"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -87,6 +87,11 @@
         },
         "tooltip": false,
         "on-click": "pavucontrol"
+    },
+    "custom/clock": {
+        "exec": "date '+%a %d/%m %H:%M'",
+        "format": "{}",
+        "interval": 45
     }
 }
 // vim: filetype=javascript
