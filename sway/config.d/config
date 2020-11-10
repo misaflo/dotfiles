@@ -224,6 +224,10 @@ exec mako --margin 12 --padding 6 --border-color "$text" --text-color "$text" --
 # Clipboard
 exec wl-paste -t text --watch clipman store
 
+# Adjust the color temperature
+# Defaut color temperature: Daytime: 6500K, night: 4500K
+exec gammastep -l geoclue2 -t 6500:4000
+
 # blue gruvbox
 # class                 border   |backgr   |text     |indicator|child_border
 client.focused          $blue     $blue     $darkgray $gray     $gray
