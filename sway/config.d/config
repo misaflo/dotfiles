@@ -187,9 +187,16 @@ bindsym $mod+r mode "resize"
 # Screenshot:
 #
     # Full desktop
-    bindsym Print exec grim screenshot.png
-    # Select region
-    bindsym $mod+Print exec grim -g "$(slurp)" screenshot.png
+    bindsym Print        exec grimshot --notify save screen
+    # Active window
+    bindsym $mod+p       exec grimshot --notify save active
+    # Manually select region
+    bindsym $mod+Shift+p exec grimshot --notify save area
+    bindsym $mod+Print   exec grimshot --notify save area
+    # Currently active output
+    bindsym $mod+Mod1+p  exec grimshot --notify save output
+    #  Manually select a single window
+    bindsym $mod+Ctrl+p  exec grimshot --notify save window
 
 
 #
@@ -226,7 +233,7 @@ exec wl-paste -t text --watch clipman store
 
 # Adjust the color temperature
 # Defaut color temperature: Daytime: 6500K, night: 4500K
-exec gammastep -l geoclue2 -t 6500:4000
+exec gammastep -l geoclue2 -t 6500:4500
 
 # blue gruvbox
 # class                 border   |backgr   |text     |indicator|child_border
