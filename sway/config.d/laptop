@@ -1,3 +1,9 @@
+### Output configuration
+#
+# Wallpaper
+output * bg ~/Images/Wallpapers/debian.png fill
+
+
 ### Idle configuration
 #
 exec swayidle -w \

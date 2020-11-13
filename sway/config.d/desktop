@@ -1,3 +1,8 @@
+### Output configuration
+#
+# Wallpaper
+output * bg ~/Images/Wallpapers/arch.png fill
+
 ### Idle configuration
 #
 exec swayidle -w \
