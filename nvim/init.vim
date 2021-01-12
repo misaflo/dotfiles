@@ -192,9 +192,14 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " vim-yardoc
-hi link yardGenericTag  rubyInstanceVariable
-hi link yardType        Type
-hi link yardLiteral     Type
+autocmd Filetype puppet hi link yardGenericTag PreProc
+autocmd Filetype ruby   call SetRubyYard()
+
+function SetRubyYard()
+  hi link yardGenericTag  rubyInstanceVariable
+  hi link yardType        Type
+  hi link yardLiteral     Type
+endfunction
 
 " vim-airline
 let g:airline#extensions#whitespace#enabled = 0
