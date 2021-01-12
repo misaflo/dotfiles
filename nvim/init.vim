@@ -190,6 +190,11 @@ noremap <silent> <leader>f :FZF<CR>
 " ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_fixers = {
+  \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
+  \   'ruby':   ['rubocop'],
+  \   'puppet': ['puppetlint'],
+  \ }
 
 " vim-yardoc
 autocmd Filetype puppet hi link yardGenericTag PreProc
