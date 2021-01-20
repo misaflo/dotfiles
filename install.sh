@@ -50,3 +50,9 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 #
 [[ ! -d ~/.config/bat ]] && mkdir ~/.config/bat
 [[ ! -L ~/.config/bat/config ]] && ln -sf "$DOTFILES/bat/config" ~/.config/bat/config
+
+
+#
+# mailcap
+#
+ln -sf "$DOTFILES/mailcap" ~/.mailcap
