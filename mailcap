@@ -6,3 +6,13 @@ application/pdf; zathura %s
 
 image/jpeg; imv %s;
 image/png;  imv %s;
+
+application/vnd.oasis.opendocument.text;                                   libreoffice %s;
+application/vnd.oasis.opendocument.spreadsheet;                            libreoffice %s;
+application/vnd.oasis.opendocument.presentation;                           libreoffice %s;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;   libreoffice %s;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;         libreoffice %s;
+application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s;
+application/msword;                                                        libreoffice %s;
+application/vnd.ms-excel;                                                  libreoffice %s;
+application/vnd.ms-powerpoint;                                             libreoffice %s;
