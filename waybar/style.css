@@ -8,6 +8,14 @@
 
 @import "gruvbox.css";
 
+.warning {
+    background-color: @orange;
+}
+
+.critical {
+    background-color: @red;
+}
+
 window#waybar {
     background: rgba(40, 40, 40, 1);
     color: @white_b;
@@ -82,8 +90,4 @@ window#waybar.hidden {
 
 label:focus {
     background-color: @background;
-}
-
-#temperature.critical {
-    background-color: @red;
 }

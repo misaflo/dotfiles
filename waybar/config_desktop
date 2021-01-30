@@ -53,7 +53,11 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "states": {
+            "warning": 75,
+            "critical": 90
+        },
     },
     "temperature": {
         // "thermal-zone": 2,
