@@ -252,6 +252,7 @@ noremap <silent> <leader>gl :GrammalecteClear<CR>
 let g:increment_activator_filetype_candidates = {
   \   'puppet': [
   \     ['present', 'absent'],
+  \     ['running', 'stopped'],
   \   ],
   \ }
 
