@@ -5,6 +5,7 @@
 call plug#begin()
 
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " require exuberant-ctags or universal-ctags
 Plug 'vim-airline/vim-airline'
@@ -184,8 +185,8 @@ set spellsuggest=5
 "====================
 
 " fzf
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-noremap <silent> <leader>f :FZF<CR>
+let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
+noremap <silent> <leader>f :Files<CR>
 
 " ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
