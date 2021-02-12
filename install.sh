@@ -28,6 +28,12 @@ ln -sf "$DOTFILES/zsh/zshrc" ~/.zshrc
 
 
 #
+# starship
+#
+ln -sf "$DOTFILES/starship/starship.toml" ~/.config/starship.toml
+
+
+#
 # git
 #
 ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
