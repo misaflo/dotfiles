@@ -161,7 +161,8 @@ if [[ -f /etc/debian_version ]]; then
   alias upgrade="sudo apt upgrade"
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
 
-  alias fd='fdfind'
+  [[ -x "$(whence fdfind)" ]]      && alias fd='fdfind'
+  [[ -x "$(whence imv-wayland)" ]] && alias imv='imv-wayland'
 
   if [[ -x "$(whence -p aptlu)" ]]; then
     alias update="sudo apt update && aptlu"
