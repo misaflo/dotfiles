@@ -15,6 +15,8 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi --show drun -a | xargs swaymsg exec --
+# Inner gaps
+set $gaps 0
 
 
 ### Idle configuration
@@ -235,3 +237,21 @@ client.focused          $blue     $blue     $darkgray $gray     $gray
 client.focused_inactive $darkgray $darkgray $yellow   $darkgray $darkgray
 client.unfocused        $darkgray $darkgray $yellow   $darkgray $darkgray
 client.urgent           $red      $red      $white    $red      $red
+
+#
+# Gaps:
+#
+smart_gaps on
+gaps inner $gaps
+
+bindsym $mod+Shift+g mode "gaps_inner"
+
+mode "gaps_inner" {
+    bindsym $down  gaps inner all plus 3
+    bindsym $up    gaps inner all minus 3
+    bindsym $left  gaps inner all set $gaps
+    bindsym $right gaps inner all set 0
+
+    bindsym Return mode "gaps_inner"
+    bindsym Escape mode "default"
+}
