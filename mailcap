@@ -16,3 +16,4 @@ application/vnd.openxmlformats-officedocument.presentationml.presentation; libre
 application/msword;                                                        libreoffice %s;
 application/vnd.ms-excel;                                                  libreoffice %s;
 application/vnd.ms-powerpoint;                                             libreoffice %s;
+text/csv;                                                                  libreoffice %s;
