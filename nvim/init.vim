@@ -97,7 +97,10 @@ command W w !sudo tee % > /dev/null
 function LDAPLookup()
   let @a = system('ldap_search_email '.expand('<cword>'))
 endfunction
-map <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$
+nmap <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$
+
+nmap <Leader>sp :read ~/.config/neomutt/signature_dio_permanence<CR>
+nmap <Leader>so :read ~/.config/neomutt/signature_obspm_dio<CR>
 
 " Live substitution
 set inccommand=nosplit
