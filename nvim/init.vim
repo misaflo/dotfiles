@@ -99,6 +99,7 @@ function LDAPLookup()
 endfunction
 nmap <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$
 
+nmap <Leader>sd :read ~/.config/neomutt/signature_dio<CR>
 nmap <Leader>sp :read ~/.config/neomutt/signature_dio_permanence<CR>
 nmap <Leader>so :read ~/.config/neomutt/signature_obspm_dio<CR>
 
