@@ -1,6 +1,6 @@
 set syntax=mail
 
-syn match rtCommand /\%<6lOwner:\|\%<6lStatus:\|\%<6lQueue:\|\%<6lTimeWorked:\|\%<6lAddCc:/
+syn match rtCommand /\%<6lSubject:\|\%<6lRequestor:\|\%<6lOwner:\|\%<6lStatus:\|\%<6lQueue:\|\%<6lTimeWorked:\|\%<6lAddCc:/
 " Values for Status
 syn match rtValue /\%<6lnew\|\%<6lopen\|\%<6lstalled\|\%<6lresolved\|\%<6lrejected\|\%<6ldeleted/
 " values for Queue
