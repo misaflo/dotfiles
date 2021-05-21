@@ -1,10 +1,10 @@
 set syntax=mail
 
-syn match rtCommand /\%<6lSubject:\|\%<6lRequestor:\|\%<6lOwner:\|\%<6lStatus:\|\%<6lQueue:\|\%<6lTimeWorked:\|\%<6lAddCc:/
+syn match rtCommand /\%<15lSubject:\|\%<15lRequestor:\|\%<15lOwner:\|\%<15lStatus:\|\%<15lQueue:\|\%<15lTimeWorked:\|\%<15lAddCc:\|\%<15lRefersTo:/
 " Values for Status
-syn match rtValue /\%<6lnew\|\%<6lopen\|\%<6lstalled\|\%<6lresolved\|\%<6lrejected\|\%<6ldeleted/
+syn match rtValue /\%<15lnew\|\%<15lopen\|\%<15lstalled\|\%<15lresolved\|\%<15lrejected\|\%<15ldeleted/
 " values for Queue
-syn match rtValue /\%<6lcm.info\|\%<6lreseau.info\|\%<6lsi.info\|\%<6lsys.info\|\%<6ltel.info/
+syn match rtValue /\%<15lcm.info\|\%<15lreseau.info\|\%<15lsi.info\|\%<15lsys.info\|\%<15ltel.info/
 
 " And most usefull!
 syntax match smiley "[:;]-[)(pPsS|D]"
