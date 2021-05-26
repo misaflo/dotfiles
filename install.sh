@@ -59,6 +59,12 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 
 
 #
+# profanity
+#
+[[ -d ~/.config/profanity ]] && ln -sf "$DOTFILES/profanity/profrc" ~/.config/profanity/profrc
+
+
+#
 # mailcap
 #
 ln -sf "$DOTFILES/mailcap" ~/.mailcap
