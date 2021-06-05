@@ -39,3 +39,4 @@ colors:
 key_bindings:
 - { key: Up,   mods: Shift, action: ScrollLineUp   }
 - { key: Down, mods: Shift, action: ScrollLineDown }
+- { key: 11, mods: Control, action: ResetFontSize } # Key0 in azerty keyboard
