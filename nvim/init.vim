@@ -28,6 +28,7 @@ Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-markdown'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-surround'
 Plug 'nishigori/increment-activator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -272,3 +273,7 @@ let g:increment_activator_filetype_candidates = {
 
 " vim-markdown
 let g:markdown_fenced_languages = ['sh', 'bash=sh', 'sql']
+
+" vim-table-mode
+nmap <leader>tm :TableModeToggle<CR>
+let g:table_mode_corner='|' " markdown-compatible tables
