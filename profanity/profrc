@@ -32,8 +32,13 @@ chlog=true
 grlog=true
 
 [notifications]
-message.text=true
+room=true
 room.text=true
+message=true
+message.text=true
+typing=true
+invite=true
+sub=true
 
 [alias]
 manger=/status set away 🍽️
