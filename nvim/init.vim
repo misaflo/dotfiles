@@ -41,28 +41,19 @@ call plug#end()
 "====================
 
 let mapleader=","
-set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
 set number
-set encoding=utf-8
-set fileencoding=utf-8
 set nofoldenable      " Disable folding
 set splitbelow        " Split at the bottom
 set splitright        " Vsplit at the right
 
 set showmatch         " When a bracket is inserted, briefly jump to the matching one
-set laststatus=2      " Always display the status line
-set showcmd           " Show (partial) command in the last line of the screen
-set wildmenu          " Command-line completion enhanced
 set scrolloff=2       " Minimal number of screen lines to keep above and below the cursor
 set cursorline        " Highlight the screen line of the cursor
 set mouse=n           " Enable Mouse en normal mode.
-
-set hlsearch          " When there is a previous search pattern, highlight all its matches
 set ignorecase        " Ignoring case in a pattern
-set incsearch         " While typing a search command, show where the pattern, as it was typed so far, matches
 
 set smartindent       " Do smart autoindenting when starting a new line
 set tabstop=2         " Number of spaces that a <Tab> in the file counts for
