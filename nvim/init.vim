@@ -227,8 +227,8 @@ let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 vmap <Enter> <Plug>(EasyAlign)
 
 " nerdcommenter
-nnoremap <leader>c :call NERDComment(0,"toggle")<CR>
-vnoremap <leader>c :call NERDComment(0,"toggle")<CR>
+nnoremap <leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 
 " nerdtree
 nmap <F9> :NERDTreeToggle<CR>
