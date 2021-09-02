@@ -70,6 +70,9 @@ if &diff
   set cursorline!
 endif
 
+noremap <leader>y "+y
+noremap <leader>p "+p
+
 " Show special characters
 " Insert a non-breaking space: <C-k> <space> <space>
 set list
