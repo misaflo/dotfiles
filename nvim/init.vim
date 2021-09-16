@@ -7,7 +7,6 @@ call plug#begin()
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " require exuberant-ctags or universal-ctags
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'mg979/vim-visual-multi'
@@ -15,10 +14,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
-Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
-Plug 'pangloss/vim-javascript'
-Plug '1995eaton/vim-better-javascript-completion'
 Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
 Plug 'scrooloose/nerdcommenter'
@@ -32,7 +28,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-surround'
 Plug 'nishigori/increment-activator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
 
 call plug#end()
 
