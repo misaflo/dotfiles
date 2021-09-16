@@ -8,8 +8,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " require exuberant-ctags or universal-ctags
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'romgrk/barbar.nvim'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -59,6 +59,7 @@ set smartindent       " Do smart autoindenting when starting a new line
 set tabstop=2         " Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2      " Alignment with '<' and '>'
 set expandtab         " Use spaces instead of tab
+set hidden            " Buffer becomes hidden when it is abandoned
 
 " Highlighted off
 nmap <silent> <leader><space> :noh<CR>
@@ -111,21 +112,6 @@ tnoremap <Esc> <C-\><C-n>
 map <Leader>t :belowright split +terminal<CR>:resize -4<CR>i
 " Disable line number in terminal-mode
 autocmd TermOpen * setlocal nonumber norelativenumber
-
-"====================
-" Buffer
-"====================
-
-" https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-" This allows buffers to be hidden if you've modified a buffer
-set hidden
-" Move to the next buffer
-nmap <leader>n :bnext!<CR>
-" Move to the previous buffer
-nmap <leader>p :bprevious!<CR>
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>q :bp <BAR> bd #<CR>
 
 "====================
 " Syntax
@@ -207,11 +193,6 @@ function SetRubyYard()
   hi link yardLiteral     Type
 endfunction
 
-" vim-airline
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_symbols_ascii = 1
-
 " vim-signify
 let g:signify_vcs_list = [ 'git' ]
 
@@ -272,3 +253,26 @@ let g:markdown_fenced_languages = ['sh', 'bash=sh', 'sql']
 " vim-table-mode
 nmap <leader>tm :TableModeToggle<CR>
 let g:table_mode_corner='|' " markdown-compatible tables
+
+" barbar
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.icons = v:false
+let bufferline.closable = v:false
+let bufferline.auto_hide = v:true
+nnoremap <silent> <A-a> :BufferPrevious<CR>
+nnoremap <silent> <A-z> :BufferNext<CR>
+nnoremap <silent> <A-A> :BufferMovePrevious<CR>
+nnoremap <silent> <A-Z> :BufferMoveNext<CR>
+nnoremap <silent> <A-p> :BufferPin<CR>
+nnoremap <silent> <A-c> :BufferClose<CR>
+
+lua << EOF
+require'lualine'.setup {
+  options = {
+    icons_enabled = false,
+    theme = 'gruvbox',
+    component_separators = {'|', '|'},
+    section_separators = {'', ''},
+  }
+}
+EOF
