@@ -7,7 +7,7 @@ call plug#begin()
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'shadmansaleh/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
