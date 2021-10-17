@@ -17,7 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
 Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
-Plug 'scrooloose/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'previm/previm'
@@ -271,4 +271,5 @@ require'lualine'.setup {
     section_separators = {'', ''},
   }
 }
+require('Comment').setup()
 EOF
