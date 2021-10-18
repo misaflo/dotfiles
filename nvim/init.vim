@@ -207,10 +207,6 @@ let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
-" nerdcommenter
-nnoremap <leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
-vnoremap <leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
-
 " nerdtree
 nmap <F9> :NERDTreeToggle<CR>
 " Close vim if the only window left open is a NERDTree
