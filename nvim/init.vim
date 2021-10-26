@@ -197,9 +197,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 
