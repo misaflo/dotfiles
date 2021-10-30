@@ -18,7 +18,6 @@ Plug 'ap/vim-css-color'
 Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
 Plug 'numToStr/Comment.nvim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'previm/previm'
 Plug 'dpelle/vim-Grammalecte'
@@ -203,11 +202,6 @@ let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
 " easy-align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-
-" nerdtree
-nmap <F9> :NERDTreeToggle<CR>
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " previm (markdown preview)
 let g:previm_open_cmd = 'xdg-open'
