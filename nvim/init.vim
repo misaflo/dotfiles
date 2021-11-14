@@ -19,7 +19,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
 Plug 'numToStr/Comment.nvim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'previm/previm'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'dpelle/vim-Grammalecte'
 Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-markdown'
