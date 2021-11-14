@@ -250,7 +250,7 @@ nnoremap <silent> <A-p> :BufferPin<CR>
 nnoremap <silent> <A-c> :BufferClose<CR>
 
 lua << EOF
-require'lualine'.setup {
+require('lualine').setup {
   options = {
     icons_enabled = false,
     theme = 'gruvbox',
