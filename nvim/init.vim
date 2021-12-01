@@ -15,7 +15,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
-Plug 'vim-ruby/vim-ruby'
 Plug 'noprompt/vim-yardoc'
 Plug 'numToStr/Comment.nvim'
 Plug 'gruvbox-community/gruvbox'
@@ -27,7 +26,6 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-surround'
 Plug 'nishigori/increment-activator'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'cespare/vim-toml', { 'branch': 'main' }
 
 call plug#end()
 
@@ -119,19 +117,6 @@ autocmd FileType mail set spell spelllang=fr syntax=mailrt
 
 let php_sql_query=1       " SQL syntax highlighting inside Strings
 let php_htmlInStrings=1   " Enable HTML syntax highlighting inside strings
-
-"====================
-" Ruby
-"====================
-
-" see :help ft-ruby-omni
-
-"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 " This may cause some code execution
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
-let ruby_spellcheck_strings = 1
 
 "====================
 " Completion
