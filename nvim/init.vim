@@ -54,10 +54,6 @@ set smartindent       " Do smart autoindenting when starting a new line
 set tabstop=2         " Number of spaces that a <Tab> in the file counts for
 set shiftwidth=2      " Alignment with '<' and '>'
 set expandtab         " Use spaces instead of tab
-set hidden            " Buffer becomes hidden when it is abandoned
-
-" Highlighted off
-nmap <silent> <leader><space> :noh<CR>
 
 hi SpellBad gui=underline guifg=#fb4934
 hi SpellCap gui=underline guifg=#83a598
@@ -93,9 +89,6 @@ nmap <Leader>ls :call LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh
 nmap <Leader>sd :read ~/.config/neomutt/signature_dio<CR>
 nmap <Leader>sp :read ~/.config/neomutt/signature_dio_permanence<CR>
 nmap <Leader>so :read ~/.config/neomutt/signature_obspm_dio<CR>
-
-" Live substitution
-set inccommand=nosplit
 
 "====================
 " Terminal
