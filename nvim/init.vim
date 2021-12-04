@@ -10,7 +10,7 @@ Plug 'dense-analysis/ale'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 Plug 'mg979/vim-visual-multi'
-Plug 'mhinz/vim-signify'
+Plug 'lewis6991/gitsigns.nvim' | Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
@@ -236,5 +236,14 @@ require('lualine').setup {
     section_separators = {'', ''},
   }
 }
+
 require('Comment').setup()
+
+require('gitsigns').setup {
+  signs = {
+    add    = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+}
+vim.cmd('highlight link GitSignsCurrentLineBlame Comment') -- https://github.com/lewis6991/gitsigns.nvim/issues/255
 EOF
