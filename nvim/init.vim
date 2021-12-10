@@ -4,8 +4,7 @@
 
 call plug#begin()
 
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua' | Plug 'vijaymarupudi/nvim-fzf'
 Plug 'dense-analysis/ale'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
@@ -141,11 +140,6 @@ set spellsuggest=5
 " Plugins configuration
 "====================
 
-" fzf
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
-noremap <silent> <leader>f :Files<CR>
-
 " ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -227,6 +221,18 @@ nnoremap <silent> <A-p> :BufferPin<CR>
 nnoremap <silent> <A-c> :BufferClose<CR>
 
 lua << EOF
+require('fzf-lua').setup {
+  files = {
+    git_icons = false,
+    file_icons = false,
+    actions = {
+      ['default'] = require('fzf-lua.actions').file_edit,
+    }
+  },
+}
+vim.api.nvim_set_keymap('n', '<leader>ff', "<cmd>lua require('fzf-lua').files()<CR>",     { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', "<cmd>lua require('fzf-lua').live_grep()<CR>", { noremap = true, silent = true })
+
 require('lualine').setup {
   options = {
     icons_enabled = false,
