@@ -110,13 +110,6 @@ autocmd BufEnter todo set syntax=todo
 autocmd FileType mail set spell spelllang=fr syntax=mailrt
 
 "====================
-" PHP
-"====================
-
-let php_sql_query=1       " SQL syntax highlighting inside Strings
-let php_htmlInStrings=1   " Enable HTML syntax highlighting inside strings
-
-"====================
 " Completion
 "====================
 
@@ -159,23 +152,14 @@ function SetRubyYard()
   hi link yardLiteral     Type
 endfunction
 
-" vim-signify
-let g:signify_vcs_list = [ 'git' ]
-
 " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" vim-javascript
-let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs
-
 " easy-align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-
-" previm (markdown preview)
-let g:previm_open_cmd = 'xdg-open'
 
 " vim-Grammalecte
 let g:grammalecte_cli_py='~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
