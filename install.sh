@@ -3,10 +3,10 @@
 DOTFILES="$HOME/.dotfiles"
 
 # neovim
-vimplug_dir="$HOME/.local/share/nvim/site/autoload"
-if [[ ! -f "$vimplug_dir/plug.vim" ]]; then
-  mkdir -p "$vimplug_dir"
-  wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O "$vimplug_dir/plug.vim"
+packer_dir="$HOME/.local/share/nvim/site/pack/packer/start"
+if [[ ! -f "$packer_dir/packer.nvim" ]]; then
+  mkdir -p "$packer_dir"
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim "$packer_dir/packer.nvim"
 fi
 [[ ! -d ~/.config ]] && mkdir ~/.config
 [[ ! -L ~/.config/nvim ]] && ln -sf "$DOTFILES/nvim" ~/.config/nvim

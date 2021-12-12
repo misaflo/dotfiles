@@ -1,5 +1,4 @@
-nvim/plugged/
+nvim/plugin/
 nvim/grammalecte/
-nvim/autoload/
 nvim/spell/
 nvim/.netrwhist
