@@ -139,6 +139,7 @@ require('packer').startup(function()
       }
     end,
   }
+  cmd 'highlight link GitSignsCurrentLineBlame Comment' -- https://github.com/lewis6991/gitsigns.nvim/issues/255
 
   -- Syntax checking (linting)
   use 'dense-analysis/ale'
@@ -225,7 +226,6 @@ require('packer').startup(function()
   use 'dhruvasagar/vim-table-mode'
   map('n', '<leader>tm', ':TableModeToggle<CR>')
   g.table_mode_corner = '|' -- markdown-compatible tables
-
 
   ----------------------------------------
   ---------------- Puppet ----------------
