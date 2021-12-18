@@ -179,10 +179,20 @@ require('packer').startup(function()
 
   -- Snippets
   use {
-    'SirVer/ultisnips',
+    'dcampos/nvim-snippy',
     requires = {'honza/vim-snippets'},
+    config = function()
+      require('snippy').setup {
+        mappings = {
+          is = {
+            ['<Tab>'] = 'expand',
+            ['<C-j>'] = 'next',
+            ['<C-k>'] = 'previous',
+          },
+        },
+      }
+    end,
   }
-  g.UltiSnipsSnippetDirectories = {'pack/packer/start/vim-snippets/UltiSnips'}
 
   -- Comment
   use {
