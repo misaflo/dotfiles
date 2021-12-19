@@ -32,7 +32,7 @@ opt.expandtab     = true  -- Use spaces instead of tab
 opt.list          = true  -- Show hidden characters
 
 opt.spellsuggest:prepend { 5 }
-opt.dictionary = '/usr/share/dict/words' -- For completion of words (ctrl + x ctrl + k)
+opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 
 if vim.opt.diff:get() then
   opt.cursorline = false
@@ -189,7 +189,7 @@ require('packer').startup(function()
   -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
   use 'tpope/vim-surround'
 
-  -- Enhance to increment/decrement (ctrl + a, ctrl + x)
+  -- Enhance to increment/decrement (<C-a>, <C-x>)
   use 'nishigori/increment-activator'
   g.increment_activator_filetype_candidates = {
     puppet = {
