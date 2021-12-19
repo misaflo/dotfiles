@@ -177,22 +177,6 @@ require('packer').startup(function()
   -- Color name highlighter
   use 'ap/vim-css-color'
 
-  -- Snippets
-  use {
-    'dcampos/nvim-snippy',
-    requires = {'honza/vim-snippets'},
-    config = function()
-      require('snippy').setup {
-        mappings = {
-          is = {
-            ['<Tab>'] = 'expand',
-            ['<C-j>'] = 'next',
-            ['<C-k>'] = 'previous',
-          },
-        },
-      }
-    end,
-  }
 
   -- Comment
   use {
@@ -216,6 +200,60 @@ require('packer').startup(function()
 
   -- Toggles between hybrid and absolute line numbers automatically
   use 'jeffkreeftmeijer/vim-numbertoggle'
+
+  ----------------------------------------
+  --------------- Snippets ---------------
+  ----------------------------------------
+
+  -- Snippet engine
+  use {
+    'dcampos/nvim-snippy',
+    config = function()
+      require('snippy').setup {
+        mappings = {
+          is = {
+            ['<Tab>'] = 'expand',
+            ['<C-j>'] = 'next',
+            ['<C-k>'] = 'previous',
+          },
+        },
+      }
+    end,
+  }
+
+  --- Snippets source
+  use 'honza/vim-snippets'
+
+  -- Completion for snippets with <C-x><C-s>
+  use 'dcampos/cmp-snippy'
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      local cmp = require('cmp')
+
+      cmp.setup {
+        completion = {
+          autocomplete = false,
+        },
+        mapping = {
+          ['<CR>'] = cmp.mapping.confirm {select = true},
+        },
+      }
+
+      _G.vimrc = _G.vimrc or {}
+      _G.vimrc.cmp = _G.vimrc.cmp or {}
+      _G.vimrc.cmp.snippet = function()
+        cmp.complete {
+          config = {
+            sources = {
+              {name = 'snippy'}
+            }
+          }
+        }
+      end
+    end,
+  }
+  map('i',  '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>')
 
   ----------------------------------------
   --------------- Markdown ---------------
