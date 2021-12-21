@@ -143,8 +143,8 @@ require('packer').startup(function()
 
   -- Syntax checking (linting)
   use 'dense-analysis/ale'
-  map('n', '<C-k>', ':ale_previous_wrap<CR>')
-  map('n', '<C-j>', ':ale_next_wrap<CR>')
+  map('n', '<C-k>', ':ALEPreviousWrap<CR>')
+  map('n', '<C-j>', ':ALENextWrap<CR>')
   cmd([[
     let g:ale_fixers = {
     \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
