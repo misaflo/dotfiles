@@ -84,6 +84,12 @@ require('packer').startup(function()
     requires = {'vijaymarupudi/nvim-fzf'},
     config = function()
       require('fzf-lua').setup {
+        keymap = {
+          builtin = {
+            ["<C-l>"] = "preview-page-down",
+            ["<C-h>"] = "preview-page-up",
+          },
+        },
         files = {
           git_icons = false,
           file_icons = false,
