@@ -86,8 +86,8 @@ require('packer').startup(function()
       require('fzf-lua').setup {
         keymap = {
           builtin = {
-            ["<C-l>"] = "preview-page-down",
-            ["<C-h>"] = "preview-page-up",
+            ['<C-l>'] = 'preview-page-down',
+            ['<C-h>'] = 'preview-page-up',
           },
         },
         files = {
