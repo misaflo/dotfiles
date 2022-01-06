@@ -193,6 +193,18 @@ require('packer').startup(function()
     end,
   }
 
+  -- Autopairs
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup{}
+
+      local Rule = require('nvim-autopairs.rule')
+      local npairs = require('nvim-autopairs')
+      npairs.add_rule(Rule('« ',' »'))
+    end,
+  }
+
   -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
   use 'tpope/vim-surround'
 
