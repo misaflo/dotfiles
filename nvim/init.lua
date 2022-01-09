@@ -69,6 +69,12 @@ map('n', '<leader>lf', ':set spell spelllang=fr<cr>')
 map('n', '<leader>le', ':set spell spelllang=en<cr>')
 map('n', '<leader>ln', ':set nospell<cr>')
 
+-- Resize with arrows
+map('n', '<C-Up>', ':resize -2<CR>')
+map('n', '<C-Down>', ':resize +2<CR>')
+map('n', '<C-Left>', ':vertical resize -2<CR>')
+map('n', '<C-Right>', ':vertical resize +2<CR>')
+
 
 -------------------- PLUGINS -------------------------------
 require('packer').startup(function()
