@@ -177,7 +177,8 @@ require('packer').startup(function()
     ' nbsp_après_chevrons_ouvrants nbsp_avant_chevrons_fermants1' ..
     ' unit_nbsp_avant_unités1 unit_nbsp_avant_unités2' ..
     ' unit_nbsp_avant_unités3 typo_guillemets_typographiques_doubles_ouvrants' ..
-    ' typo_guillemets_typographiques_doubles_fermants'
+    ' typo_guillemets_typographiques_doubles_fermants' ..
+    ' typo_tiret_incise1'
   cmd 'highlight GrammalecteGrammarError  gui=underline guifg=#83a598'
   cmd 'highlight GrammalecteSpellingError gui=underline guifg=#fb4934'
   map('n', '<leader>gc', ':GrammalecteCheck<CR>')
