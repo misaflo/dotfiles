@@ -89,6 +89,30 @@ export TERM='xterm-256color'
 # Aliases
 #====================
 
+#----- Debian -----
+if [[ -f /etc/debian_version ]]; then
+  alias apt='noglob apt'
+  alias upgrade="sudo apt upgrade"
+  alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
+
+  [[ -x "$(whence fdfind)" ]]      && alias fd='noglob fdfind'
+  [[ -x "$(whence batcat)" ]]      && alias bat='batcat'
+  [[ -x "$(whence imv-wayland)" ]] && alias imv='imv-wayland'
+
+  if [[ -x "$(whence aptlu)" ]]; then
+    alias update="sudo apt update && aptlu"
+  else
+    alias update="sudo apt update && apt list --upgradable"
+  fi
+fi
+
+#----- Arch Linux -----
+if [[ -f /etc/arch-release ]]; then
+  alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
+
+  [[ -x "$(whence fd)" ]] && alias fd='noglob fd'
+fi
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -l'
@@ -115,23 +139,11 @@ alias df='df -hT'
 alias du='du -sh'
 alias ip='ip -c'
 alias ipaddr='ip -c -4 -br addr'
-alias find='noglob find'
-alias findn='noglob find . -name'
-alias findi='noglob find . -iname'
-alias fd='noglob fd'
 alias pingg="ping www.google.com"
 alias yt-dlp-audio="yt-dlp -x --audio-quality 0"
-alias o='xdg-open'
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 [[ -x "$(whence ncal)" ]] && alias cal='ncal -bM'
-
-[[ -x "$(whence batcat)" ]] && alias less='batcat --style=plain' # Debian package
-[[ -x "$(whence bat)" ]]    && alias less='bat --style=plain'
-
-alias -s pdf='xdg-open'
-alias -s {odt,doc,docx,ods,xls,xlsx,odp,ppt,pptx}='xdg-open'
-alias -s {jpg,jpeg,png,gif}='xdg-open'
 
 
 #====================
@@ -150,34 +162,6 @@ function fzf_preview() {
 
 alias -g F='$(fzf -m --height 40% --reverse)'
 alias -g FP='$(fzf_preview)'
-
-
-#====================
-# Debian
-#====================
-
-if [[ -f /etc/debian_version ]]; then
-  alias apt='noglob apt'
-  alias upgrade="sudo apt upgrade"
-  alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
-
-  [[ -x "$(whence fdfind)" ]]      && alias fd='fdfind'
-  [[ -x "$(whence imv-wayland)" ]] && alias imv='imv-wayland'
-
-  if [[ -x "$(whence -p aptlu)" ]]; then
-    alias update="sudo apt update && aptlu"
-  else
-    alias update="sudo apt update && apt list --upgradable"
-  fi
-fi
-
-
-#====================
-# Arch Linux
-#====================
-if [[ -f /etc/arch-release ]]; then
-  alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
-fi
 
 
 #====================
