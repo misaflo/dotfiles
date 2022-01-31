@@ -96,7 +96,7 @@ if [[ -f /etc/debian_version ]]; then
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
 
   [[ -x "$(whence fdfind)" ]]      && alias fd='noglob fdfind'
-  [[ -x "$(whence batcat)" ]]      && alias bat='batcat'
+  [[ -x "$(whence batcat)" ]]      && alias bat='batcat' && alias less='batcat --style=plain'
   [[ -x "$(whence imv-wayland)" ]] && alias imv='imv-wayland'
 
   if [[ -x "$(whence aptlu)" ]]; then
@@ -110,7 +110,8 @@ fi
 if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
 
-  [[ -x "$(whence fd)" ]] && alias fd='noglob fd'
+  [[ -x "$(whence fd)" ]]  && alias fd='noglob fd'
+  [[ -x "$(whence bat)" ]] && alias less='bat --style=plain'
 fi
 
 alias cp='cp -i'
