@@ -140,8 +140,9 @@ alias df='df -hT'
 alias du='du -sh'
 alias ip='ip -c'
 alias ipaddr='ip -c -4 -br addr'
-alias pingg="ping www.google.com"
-alias yt-dlp-audio="yt-dlp -x --audio-quality 0"
+alias pingg='ping www.google.com'
+alias yt-dlp-audio='yt-dlp -x --audio-quality 0'
+alias yt-dlp-720p="yt-dlp -S 'res:720,fps'"
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 [[ -x "$(whence ncal)" ]] && alias cal='ncal -bM'
