@@ -40,5 +40,7 @@ typing=true
 invite=true
 sub=true
 
+room.trigger.list=castor;
+
 [alias]
 manger=/status set away 🍽️
