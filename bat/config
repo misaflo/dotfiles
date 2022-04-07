@@ -1,3 +1,4 @@
 --theme="gruvbox-dark"
 --map-syntax "*.mdwn:Markdown"
 --italic-text=always
+--style=numbers,changes,grid,header-filename
