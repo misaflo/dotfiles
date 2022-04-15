@@ -152,6 +152,8 @@ require('packer').startup(function()
     end,
   }
   cmd 'highlight link GitSignsCurrentLineBlame Comment' -- https://github.com/lewis6991/gitsigns.nvim/issues/255
+  map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+  map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
 
   -- Syntax checking (linting)
   use 'dense-analysis/ale'
