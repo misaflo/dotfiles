@@ -1,13 +1,8 @@
 -------------------- HELPERS -------------------------------
-local opt  = vim.opt
-local g    = vim.g
-local cmd  = vim.cmd
-
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local opt = vim.opt
+local g   = vim.g
+local cmd = vim.cmd
+local map = vim.keymap.set
 
 
 -------------------- OPTIONS -------------------------------
