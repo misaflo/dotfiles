@@ -95,8 +95,6 @@ if [[ -f /etc/debian_version ]]; then
   alias upgrade="sudo apt upgrade"
   alias find-local-packages='apt list -i 2> /dev/null  | grep "local]$" | cut -d '/' -f 1'
 
-  [[ -x "$(whence fdfind)" ]]      && alias fd='noglob fdfind'
-  [[ -x "$(whence batcat)" ]]      && alias bat='batcat' && alias less='batcat --style=plain'
   [[ -x "$(whence imv-wayland)" ]] && alias imv='imv-wayland'
 
   if [[ -x "$(whence aptlu)" ]]; then
@@ -109,9 +107,6 @@ fi
 #----- Arch Linux -----
 if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
-
-  [[ -x "$(whence fd)" ]]  && alias fd='noglob fd'
-  [[ -x "$(whence bat)" ]] && alias less='bat --style=plain'
 fi
 
 alias cp='cp -i'
@@ -146,6 +141,8 @@ alias yt-dlp-720p="yt-dlp -S 'res:720,fps'"
 # Display the 20 biggest files
 alias dub='du -sh * | sort -rh | head -n 20'
 [[ -x "$(whence ncal)" ]] && alias cal='ncal -bM'
+alias fd='noglob fd'
+alias less='bat --style=plain'
 
 
 #====================
@@ -153,7 +150,7 @@ alias dub='du -sh * | sort -rh | head -n 20'
 #====================
 
 # Setting fd as the default source for fzf (respect .gitignore)
-[[ -x "$(whence -p fd)" ]] && export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 function fzf_preview() {
   fzf -m --height 95% --reverse --preview '[[ $(file --mime {}) =~ binary ]] &&
