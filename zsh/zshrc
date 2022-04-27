@@ -102,11 +102,15 @@ if [[ -f /etc/debian_version ]]; then
   else
     alias update="sudo apt update && apt list --upgradable"
   fi
+
+  fzf_completion='/usr/share/doc/fzf/examples/completion.zsh'
 fi
 
 #----- Arch Linux -----
 if [[ -f /etc/arch-release ]]; then
   alias find-pacnew='find / -regextype posix-extended -regex ".+\.pac(new|save)" -print -o -type d -name "home" -prune 2> /dev/null'
+
+  fzf_completion='/usr/share/fzf/completion.zsh'
 fi
 
 alias cp='cp -i'
@@ -151,6 +155,7 @@ alias less='bat --style=plain'
 
 # Setting fd as the default source for fzf (respect .gitignore)
 export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_COMPLETION_OPTS='--info=inline'
 
 function fzf_preview() {
   fzf -m --height 95% --reverse --preview '[[ $(file --mime {}) =~ binary ]] &&
@@ -159,8 +164,17 @@ function fzf_preview() {
     cat {}) 2> /dev/null | head -100'
 }
 
-alias -g F='$(fzf -m --height 40% --reverse)'
-alias -g FP='$(fzf_preview)'
+alias -g F='$(fzf_preview)'
+
+[[ -f "$fzf_completion" ]] && source "$fzf_completion"
+# Use fd instead of the default find command for listing path candidates
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
 
 #====================
