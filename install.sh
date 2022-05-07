@@ -12,9 +12,12 @@ fi
 [[ ! -L ~/.config/nvim ]] && ln -sf "$DOTFILES/nvim" ~/.config/nvim
 
 # zsh
+[[ ! -d ~/.zsh ]] && mkdir ~/.zsh
 if [[ ! -d ~/.zsh/zsh-syntax-highlighting ]]; then
-  mkdir ~/.zsh
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+fi
+if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 fi
 ln -sf "$DOTFILES/zsh/zshrc" ~/.zshrc
 

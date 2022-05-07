@@ -62,6 +62,11 @@ bindkey '^x^e' edit-command-line
 hlzsh="$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "$hlzsh" ]] && source "$hlzsh"
 
+# Autosuggestions
+autosuggest="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "$autosuggest" ]] && source "$autosuggest"
+bindkey '^ ' autosuggest-accept
+
 
 #====================
 # Exports
