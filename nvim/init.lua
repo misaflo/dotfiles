@@ -25,6 +25,7 @@ opt.tabstop       = 2     -- Number of spaces that a <Tab> in the file counts fo
 opt.shiftwidth    = 2     -- Alignment with '<' and '>'
 opt.expandtab     = true  -- Use spaces instead of tab
 opt.list          = true  -- Show hidden characters
+opt.title         = true  -- Show the title of the window
 
 opt.spellsuggest:prepend { 5 }
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
