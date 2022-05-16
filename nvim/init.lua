@@ -307,6 +307,7 @@ require('packer').startup(function()
     run = 'cd app && yarn install',
     ft = 'markdown',
   }
+  g.mkdp_theme = 'light'
 
   -- Table creator and formatter
   use 'dhruvasagar/vim-table-mode'
