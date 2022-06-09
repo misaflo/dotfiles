@@ -219,6 +219,7 @@ require('packer').startup(function()
     puppet = {
       {'present', 'absent'},
       {'running', 'stopped'},
+      {'installed', 'purged'},
     },
   }
 
