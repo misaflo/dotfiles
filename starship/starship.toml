@@ -12,5 +12,8 @@ $jobs\
 $status\
 $character"""
 
+[hostname]
+ssh_symbol = ""
+
 [cmd_duration]
 min_time = 5_000
