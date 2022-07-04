@@ -202,7 +202,7 @@ require('packer').startup(function()
   use {
     'windwp/nvim-autopairs',
     config = function()
-      require('nvim-autopairs').setup{}
+      require('nvim-autopairs').setup()
 
       local Rule = require('nvim-autopairs.rule')
       local npairs = require('nvim-autopairs')
@@ -210,8 +210,13 @@ require('packer').startup(function()
     end,
   }
 
-  -- Delete/change/add parentheses/quotes/XML-tags/much more with ease
-  use 'tpope/vim-surround'
+  -- Add/change/delete surrounding delimiter pairs
+  use {
+    'kylechui/nvim-surround',
+    config = function()
+      require('nvim-surround').setup()
+    end,
+  }
 
   -- Enhance to increment/decrement (<C-a>, <C-x>)
   use 'nishigori/increment-activator'
