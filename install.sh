@@ -30,6 +30,10 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 # wofi
 [[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
 
+# mako
+[[ ! -d ~/.config/mako ]] && mkdir ~/.config/mako
+[[ ! -L ~/.config/mako/config ]] && ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
+
 # alacritty
 [[ ! -L ~/.config/alacritty ]] && ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
 

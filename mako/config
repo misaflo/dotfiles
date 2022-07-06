@@ -1,0 +1,16 @@
+# Take a look at the mako manpage with the command:
+#   man 5 mako
+# To view all configuration options.
+
+margin=12
+padding=6
+border-size=2
+border-color=#ebdbb2
+text-color=#ebdbb2
+background-color=#32302f
+default-timeout=5000
+
+[app-name=Profanity body~=.*[F|f]lorent.*]
+border-color=#cc241d
+ignore-timeout=1
+default-timeout=60000

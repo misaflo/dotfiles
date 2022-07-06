@@ -235,7 +235,7 @@ set $white #edbbb2
 set $text #ebdbb2
 
 # Notification
-exec mako --margin 12 --padding 6 --border-color "$text" --text-color "$text" --background-color "$bg-light" --border-size 2
+exec mako
 
 # Clipboard
 exec wl-paste -t text --watch clipman store
