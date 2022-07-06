@@ -4,7 +4,7 @@ DOTFILES="$HOME/.dotfiles"
 
 # neovim
 packer_dir="$HOME/.local/share/nvim/site/pack/packer/start"
-if [[ ! -f "$packer_dir/packer.nvim" ]]; then
+if [[ ! -d "$packer_dir/packer.nvim" ]]; then
   mkdir -p "$packer_dir"
   git clone --depth 1 https://github.com/wbthomason/packer.nvim "$packer_dir/packer.nvim"
 fi
