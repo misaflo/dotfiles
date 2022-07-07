@@ -190,7 +190,6 @@ require('packer').startup(function()
   -- Color name highlighter
   use 'ap/vim-css-color'
 
-
   -- Comment
   use {
     'numToStr/Comment.nvim',
@@ -215,7 +214,14 @@ require('packer').startup(function()
   use {
     'kylechui/nvim-surround',
     config = function()
-      require('nvim-surround').setup()
+      require('nvim-surround').setup {
+        delimiters = {
+          pairs = {
+            ['«'] = { '« ', ' »' },
+            ['»'] = { '«', '»' },
+          },
+        },
+      }
     end,
   }
 
