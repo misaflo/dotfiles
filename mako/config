@@ -11,6 +11,7 @@ background-color=#32302f
 default-timeout=5000
 
 [app-name=Profanity body~=.*[F|f]lorent.*]
+height=150
 border-color=#cc241d
 ignore-timeout=1
 default-timeout=60000
