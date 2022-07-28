@@ -1,8 +1,9 @@
 -------------------- HELPERS -------------------------------
-local opt = vim.opt
-local g   = vim.g
-local cmd = vim.cmd
-local map = vim.keymap.set
+local opt     = vim.opt
+local g       = vim.g
+local map     = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
+local cmd     = vim.cmd
 
 
 -------------------- OPTIONS -------------------------------
@@ -28,19 +29,62 @@ opt.expandtab     = true  -- Use spaces instead of tab
 opt.list          = true  -- Show hidden characters
 opt.title         = true  -- Show the title of the window
 
-opt.spellsuggest:prepend { 5 }
-opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
-
 if vim.opt.diff:get() then
   opt.cursorline = false
 end
 
+-- Spellcheck
+opt.spellsuggest:prepend { 5 }
+opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 cmd 'highlight SpellBad gui=underline guifg=#fb4934'
 cmd 'highlight SpellCap gui=underline guifg=#83a598'
 
-cmd 'autocmd BufEnter todo set syntax=todo'
-cmd 'autocmd FileType mail set spell spelllang=fr syntax=mailrt' -- Custom syntax for Request Tracker
-cmd 'autocmd TermOpen * setlocal nonumber norelativenumber'      -- Disable line number in terminal-mode
+
+------------------- FUNCTIONS ------------------------------
+function set_ruby_yard()
+  cmd 'highlight link yardGenericTag rubyInstanceVariable'
+  cmd 'highlight link yardType       Type'
+  cmd 'highlight link yardLiteral    Type'
+end
+
+function set_puppet_yard()
+  cmd 'highlight link yardGenericTag PreProc'
+end
+
+function ldap_lookup()
+  cmd "let @a = system('ldap_search_email '.expand('<cword>'))"
+end
+
+
+-------------------- AUTOCMD -------------------------------
+autocmd('BufEnter', {
+  pattern = 'todo',
+  desc    = 'custom syntax for todo files',
+  command = 'set syntax=todo',
+})
+
+autocmd('FileType', {
+  pattern = 'mail',
+  desc    = 'Spellcheck and custom syntax for Request Tracker',
+  command = 'set spell spelllang=fr syntax=mailrt',
+})
+
+autocmd('TermOpen', {
+  pattern = '*',
+  desc    = 'Disable line number in terminal-mode',
+  command = 'setlocal nonumber norelativenumber',
+})
+
+autocmd('Filetype', {
+  pattern = 'puppet',
+  desc    = 'Custom syntax for yard tag in Puppet',
+  command = ':lua set_puppet_yard()',
+})
+autocmd('Filetype', {
+  pattern = 'ruby',
+  desc    = 'Custom syntax for yard tag in Ruby',
+  command = ':lua set_ruby_yard()',
+})
 
 
 -------------------- MAPPINGS ------------------------------
@@ -53,10 +97,7 @@ map('n', '<Leader>sp', ':read ~/.config/neomutt/signature_dio_permanence<CR>')
 map('n', '<Leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
 
 -- Search email in LDAP
-function LDAPLookup()
-  cmd "let @a = system('ldap_search_email '.expand('<cword>'))"
-end
-map('n', '<Leader>ls', ':lua LDAPLookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
+map('n', '<Leader>ls', ':lua ldap_lookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
 
 -- Terminal
 map('n', '<Leader>c', ':split +terminal<CR>:resize -4<CR>i')
@@ -336,14 +377,4 @@ require('packer').startup(function()
 
   -- Syntax for highlighting YARD documentation
   use 'noprompt/vim-yardoc'
-  cmd([[
-    autocmd Filetype puppet highlight link yardGenericTag PreProc
-    autocmd Filetype ruby call SetRubyYard()
-
-    function SetRubyYard()
-      hi link yardGenericTag  rubyInstanceVariable
-      hi link yardType        Type
-      hi link yardLiteral     Type
-    endfunction
-  ]])
 end)
