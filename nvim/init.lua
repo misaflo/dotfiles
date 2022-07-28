@@ -80,6 +80,7 @@ autocmd('Filetype', {
   desc    = 'Custom syntax for yard tag in Puppet',
   command = ':lua set_puppet_yard()',
 })
+
 autocmd('Filetype', {
   pattern = 'ruby',
   desc    = 'Custom syntax for yard tag in Ruby',
@@ -154,8 +155,8 @@ require('packer').startup(function()
         options = {
           icons_enabled = false,
           theme = 'gruvbox',
-          component_separators = {'|', '|'},
-          section_separators = {'', ''},
+          component_separators = { '|', '|' },
+          section_separators = { '', '' },
         },
       }
     end,
@@ -178,12 +179,12 @@ require('packer').startup(function()
   -- Git decorations
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('gitsigns').setup {
         signs = {
-          add    = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-          change = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+          add    = { hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn' },
+          change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
         },
       }
     end,
@@ -269,9 +270,9 @@ require('packer').startup(function()
   use 'nishigori/increment-activator'
   g.increment_activator_filetype_candidates = {
     puppet = {
-      {'present', 'absent'},
-      {'running', 'stopped'},
-      {'installed', 'purged'},
+      { 'present', 'absent' },
+      { 'running', 'stopped' },
+      { 'installed', 'purged' },
     },
   }
 
@@ -337,7 +338,7 @@ require('packer').startup(function()
         cmp.complete {
           config = {
             sources = {
-              {name = 'snippy'}
+              { name = 'snippy' }
             }
           }
         }
@@ -352,7 +353,7 @@ require('packer').startup(function()
 
   -- Markdown runtime files (more up to date)
   use 'tpope/vim-markdown'
-  g.markdown_fenced_languages = {'sh', 'bash=sh', 'sql'}
+  g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
 
   -- Preview markdown in browser
   use {
