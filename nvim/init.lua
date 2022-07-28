@@ -125,7 +125,6 @@ require('packer').startup(function()
   -- Fuzzy finder FZF
   use {
     'ibhagwan/fzf-lua',
-    requires = {'vijaymarupudi/nvim-fzf'},
     config = function()
       require('fzf-lua').setup {
         keymap = {
