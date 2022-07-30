@@ -35,6 +35,9 @@ HISTFILE=~/.zsh_history
 # Emacs editing mode
 bindkey -e
 
+# For history-search-forward with ctrl + s
+stty stop undef
+
 # Move with ctrl + arrow
 bindkey '^[[1;5C' emacs-forward-word
 bindkey '^[[1;5D' emacs-backward-word
