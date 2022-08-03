@@ -44,9 +44,6 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 # profanity
 [[ -d ~/.config/profanity ]] && ln -sf "$DOTFILES/profanity/profrc" ~/.config/profanity/profrc
 
-# mailcap
-ln -sf "$DOTFILES/mailcap" ~/.mailcap
-
 # fontconfig
 [[ ! -d ~/.config/fontconfig ]] && mkdir ~/.config/fontconfig
 [[ ! -L ~/.config/fontconfig/fonts.conf ]] && ln -sf "$DOTFILES/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
