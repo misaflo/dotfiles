@@ -255,10 +255,12 @@ require('packer').startup(function()
     'kylechui/nvim-surround',
     config = function()
       require('nvim-surround').setup {
-        delimiters = {
-          pairs = {
-            ['«'] = { '« ', ' »' },
-            ['»'] = { '«', '»' },
+        surrounds = {
+          ['«'] = {
+            add = { '« ', ' »'}
+          },
+          ['»'] = {
+            add = { '«', '»'}
           },
         },
       }
