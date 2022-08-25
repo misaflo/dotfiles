@@ -196,6 +196,8 @@ require('packer').startup(function()
   use 'dense-analysis/ale'
   map('n', '<C-k>', ':ALEPreviousWrap<CR>')
   map('n', '<C-j>', ':ALENextWrap<CR>')
+  map('n', '<leader>at', ':ALEToggle<CR>')
+  map('n', '<leader>af', ':ALEFix<CR>')
   cmd([[
     let g:ale_fixers = {
     \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
@@ -204,7 +206,7 @@ require('packer').startup(function()
     \ }
   ]])
 
-  -- French grammar checker 
+  -- French grammar checker
   use 'dpelle/vim-Grammalecte'
   g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
   g.grammalecte_disable_rules = 'typo_tiret_début_ligne typo_tiret_incise2' ..
@@ -223,7 +225,7 @@ require('packer').startup(function()
   map('n', '<leader>gc', ':GrammalecteCheck<CR>')
   map('n', '<leader>gl', ':GrammalecteClear<CR>')
 
-  -- Alignment 
+  -- Alignment
   use 'junegunn/vim-easy-align'
   map('v', '<Enter>', ':EasyAlign<CR>')
 
