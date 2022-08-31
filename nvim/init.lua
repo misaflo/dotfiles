@@ -176,7 +176,7 @@ require('packer').startup(function()
   map('n', '<A-p>', ':BufferPin<CR>')
   map('n', '<A-c>', ':BufferClose<CR>')
 
-  -- Git decorations
+  -- Git integration: signs, hunk actions, blame, etc.
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -190,6 +190,7 @@ require('packer').startup(function()
   }
   cmd 'highlight link GitSignsCurrentLineBlame Comment' -- https://github.com/lewis6991/gitsigns.nvim/issues/255
   map('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+  map('n', '<leader>gd', ':Gitsigns diffthis<CR>')
   map('n', '<leader>gm', "<cmd>lua require('gitsigns').blame_line{full=true}<CR>")
 
   -- Syntax checking (linting)
