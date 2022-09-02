@@ -66,7 +66,7 @@ autocmd('BufEnter', {
 autocmd('FileType', {
   pattern = 'mail',
   desc    = 'Spellcheck and custom syntax for Request Tracker',
-  command = 'set spell spelllang=fr syntax=mailrt',
+  command = 'set spell spelllang=fr',
 })
 
 autocmd('TermOpen', {
