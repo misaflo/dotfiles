@@ -57,12 +57,6 @@ end
 
 
 -------------------- AUTOCMD -------------------------------
-autocmd('BufEnter', {
-  pattern = 'todo',
-  desc    = 'custom syntax for todo files',
-  command = 'set syntax=todo',
-})
-
 autocmd('FileType', {
   pattern = 'mail',
   desc    = 'Spellcheck and custom syntax for Request Tracker',
