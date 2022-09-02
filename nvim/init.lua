@@ -383,6 +383,35 @@ require('packer').startup(function()
   map('n', '<leader>tm', ':TableModeToggle<CR>')
   g.table_mode_corner = '|' -- markdown-compatible tables
 
+  -- Management of markdown notebooks
+  use {
+    'jakewvincent/mkdnflow.nvim',
+    config = function()
+      require('mkdnflow').setup {
+        modules = {
+          bib = false,
+          buffers = false,
+          conceal = false,
+          folds = false,
+          tables = false
+        },
+        filetypes = { md = true, mdwn = true, markdown = true },
+        links = {
+          transform_implicit = false,
+          transform_explicit = function(text)
+            text = text:gsub(" ", "-")
+            text = text:lower()
+            return(text)
+          end
+        },
+        mappings = {
+          MkdnIncreaseHeading = { 'n', '<C-a>' },
+          MkdnDecreaseHeading = { 'n', '<C-x>' },
+        }
+      }
+    end
+  }
+
   ----------------------------------------
   ---------------- Puppet ----------------
   ----------------------------------------
