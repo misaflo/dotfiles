@@ -412,6 +412,18 @@ require('packer').startup(function()
     end
   }
 
+  -- Outline window for quick navigation
+  use {
+    'stevearc/aerial.nvim',
+    ft = 'markdown',
+    config = function()
+      require('aerial').setup {
+         backends = { 'markdown' },
+      }
+    end
+  }
+  map('n', '<leader>mt', ':AerialToggle<CR>') -- Markdown TOC
+
   ----------------------------------------
   ---------------- Puppet ----------------
   ----------------------------------------
