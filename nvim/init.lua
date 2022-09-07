@@ -57,6 +57,12 @@ end
 
 
 -------------------- AUTOCMD -------------------------------
+autocmd('BufEnter', {
+  pattern = '*.eyaml',
+  desc    = 'Set yaml filetype for eyaml',
+  command = 'set filetype=yaml',
+})
+
 autocmd('FileType', {
   pattern = 'mail',
   desc    = 'Spellcheck and custom syntax for Request Tracker',
