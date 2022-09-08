@@ -155,6 +155,10 @@ alias dub='du -sh * | sort -rh | head -n 20'
 [[ -x "$(whence ncal)" ]] && alias cal='ncal -bM'
 alias fd='noglob fd'
 alias less='bat --style=plain'
+if [[ -x "$(whence newsboat)" ]]; then
+  alias rssperso='newsboat -C ~/.config/newsboat/config_perso'
+  alias rssobs='newsboat -C ~/.config/newsboat/config_obs'
+fi
 
 
 #====================
