@@ -176,6 +176,20 @@ require('packer').startup(function()
   map('n', '<A-p>', ':BufferPin<CR>')
   map('n', '<A-c>', ':BufferClose<CR>')
 
+  -- Syntax checking (linting)
+  use 'dense-analysis/ale'
+  map('n', '<C-k>', ':ALEPreviousWrap<CR>')
+  map('n', '<C-j>', ':ALENextWrap<CR>')
+  map('n', '<leader>at', ':ALEToggle<CR>')
+  map('n', '<leader>af', ':ALEFix<CR>')
+  cmd([[
+    let g:ale_fixers = {
+    \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
+    \   'ruby':   ['rubocop'],
+    \   'puppet': ['puppetlint'],
+    \ }
+  ]])
+
   -- French grammar checker
   use 'dpelle/vim-Grammalecte'
   g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
@@ -271,20 +285,6 @@ require('packer').startup(function()
   map('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
   map('n', '<leader>gd', ':Gitsigns diffthis<CR>')
   map('n', '<leader>gm', "<cmd>lua require('gitsigns').blame_line{full=true}<CR>")
-
-  -- Syntax checking (linting)
-  use 'dense-analysis/ale'
-  map('n', '<C-k>', ':ALEPreviousWrap<CR>')
-  map('n', '<C-j>', ':ALENextWrap<CR>')
-  map('n', '<leader>at', ':ALEToggle<CR>')
-  map('n', '<leader>af', ':ALEFix<CR>')
-  cmd([[
-    let g:ale_fixers = {
-    \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
-    \   'ruby':   ['rubocop'],
-    \   'puppet': ['puppetlint'],
-    \ }
-  ]])
 
   -- Magit clone: stage, commit, pull, push
   use {
