@@ -294,6 +294,7 @@ require('packer').startup(function()
       require('neogit').setup()
     end
   }
+  map('n', '<leader>gg', ':Neogit <CR>')
 
   ----------------------------------------
   --------------- Snippets ---------------
