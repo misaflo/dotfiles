@@ -1,0 +1,9 @@
+include "~/.config/newsboat/config"
+
+cache-file "~/.local/share/newsboat/cache_obs.db"
+urls-source "ocnews"
+ocnews-url "https://share.obspm.fr"
+ocnews-login "flevigne"
+ocnews-passwordeval "gpg --decrypt ~/.config/newsboat/ocnews-password.gpg"
+
+# vim: ft=config

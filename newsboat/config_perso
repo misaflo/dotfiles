@@ -1,0 +1,9 @@
+include "~/.config/newsboat/config"
+
+cache-file "~/.local/share/newsboat/cache_perso.db"
+urls-source "ttrss"
+ttrss-url "https://rss.g3l.org"
+ttrss-login "misaflo"
+ttrss-passwordeval "gpg --decrypt ~/.config/newsboat/ttrss-password.gpg"
+
+# vim: ft=config
