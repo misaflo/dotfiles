@@ -236,5 +236,28 @@ else
 fi
 
 
+#====================
+# Functions
+#====================
+
+# From https://git.jonathanh.co.uk/jab2870/Dotfiles/src/branch/master/shells/shared/functions
+# Make a folder then cd into it
+function mkcd() {
+  mkdir -p "$1"
+  cd "$1"
+}
+
+# Man without options will use fzf to select a page
+function man(){
+  MAN="/usr/bin/man"
+  if [ -n "$1" ]; then
+    $MAN "$@"
+    return $?
+  else
+    $MAN -k . | fzf --reverse --preview="echo {1,2} | sed 's/ (/./' | sed -E 's/\)\s*$//' | xargs $MAN" | awk '{print $1 "." $2}' | tr -d '()' | xargs -r $MAN
+    return $?
+  fi
+}
+
 [[ -f ~/.zsh_aliases ]]   && source ~/.zsh_aliases
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
