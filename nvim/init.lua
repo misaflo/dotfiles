@@ -408,10 +408,6 @@ require('packer').startup(function()
             return(text)
           end
         },
-        mappings = {
-          MkdnIncreaseHeading = { 'n', '<C-a>' },
-          MkdnDecreaseHeading = { 'n', '<C-x>' },
-        }
       }
     end
   }
