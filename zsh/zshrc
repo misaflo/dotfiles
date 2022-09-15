@@ -240,6 +240,10 @@ fi
 # Functions
 #====================
 
+function dsf() {
+  diff -u $1 $2 | diff-so-fancy
+}
+
 # From https://git.jonathanh.co.uk/jab2870/Dotfiles/src/branch/master/shells/shared/functions
 # Make a folder then cd into it
 function mkcd() {
