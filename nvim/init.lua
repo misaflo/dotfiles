@@ -128,6 +128,19 @@ require('packer').startup(function()
   -- Color scheme
   use 'ellisonleao/gruvbox.nvim'
 
+  -- Treesitter configurations and abstraction layer
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        highlight = {
+          enable = true,
+        },
+      }
+    end
+  }
+
   -- Fuzzy finder FZF
   use {
     'ibhagwan/fzf-lua',
