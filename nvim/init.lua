@@ -9,9 +9,6 @@ local cmd     = vim.cmd
 -------------------- OPTIONS -------------------------------
 g.mapleader       = ','
 
-g.gruvbox_italic  = true
-cmd 'colorscheme gruvbox'
-
 opt.termguicolors = true
 opt.number        = true
 opt.foldenable    = false -- Disable folding
@@ -36,8 +33,6 @@ end
 -- Spellcheck
 opt.spellsuggest:prepend { 5 }
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
-cmd 'highlight SpellBad gui=underline guifg=#fb4934'
-cmd 'highlight SpellCap gui=underline guifg=#83a598'
 
 
 ------------------- FUNCTIONS ------------------------------
@@ -116,12 +111,22 @@ map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 
 -------------------- PLUGINS -------------------------------
+-- Setup must be called before loading the colorscheme
+require('gruvbox').setup {
+  italic = false,
+  overrides = {
+    SpellBad = { underline = true, fg = '#fb4934' },
+    SpellCap = { underline = true, fg = '#83a598' },
+  },
+}
+cmd 'colorscheme gruvbox'
+
 require('packer').startup(function()
   -- Plugin manager
   use 'wbthomason/packer.nvim'
 
   -- Color scheme
-  use 'gruvbox-community/gruvbox'
+  use 'ellisonleao/gruvbox.nvim'
 
   -- Fuzzy finder FZF
   use {
