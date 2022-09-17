@@ -9,4 +9,4 @@ syn match noteCompleted '\[X].*'
 hi def link notePeople    Structure
 hi def link noteImportant Exception
 hi def link noteDate      Underlined
-hi def link noteCompleted LineNr
+hi def link noteCompleted Grey
