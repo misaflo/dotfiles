@@ -30,6 +30,10 @@ if vim.opt.diff:get() then
   opt.cursorline = false
 end
 
+g.gruvbox_material_better_performance = true
+g.gruvbox_material_foreground = 'original'
+cmd 'colorscheme gruvbox-material'
+
 -- Spellcheck
 opt.spellsuggest:prepend { 5 }
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
@@ -111,22 +115,12 @@ map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 
 -------------------- PLUGINS -------------------------------
--- Setup must be called before loading the colorscheme
-require('gruvbox').setup {
-  italic = false,
-  overrides = {
-    SpellBad = { underline = true, fg = '#fb4934' },
-    SpellCap = { underline = true, fg = '#83a598' },
-  },
-}
-cmd 'colorscheme gruvbox'
-
 require('packer').startup(function()
   -- Plugin manager
   use 'wbthomason/packer.nvim'
 
   -- Color scheme
-  use 'ellisonleao/gruvbox.nvim'
+  use 'sainnhe/gruvbox-material'
 
   -- Treesitter configurations and abstraction layer
   use {
@@ -172,7 +166,7 @@ require('packer').startup(function()
       require('lualine').setup {
         options = {
           icons_enabled = false,
-          theme = 'gruvbox',
+          theme = 'gruvbox-material',
           component_separators = { '|', '|' },
           section_separators = { '', '' },
         },
