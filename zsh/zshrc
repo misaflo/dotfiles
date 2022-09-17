@@ -90,7 +90,7 @@ export PAGER='less'
 export LESS='-FSRXim'
 
 # 256 colors
-export TERM='xterm-256color'
+export TERM='alacritty'
 
 
 #====================
