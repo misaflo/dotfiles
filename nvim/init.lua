@@ -40,16 +40,6 @@ opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 
 
 ------------------- FUNCTIONS ------------------------------
-function set_ruby_yard()
-  cmd 'highlight link yardGenericTag rubyInstanceVariable'
-  cmd 'highlight link yardType       Type'
-  cmd 'highlight link yardLiteral    Type'
-end
-
-function set_puppet_yard()
-  cmd 'highlight link yardGenericTag PreProc'
-end
-
 function ldap_lookup()
   cmd "let @a = system('ldap_search_email '.expand('<cword>'))"
 end
@@ -72,18 +62,6 @@ autocmd('TermOpen', {
   pattern = '*',
   desc    = 'Disable line number in terminal-mode',
   command = 'setlocal nonumber norelativenumber',
-})
-
-autocmd('Filetype', {
-  pattern = 'puppet',
-  desc    = 'Custom syntax for yard tag in Puppet',
-  command = ':lua set_puppet_yard()',
-})
-
-autocmd('Filetype', {
-  pattern = 'ruby',
-  desc    = 'Custom syntax for yard tag in Ruby',
-  command = ':lua set_ruby_yard()',
 })
 
 
