@@ -255,6 +255,15 @@ require('packer').startup(function()
     end
   }
 
+  -- Outline window for quick navigation
+  use {
+    'stevearc/aerial.nvim',
+    config = function()
+      require('aerial').setup()
+    end
+  }
+  map('n', '<F9>', ':AerialToggle<CR>')
+
   ----------------------------------------
   ----------------- Git ------------------
   ----------------------------------------
@@ -401,15 +410,6 @@ require('packer').startup(function()
       }
     end
   }
-
-  -- Outline window for quick navigation
-  use {
-    'stevearc/aerial.nvim',
-    config = function()
-      require('aerial').setup()
-    end
-  }
-  map('n', '<F9>', ':AerialToggle<CR>') -- Markdown TOC
 
   ----------------------------------------
   ---------------- Puppet ----------------
