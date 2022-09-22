@@ -192,6 +192,20 @@ _fzf_compgen_dir() {
 
 
 #====================
+# forgit
+#====================
+
+forgit="$HOME/.zsh/forgit/forgit.plugin.zsh"
+if [[ -f "$forgit" ]]; then
+  source "$forgit"
+  # https://referenceguide.dev/cheatsheet/git-log-format
+  # https://stackoverflow.com/questions/3631005/git-log-tabular-formatting
+  export FORGIT_GLO_FORMAT="format:%<(10)%C(yellow)%h%C(green)%<(19)%ar%C(bold blue)%<(18)%an %C(reset)%s"
+  export FORGIT_FZF_DEFAULT_OPTS="--exact --reverse --ansi"
+fi
+
+
+#====================
 # Prompt
 #====================
 
