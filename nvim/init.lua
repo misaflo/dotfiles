@@ -172,13 +172,11 @@ require('packer').startup(function()
   map('n', '<C-j>', ':ALENextWrap<CR>')
   map('n', '<leader>at', ':ALEToggle<CR>')
   map('n', '<leader>af', ':ALEFix<CR>')
-  cmd([[
-    let g:ale_fixers = {
-    \   '*':      ['remove_trailing_lines', 'trim_whitespace'],
-    \   'ruby':   ['rubocop'],
-    \   'puppet': ['puppetlint'],
-    \ }
-  ]])
+  g.ale_fixers = {
+    ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
+    ruby   = { 'rubocop' },
+    puppet = { 'puppetlint' },
+  }
 
   -- French grammar checker
   use 'dpelle/vim-Grammalecte'
