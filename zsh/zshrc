@@ -1,6 +1,6 @@
-#====================
+#----------------------------------------------------------------------------
 # Completion
-#====================
+#----------------------------------------------------------------------------
 
 # Modern completion system
 autoload -Uz compinit
@@ -22,10 +22,9 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
-#====================
+#----------------------------------------------------------------------------
 # General
-#====================
+#----------------------------------------------------------------------------
 
 # Keeps 1 000 lines of history, saved in ~/.zsh_history
 HISTSIZE=1000
@@ -61,21 +60,9 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# Syntax highlighting
-hlzsh="$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[[ -f "$hlzsh" ]] && source "$hlzsh"
-
-# Autosuggestions
-autosuggest="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-if [[ -f "$autosuggest" ]]; then
-  source "$autosuggest"
-  bindkey '^ ' autosuggest-accept
-fi
-
-
-#====================
+#----------------------------------------------------------------------------
 # Exports
-#====================
+#----------------------------------------------------------------------------
 
 # coloring man pages (with less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -86,18 +73,15 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-export VISUAL='nvim -R'
 export EDITOR='nvim'
+export VISUAL='nvim -R'
 export PAGER='less'
 export LESS='-FSRXim'
-
-# 256 colors
 export TERM='alacritty'
 
-
-#====================
+#----------------------------------------------------------------------------
 # Aliases
-#====================
+#----------------------------------------------------------------------------
 
 #----- Debian -----
 if [[ -f /etc/debian_version ]]; then
@@ -162,10 +146,9 @@ if [[ -x "$(whence newsboat)" ]]; then
   alias rssobs='newsboat -C ~/.config/newsboat/config_obs'
 fi
 
-
-#====================
-# fuzzy finder
-#====================
+#----------------------------------------------------------------------------
+# fuzzy finder FZF : https://github.com/junegunn/fzf
+#----------------------------------------------------------------------------
 
 # Setting fd as the default source for fzf (respect .gitignore)
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -190,10 +173,26 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+#----------------------------------------------------------------------------
+# Syntax highlighting : https://github.com/zsh-users/zsh-syntax-highlighting
+#----------------------------------------------------------------------------
 
-#====================
-# forgit
-#====================
+hlzsh="$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -f "$hlzsh" ]] && source "$hlzsh"
+
+#----------------------------------------------------------------------------
+# Autosuggestions : https://github.com/zsh-users/zsh-autosuggestions
+#----------------------------------------------------------------------------
+
+autosuggest="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+if [[ -f "$autosuggest" ]]; then
+  source "$autosuggest"
+  bindkey '^ ' autosuggest-accept
+fi
+
+#----------------------------------------------------------------------------
+# forgit : https://github.com/wfxr/forgit
+#----------------------------------------------------------------------------
 
 forgit="$HOME/.zsh/forgit/forgit.plugin.zsh"
 if [[ -f "$forgit" ]]; then
@@ -214,10 +213,9 @@ if [[ -f "$forgit" ]]; then
   "
 fi
 
-
-#====================
+#----------------------------------------------------------------------------
 # Prompt
-#====================
+#----------------------------------------------------------------------------
 
 if [[ -x "$(whence starship)" ]]; then
   # https://github.com/starship/starship/discussions/1640
@@ -261,10 +259,9 @@ else
   PROMPT='$hostname$directory$(git_branch)$symbol '
 fi
 
-
-#====================
+#----------------------------------------------------------------------------
 # Functions
-#====================
+#----------------------------------------------------------------------------
 
 function dsf() {
   diff -u $1 $2 | diff-so-fancy
