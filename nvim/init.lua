@@ -134,8 +134,8 @@ require('packer').startup(function()
       }
     end,
   }
-  map('n', '<leader>ff', "<cmd>lua require('fzf-lua').files()<CR>")
-  map('n', '<leader>fg', "<cmd>lua require('fzf-lua').live_grep()<CR>")
+  map('n', '<leader>ff', ":lua require('fzf-lua').files()<CR>")
+  map('n', '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>")
 
   -- Status line
   use {
@@ -278,10 +278,9 @@ require('packer').startup(function()
       }
     end,
   }
-  cmd 'highlight link GitSignsCurrentLineBlame Comment' -- https://github.com/lewis6991/gitsigns.nvim/issues/255
-  map('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
-  map('n', '<leader>gd', ':Gitsigns diffthis<CR>')
-  map('n', '<leader>gm', "<cmd>lua require('gitsigns').blame_line{full=true}<CR>")
+  map('n', '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>")
+  map('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
+  map('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
 
   -- Magit clone: stage, commit, pull, push
   use {
@@ -293,7 +292,7 @@ require('packer').startup(function()
       }
     end
   }
-  map('n', '<leader>gg', ':Neogit <CR>')
+  map('n', '<leader>gg', ":lua require('neogit').open()<CR>")
 
   ----------------------------------------
   --------------- Snippets ---------------
