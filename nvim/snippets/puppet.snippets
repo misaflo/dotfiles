@@ -1,0 +1,107 @@
+snippet class
+	# @summary ${2:A short summary of the purpose of this class}
+	#
+	# @author `system("echo -n $(git config user.name) && echo -n ' <'$(git config user.email) && echo -n '>'")`
+	#
+	class $1 (
+	) {
+		${0}
+	}
+snippet def
+	define $1 (
+	) {
+		${0}
+	}
+#
+# Resource type
+#
+snippet cron
+	cron { '${1:name}':
+		command => '${2}',
+		user    => '${3:root}',
+		hour    => ${4:hour},
+		minute  => ${5:minute},
+	}
+snippet exec
+	exec { '${1:name}':
+		command => '${2:$1}',
+		user    => '${3:root}',
+		path    => ['${4:/usr/bin}'],
+	}
+snippet user
+	user { '${1:user}':
+		ensure     => ${2:present},
+		uid        => ${3:uid},
+		gid        => ${4:gid},
+		comment    => '${5:$1}',
+		home       => '${6:/home/$1}',
+		managehome => true,
+		require    => Group['${7:group'}],
+	}
+snippet group
+	group { '${1:group}':
+		ensure => ${2:present},
+		gid    => ${3:gid},
+	}
+snippet mount
+	mount { '${1:destination path}':
+		ensure	=> ${2:mounted},
+		device	=> '${0:device name or path}',
+	}
+snippet notify
+	notify { "${1:message}": }
+snippet package
+	package { '${1:package name}':
+		ensure	=> ${0:installed},
+	}
+snippet service
+	service { '${1:service}':
+		ensure => running,
+		enable => true,
+	}
+snippet file
+	file { '${1:filename}':
+		ensure => ${2:file},
+		path   => '${3:path}',
+		owner  => '${4:root}',
+		group  => '${5:root}',
+		mode   => '${6:0644}',
+		source => 'puppet:///modules/${7:module}/${8:source}',
+	}
+snippet fileepp
+	file { '${1:filename}':
+		ensure  => ${2:file},
+		path    => '${3:path}',
+		owner   => '${4:root}',
+		group   => '${5:root}',
+		mode    => '${6:0644}',
+		content => epp(
+			'${7:module}/${8:template}',
+			{
+				${9:var} => ${10:$value},
+			}
+		),
+	}
+#
+# stdlib
+#
+snippet file_line
+	file_line { '${1:name}':
+	  path  => '${2:/path}',
+	  match => '${3:what we search}',
+	  line  => '${4:what we want}',
+	}
+#
+# apt
+#
+snippet apt::source
+	apt::source { '${1:repository name}':
+	  comment  => '${2:$1}',
+	  location => '${3:http://repo.org}',
+	  release  => '${4:stable}',
+	  repos    => '${5:main}',
+	  key      => {
+	    'id'     => '${6:id_key}',
+	    'server' => '${7:https://repo.org/pubkey.gpg}',
+	  },
+	}

@@ -10,6 +10,8 @@ if [[ ! -d "$packer_dir/packer.nvim" ]]; then
 fi
 [[ ! -d ~/.config ]] && mkdir ~/.config
 [[ ! -L ~/.config/nvim ]] && ln -sf "$DOTFILES/nvim" ~/.config/nvim
+snippets_dir="$HOME/.local/share/nvim/site/pack/packer/start/nvim-snippy/after/snippets"
+[[ -d $snippets_dir ]] && ln -s "$DOTFILES/nvim/snippets/puppet.snippets" "$snippets_dir"
 
 # zsh
 [[ ! -d ~/.zsh ]] && mkdir ~/.zsh
