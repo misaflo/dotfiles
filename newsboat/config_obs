@@ -4,6 +4,6 @@ cache-file "~/.local/share/newsboat/cache_obs.db"
 urls-source "ocnews"
 ocnews-url "https://share.obspm.fr"
 ocnews-login "flevigne"
-ocnews-passwordeval "gpg --decrypt ~/.config/newsboat/ocnews-password.gpg"
+ocnews-passwordeval "gpg --decrypt ~/.dotfiles/passwords/obspm.gpg"
 
 # vim: ft=config

@@ -4,6 +4,6 @@ cache-file "~/.local/share/newsboat/cache_perso.db"
 urls-source "ttrss"
 ttrss-url "https://rss.g3l.org"
 ttrss-login "misaflo"
-ttrss-passwordeval "gpg --decrypt ~/.config/newsboat/ttrss-password.gpg"
+ttrss-passwordeval "gpg --decrypt ~/.dotfiles/passwords/ttrss.gpg"
 
 # vim: ft=config

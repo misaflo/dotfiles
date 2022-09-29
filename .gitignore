@@ -2,4 +2,4 @@ nvim/plugin/
 nvim/grammalecte/
 nvim/spell/
 nvim/.netrwhist
-newsboat/*.gpg
+passwords/
