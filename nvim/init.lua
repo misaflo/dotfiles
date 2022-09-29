@@ -192,8 +192,8 @@ require('packer').startup(function()
     ' unit_nbsp_avant_unités3 typo_guillemets_typographiques_doubles_ouvrants' ..
     ' typo_guillemets_typographiques_doubles_fermants' ..
     ' typo_tiret_incise1'
-  cmd 'highlight link GrammalecteGrammarError spellBad'
-  cmd 'highlight link GrammalecteSpellingError spellCap'
+  cmd 'highlight link GrammalecteGrammarError spellCap'
+  cmd 'highlight link GrammalecteSpellingError spellBad'
   map('n', '<leader>gc', ':GrammalecteCheck<CR>')
   map('n', '<leader>gl', ':GrammalecteClear<CR>')
 
