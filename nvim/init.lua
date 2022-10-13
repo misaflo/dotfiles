@@ -154,11 +154,13 @@ require('packer').startup(function()
   }
 
   -- Tabline
-  use 'romgrk/barbar.nvim'
-  g.bufferline = {
-    closable = false,
-    icons = false,
-    auto_hide = true,
+  use {
+    'romgrk/barbar.nvim',
+    require('bufferline').setup {
+      auto_hide = true,
+      closable = false,
+      icons = false
+    }
   }
   map('n', '<A-a>', ':BufferPrevious<CR>')
   map('n', '<A-z>', ':BufferNext<CR>')
