@@ -128,6 +128,7 @@ else
   alias llt='ls -lrt'
   alias tree='tree -C --dirsfirst'
 fi
+alias ssh='TERM=xterm-256color ssh'
 alias grep='grep --color -I --exclude-dir=.git'
 alias df='df -hT'
 alias du='du -sh'
