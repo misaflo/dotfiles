@@ -1,34 +1,43 @@
 * {
-    border: none;
-    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
     font-family: Roboto, Helvetica, Arial, sans-serif, "FontAwesome 6 Free Solid";
     font-size: 13px;
-    min-height: 0;
 }
 
 @import "gruvbox.css";
 
-.warning {
-    background-color: @orange;
-}
-
-.critical {
-    background-color: @red;
-}
-
 window#waybar {
-    background: rgba(40, 40, 40, 1);
-    color: @white_b;
+    background-color: @background;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+}
+
 #workspaces button {
     padding: 0 5px;
-    background: transparent;
+    background-color: transparent;
     color: @white_b;
+}
+
+#workspaces button:hover {
+    background: @background;
 }
 
 #workspaces button.focused {
@@ -41,13 +50,13 @@ window#waybar.hidden {
 
 #mode {
     background-color: @orange;
-    border-bottom: 3px solid @white_b;
 }
 
 #clock,
 #battery,
 #cpu,
 #memory,
+#disk,
 #temperature,
 #backlight,
 #network,
@@ -56,9 +65,26 @@ window#waybar.hidden {
 #tray,
 #mode,
 #idle_inhibitor,
+#scratchpad,
 #mpd {
+    color: @foreground;
     padding: 0 6px;
     margin: 0 4px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
 #battery {
@@ -66,7 +92,7 @@ window#waybar.hidden {
     color: @background;
 }
 
-#battery.charging {
+#battery.charging, #battery.plugged {
     color: @background;
     background-color: @green;
 }
@@ -90,4 +116,8 @@ window#waybar.hidden {
 
 label:focus {
     background-color: @background;
+}
+
+#network.disconnected {
+    background-color: @red;
 }
