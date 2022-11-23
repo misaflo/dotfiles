@@ -6,6 +6,14 @@
 
 @import "gruvbox.css";
 
+.warning {
+  background-color: @orange;
+}
+
+.critical {
+  background-color: @red;
+}
+
 window#waybar {
     background-color: @background;
     color: @foreground;
