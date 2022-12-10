@@ -205,6 +205,7 @@ if [[ -f "$forgit" ]]; then
   --exact
   --reverse
   --ansi
+  --height '100%'
   --bind='alt-k:preview-up,alt-p:preview-up'
   --bind='alt-j:preview-down,alt-n:preview-down'
   --bind='ctrl-r:toggle-all'
