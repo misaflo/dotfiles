@@ -263,6 +263,9 @@ require('packer').startup(function()
   }
   map('n', '<F9>', ':AerialToggle<CR>')
 
+  -- Better '%' navigation and highlight matching words
+  use 'andymass/vim-matchup'
+
   ----------------------------------------
   ----------------- Git ------------------
   ----------------------------------------
