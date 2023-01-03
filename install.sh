@@ -29,9 +29,6 @@ ln -sf "$DOTFILES/starship/starship.toml" ~/.config/starship.toml
 # git
 ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 
-# tig
-ln -sf "$DOTFILES/tig/tigrc" ~/.tigrc
-
 # wofi
 [[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
 
