@@ -34,6 +34,8 @@ end
 g.gruvbox_material_better_performance = true
 g.gruvbox_material_foreground = 'original'
 cmd 'colorscheme gruvbox-material'
+-- Clean empty lines in diff
+cmd 'highlight DiffDelete guifg=#402120'
 
 -- Spellcheck
 opt.spellsuggest:prepend { 5 }
