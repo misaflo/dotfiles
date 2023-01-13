@@ -172,39 +172,51 @@ require('packer').startup(function()
   }
 
   -- Syntax checking (linting)
-  use 'dense-analysis/ale'
-  map('n', '<C-k>', ':ALEPreviousWrap<CR>')
-  map('n', '<C-j>', ':ALENextWrap<CR>')
-  map('n', '<leader>at', ':ALEToggle<CR>')
-  map('n', '<leader>af', ':ALEFix<CR>')
-  g.ale_fixers = {
-    ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
-    ruby   = { 'rubocop' },
-    puppet = { 'puppetlint' },
+  use {
+    'dense-analysis/ale',
+    config = function()
+      vim.g.ale_fixers = {
+        ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
+        ruby   = { 'rubocop' },
+        puppet = { 'puppetlint' },
+      }
+      vim.keymap.set('n', '<C-k>', ':ALEPreviousWrap<CR>')
+      vim.keymap.set('n', '<C-j>', ':ALENextWrap<CR>')
+      vim.keymap.set('n', '<leader>at', ':ALEToggle<CR>')
+      vim.keymap.set('n', '<leader>af', ':ALEFix<CR>')
+    end,
   }
 
   -- French grammar checker
-  use 'dpelle/vim-Grammalecte'
-  g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
-  g.grammalecte_disable_rules = 'typo_tiret_début_ligne typo_tiret_incise2' ..
-    ' apostrophe_typographique apostrophe_typographique_après_t' ..
-    ' espaces_début_ligne espaces_milieu_ligne espaces_fin_de_ligne' ..
-    ' esp_début_ligne esp_milieu_ligne esp_fin_ligne esp_mélangés2' ..
-    ' typo_points_suspension1 typo_tiret_incise' ..
-    ' nbsp_avant_double_ponctuation nbsp_avant_deux_points' ..
-    ' nbsp_après_chevrons_ouvrants nbsp_avant_chevrons_fermants1' ..
-    ' unit_nbsp_avant_unités1 unit_nbsp_avant_unités2' ..
-    ' unit_nbsp_avant_unités3 typo_guillemets_typographiques_doubles_ouvrants' ..
-    ' typo_guillemets_typographiques_doubles_fermants' ..
-    ' typo_tiret_incise1'
-  cmd 'highlight link GrammalecteGrammarError spellCap'
-  cmd 'highlight link GrammalecteSpellingError spellBad'
-  map('n', '<leader>gc', ':GrammalecteCheck<CR>')
-  map('n', '<leader>gl', ':GrammalecteClear<CR>')
+  use {
+    'dpelle/vim-Grammalecte',
+    config = function()
+      vim.g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
+      vim.g.grammalecte_disable_rules = 'typo_tiret_début_ligne typo_tiret_incise2' ..
+      ' apostrophe_typographique apostrophe_typographique_après_t' ..
+      ' espaces_début_ligne espaces_milieu_ligne espaces_fin_de_ligne' ..
+      ' esp_début_ligne esp_milieu_ligne esp_fin_ligne esp_mélangés2' ..
+      ' typo_points_suspension1 typo_tiret_incise' ..
+      ' nbsp_avant_double_ponctuation nbsp_avant_deux_points' ..
+      ' nbsp_après_chevrons_ouvrants nbsp_avant_chevrons_fermants1' ..
+      ' unit_nbsp_avant_unités1 unit_nbsp_avant_unités2' ..
+      ' unit_nbsp_avant_unités3 typo_guillemets_typographiques_doubles_ouvrants' ..
+      ' typo_guillemets_typographiques_doubles_fermants' ..
+      ' typo_tiret_incise1'
+      vim.cmd 'highlight link GrammalecteGrammarError spellCap'
+      vim.cmd 'highlight link GrammalecteSpellingError spellBad'
+      vim.keymap.set('n', '<leader>gc', ':GrammalecteCheck<CR>')
+      vim.keymap.set('n', '<leader>gl', ':GrammalecteClear<CR>')
+    end,
+  }
 
   -- Alignment
-  use 'junegunn/vim-easy-align'
-  map('v', '<Enter>', ':EasyAlign<CR>')
+  use {
+    'junegunn/vim-easy-align',
+    config = function()
+      vim.keymap.set('v', '<Enter>', ':EasyAlign<CR>')
+    end
+  }
 
   -- Color name highlighter
   use 'ap/vim-css-color'
@@ -235,13 +247,17 @@ require('packer').startup(function()
   }
 
   -- Enhance to increment/decrement (<C-a>, <C-x>)
-  use 'nishigori/increment-activator'
-  g.increment_activator_filetype_candidates = {
-    puppet = {
-      { 'present', 'absent' },
-      { 'running', 'stopped' },
-      { 'installed', 'purged' },
-    },
+  use {
+    'nishigori/increment-activator',
+    config = function()
+      vim.g.increment_activator_filetype_candidates = {
+        puppet = {
+          { 'present', 'absent' },
+          { 'running', 'stopped' },
+          { 'installed', 'purged' },
+        },
+      }
+    end,
   }
 
   -- Toggles between hybrid and absolute line numbers automatically
@@ -375,21 +391,31 @@ require('packer').startup(function()
   ----------------------------------------
 
   -- Markdown runtime files (more up to date)
-  use 'tpope/vim-markdown'
-  g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
+  use {
+    'tpope/vim-markdown',
+    setup = function()
+      vim.g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
+    end,
+  }
 
   -- Preview markdown in browser
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',
     ft = 'markdown',
+    config = function()
+      vim.g.mkdp_theme = 'light'
+    end,
   }
-  g.mkdp_theme = 'light'
 
   -- Table creator and formatter
-  use 'dhruvasagar/vim-table-mode'
-  map('n', '<leader>tm', ':TableModeToggle<CR>')
-  g.table_mode_corner = '|' -- markdown-compatible tables
+  use {
+    'dhruvasagar/vim-table-mode',
+    config = function()
+      vim.g.table_mode_corner = '|' -- markdown-compatible tables
+      vim.keymap.set('n', '<leader>tm', ':TableModeToggle<CR>')
+    end,
+  }
 
   -- Management of markdown notebooks
   use {
