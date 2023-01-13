@@ -113,7 +113,7 @@ require('packer').startup(function()
           enable = true,
         },
       }
-    end
+    end,
   }
 
   -- Fuzzy finder FZF
@@ -135,10 +135,10 @@ require('packer').startup(function()
           },
         },
       }
+      vim.keymap.set('n', '<leader>ff', ":lua require('fzf-lua').files()<CR>")
+      vim.keymap.set('n', '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>")
     end,
   }
-  map('n', '<leader>ff', ":lua require('fzf-lua').files()<CR>")
-  map('n', '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>")
 
   -- Status line
   use {
@@ -156,18 +156,22 @@ require('packer').startup(function()
   }
 
   -- Tabline
-  use 'romgrk/barbar.nvim'
-  require('bufferline').setup {
-    auto_hide = true,
-    closable = false,
-    icons = false
+  use {
+    'romgrk/barbar.nvim',
+    config = function()
+      require('bufferline').setup {
+        auto_hide = true,
+        closable = false,
+        icons = false
+      }
+      vim.keymap.set('n', '<A-a>', ':BufferPrevious<CR>')
+      vim.keymap.set('n', '<A-z>', ':BufferNext<CR>')
+      vim.keymap.set('n', '<A-A>', ':BufferMovePrevious<CR>')
+      vim.keymap.set('n', '<A-Z>', ':BufferMoveNext<CR>')
+      vim.keymap.set('n', '<A-p>', ':BufferPin<CR>')
+      vim.keymap.set('n', '<A-c>', ':BufferClose<CR>')
+    end,
   }
-  map('n', '<A-a>', ':BufferPrevious<CR>')
-  map('n', '<A-z>', ':BufferNext<CR>')
-  map('n', '<A-A>', ':BufferMovePrevious<CR>')
-  map('n', '<A-Z>', ':BufferMoveNext<CR>')
-  map('n', '<A-p>', ':BufferPin<CR>')
-  map('n', '<A-c>', ':BufferClose<CR>')
 
   -- Syntax checking (linting)
   use 'dense-analysis/ale'
@@ -253,7 +257,7 @@ require('packer').startup(function()
         detection_methods = { 'pattern' },
         patterns = { '.git' },
       }
-    end
+    end,
   }
 
   -- Outline window for quick navigation
@@ -261,9 +265,9 @@ require('packer').startup(function()
     'stevearc/aerial.nvim',
     config = function()
       require('aerial').setup()
-    end
+      vim.keymap.set('n', '<F9>', ':AerialToggle<CR>')
+    end,
   }
-  map('n', '<F9>', ':AerialToggle<CR>')
 
   -- Better '%' navigation and highlight matching words
   use 'andymass/vim-matchup'
@@ -282,11 +286,11 @@ require('packer').startup(function()
           change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
         },
       }
+      vim.keymap.set('n', '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>")
+      vim.keymap.set('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
+      vim.keymap.set('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
     end,
   }
-  map('n', '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>")
-  map('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
-  map('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
 
   -- Magit clone: stage, commit, pull, push
   use {
@@ -296,9 +300,9 @@ require('packer').startup(function()
       require('neogit').setup {
         disable_commit_confirmation = true,
       }
-    end
+      vim.keymap.set('n', '<leader>gg', ":lua require('neogit').open()<CR>")
+    end,
   }
-  map('n', '<leader>gg', ":lua require('neogit').open()<CR>")
 
   ----------------------------------------
   --------------- Snippets ---------------
@@ -364,9 +368,9 @@ require('packer').startup(function()
           }
         }
       end
+      vim.keymap.set('i',  '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>')
     end,
   }
-  map('i',  '<C-x><C-s>', '<Cmd>lua vimrc.cmp.snippet()<CR>')
 
   ----------------------------------------
   --------------- Markdown ---------------
@@ -411,7 +415,7 @@ require('packer').startup(function()
           end
         },
       }
-    end
+    end,
   }
 
   ----------------------------------------
