@@ -34,9 +34,14 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
         "format": "{:%a %d %b %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big><span color='#ebdbb2'>{:%Y %B}</span></big>\n<tt><small>{calendar}</small></tt>",
+        "today-format": "<span color='#fb4934'><b><u>{}</u></b></span>",
+        "format-calendar": "<span color='#ebdbb2'><b>{}</b></span>",
+        "format-calendar-weekdays": "<span color='#fe8010'><b>{}</b></span>",
+        "on-scroll": {
+            "calendar": 1
+        }
     },
     "network": {
         "format": "{ifname}",
