@@ -85,4 +85,4 @@
         "tooltip": false
     }
 }
-// vim: filetype=javascript
+// vim: filetype=jsonc tabstop=4 shiftwidth=4
