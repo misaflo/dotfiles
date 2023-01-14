@@ -27,7 +27,7 @@ opt.list          = true  -- Show hidden characters
 opt.title         = true  -- Show the title of the window
 opt.mouse         = ''    -- Disable mouse
 
-if vim.opt.diff:get() then
+if opt.diff:get() then
   opt.cursorline = false
 end
 
