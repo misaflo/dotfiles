@@ -220,7 +220,12 @@ require('packer').startup(function()
   }
 
   -- Color name highlighter
-  use 'ap/vim-css-color'
+  use {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  }
 
   -- Comment
   use {
