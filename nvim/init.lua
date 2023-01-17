@@ -48,11 +48,6 @@ autocmd('BufEnter', {
   command = 'set filetype=yaml',
 })
 
-autocmd('FileType', {
-  pattern = 'mail',
-  command = 'set spell spelllang=fr',
-})
-
 autocmd('TermOpen', {
   pattern = '*',
   desc    = 'Disable line number in terminal-mode',
