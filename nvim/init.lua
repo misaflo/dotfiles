@@ -54,6 +54,12 @@ autocmd('TermOpen', {
   command = 'setlocal nonumber norelativenumber',
 })
 
+autocmd('TextYankPost', {
+  pattern = '*',
+  desc    = 'Highlight yanked region',
+  command = 'lua vim.highlight.on_yank{higroup="Search", timeout=700}',
+})
+
 
 -------------------- MAPPINGS ------------------------------
 map('', '<leader>y', '"+y')  -- Copy to clipboard
