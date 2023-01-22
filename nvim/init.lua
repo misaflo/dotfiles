@@ -143,6 +143,7 @@ require('packer').startup(function(use)
   -- Fuzzy finder FZF
   use {
     'ibhagwan/fzf-lua',
+    cmd = 'FzfLua',
     config = function()
       require('fzf-lua').setup {
         keymap = {
@@ -159,10 +160,10 @@ require('packer').startup(function(use)
           },
         },
       }
-      vim.keymap.set('n', '<leader>ff', ":lua require('fzf-lua').files()<CR>")
-      vim.keymap.set('n', '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>")
     end,
   }
+  map('n', '<leader>ff', ':FzfLua files<CR>')
+  map('n', '<leader>fg', ':FzfLua live_grep<CR>')
 
   -- Status line
   use {
@@ -216,6 +217,7 @@ require('packer').startup(function(use)
   -- French grammar checker
   use {
     'dpelle/vim-Grammalecte',
+    cmd = 'GrammalecteCheck',
     config = function()
       vim.g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
       vim.g.grammalecte_disable_rules = 'typo_tiret_début_ligne typo_tiret_incise2' ..
@@ -231,18 +233,17 @@ require('packer').startup(function(use)
       ' typo_tiret_incise1'
       vim.cmd 'highlight link GrammalecteGrammarError spellCap'
       vim.cmd 'highlight link GrammalecteSpellingError spellBad'
-      vim.keymap.set('n', '<leader>gc', ':GrammalecteCheck<CR>')
       vim.keymap.set('n', '<leader>gl', ':GrammalecteClear<CR>')
     end,
   }
+  map('n', '<leader>gc', ':GrammalecteCheck<CR>')
 
   -- Alignment
   use {
     'junegunn/vim-easy-align',
-    config = function()
-      vim.keymap.set('v', '<Enter>', ':EasyAlign<CR>')
-    end
+    cmd = 'EasyAlign',
   }
+  map('v', '<Enter>', ':EasyAlign<CR>')
 
   -- Color name highlighter
   use {
@@ -308,11 +309,12 @@ require('packer').startup(function(use)
   -- Outline window for quick navigation
   use {
     'stevearc/aerial.nvim',
+    cmd = 'AerialToggle',
     config = function()
       require('aerial').setup()
-      vim.keymap.set('n', '<F9>', ':AerialToggle<CR>')
     end,
   }
+  map('n', '<F9>', ':AerialToggle<CR>')
 
   -- Better '%' navigation and highlight matching words
   use 'andymass/vim-matchup'
@@ -341,13 +343,14 @@ require('packer').startup(function(use)
   use {
     'TimUntersberger/neogit',
     requires = 'nvim-lua/plenary.nvim',
+    cmd = 'Neogit',
     config = function()
       require('neogit').setup {
         disable_commit_confirmation = true,
       }
-      vim.keymap.set('n', '<leader>gg', ":lua require('neogit').open()<CR>")
     end,
   }
+  map('n', '<leader>gg', ':Neogit<CR>')
 
   ----------------------------------------
   --------------- Snippets ---------------
@@ -424,6 +427,7 @@ require('packer').startup(function(use)
   -- Markdown runtime files (more up to date)
   use {
     'tpope/vim-markdown',
+    ft = 'markdown',
     setup = function()
       vim.g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
     end,
@@ -442,15 +446,17 @@ require('packer').startup(function(use)
   -- Table creator and formatter
   use {
     'dhruvasagar/vim-table-mode',
+    cmd = 'TableModeToggle',
     config = function()
       vim.g.table_mode_corner = '|' -- markdown-compatible tables
-      vim.keymap.set('n', '<leader>tm', ':TableModeToggle<CR>')
     end,
   }
+  map('n', '<leader>tm', ':TableModeToggle<CR>')
 
   -- Management of markdown notebooks
   use {
     'jakewvincent/mkdnflow.nvim',
+    ft = 'markdown',
     config = function()
       require('mkdnflow').setup {
         modules = {
@@ -478,8 +484,14 @@ require('packer').startup(function(use)
   ----------------------------------------
 
   -- Make vim more Puppet friendly
-  use 'rodjek/vim-puppet'
+  use {
+    'rodjek/vim-puppet',
+    ft = 'puppet',
+  }
 
   -- Syntax for highlighting YARD documentation
-  use 'noprompt/vim-yardoc'
+  use {
+    'noprompt/vim-yardoc',
+    ft = 'puppet',
+  }
 end)
