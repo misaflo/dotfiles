@@ -113,7 +113,7 @@ map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 
 -------------------- PLUGINS -------------------------------
-require('packer').startup(function()
+require('packer').startup(function(use)
   -- Plugin manager
   use 'wbthomason/packer.nvim'
 
