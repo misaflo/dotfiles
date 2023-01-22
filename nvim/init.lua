@@ -69,6 +69,19 @@ autocmd('TextYankPost', {
   command = 'lua vim.highlight.on_yank{higroup="Search", timeout=700}',
   group   = 'TextYanked',
 })
+
+augroup('PackerUserConfig')
+autocmd('BufWritePost', {
+  desc    = 'Source and compile Packer config',
+  pattern = 'nvim/init.lua',
+  command = 'source ~/.config/nvim/init.lua | PackerCompile',
+  group   = 'PackerUserConfig',
+})
+autocmd('BufWinLeave', {
+  desc    = 'Wait for compilation of Packer config',
+  pattern = 'nvim/init.lua',
+  command = 'sleep 100m',
+  group   = 'PackerUserConfig',
 })
 
 
