@@ -5,6 +5,10 @@ local map     = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local cmd     = vim.cmd
 
+local function augroup(group)
+  vim.api.nvim_create_augroup(group, { clear = true })
+end
+
 
 -------------------- OPTIONS -------------------------------
 g.mapleader       = ','
@@ -43,21 +47,28 @@ end
 
 
 -------------------- AUTOCMD -------------------------------
+augroup('Eyaml')
 autocmd('BufEnter', {
   pattern = '*.eyaml',
   command = 'set filetype=yaml',
+  group   = 'Eyaml',
 })
 
+augroup('TermConfig')
 autocmd('TermOpen', {
-  pattern = '*',
   desc    = 'Disable line number in terminal-mode',
+  pattern = '*',
   command = 'setlocal nonumber norelativenumber',
+  group   = 'TermConfig',
 })
 
+augroup('TextYanked')
 autocmd('TextYankPost', {
-  pattern = '*',
   desc    = 'Highlight yanked region',
+  pattern = '*',
   command = 'lua vim.highlight.on_yank{higroup="Search", timeout=700}',
+  group   = 'TextYanked',
+})
 })
 
 
