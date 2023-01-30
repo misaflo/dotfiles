@@ -202,6 +202,7 @@ require('packer').startup(function(use)
   use {
     'dense-analysis/ale',
     config = function()
+      vim.g.ale_use_neovim_diagnostics_api = true
       vim.g.ale_fixers = {
         ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
         ruby   = { 'rubocop' },
