@@ -288,6 +288,7 @@ require('packer').startup(function(use)
           { 'present', 'absent' },
           { 'running', 'stopped' },
           { 'installed', 'purged' },
+          { 'file', 'directory', 'link' },
         },
       }
     end,
