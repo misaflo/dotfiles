@@ -185,8 +185,8 @@ require('packer').startup(function(use)
         options = {
           icons_enabled = false,
           theme = 'gruvbox-material',
-          component_separators = { '|', '|' },
-          section_separators = { '', '' },
+          section_separators = '',
+          component_separators = '|',
         },
       }
     end,
