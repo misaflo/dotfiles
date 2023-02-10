@@ -86,8 +86,9 @@ autocmd('BufWinLeave', {
 
 
 -------------------- MAPPINGS ------------------------------
-map('', '<leader>y', '"+y')  -- Copy to clipboard
-map('n', '<leader>p', '"+p') -- Past from clipboard
+-- Copy to clipboard, past from clipboard
+map('', '<leader>y', '"+y')
+map('n', '<leader>p', '"+p')
 
 -- Email Signature
 map('n', '<Leader>sd', ':read ~/.config/neomutt/signature_dio<CR>')
@@ -101,9 +102,9 @@ map('n', '<Leader>ls', ':lua ldap_lookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g
 map('n', '<Leader>c', ':split +terminal<CR>:resize -4<CR>i')
 
 -- Spellchecking
-map('n', '<leader>lf', ':set spell spelllang=fr<cr>')
-map('n', '<leader>le', ':set spell spelllang=en<cr>')
-map('n', '<leader>ln', ':set nospell<cr>')
+map('n', '<leader>lf', ':set spell spelllang=fr<CR>')
+map('n', '<leader>le', ':set spell spelllang=en<CR>')
+map('n', '<leader>ln', ':set nospell<CR>')
 
 -- Resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>')
