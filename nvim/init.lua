@@ -128,6 +128,17 @@ require('packer').startup(function(use)
     end,
   }
 
+  -- Icons configuration for plugins
+  use {
+    'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').setup {
+        color_icons = false,
+      }
+    end,
+  }
+
+
   -- Treesitter configurations and abstraction layer
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -184,11 +195,11 @@ require('packer').startup(function(use)
   -- Tabline
   use {
     'romgrk/barbar.nvim',
+    requires = 'nvim-web-devicons',
     config = function()
       require('bufferline').setup {
         auto_hide = true,
         closable = false,
-        icons = false
       }
       vim.keymap.set('n', '<A-a>', ':BufferPrevious<CR>')
       vim.keymap.set('n', '<A-z>', ':BufferNext<CR>')
