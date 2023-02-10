@@ -342,12 +342,7 @@ require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup {
-        signs = {
-          add    = { hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn' },
-          change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
-        },
-      }
+      require('gitsigns').setup()
       vim.keymap.set('n', '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>")
       vim.keymap.set('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
       vim.keymap.set('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
