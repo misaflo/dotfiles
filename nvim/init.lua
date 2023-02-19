@@ -379,6 +379,7 @@ require('packer').startup(function(use)
           },
         },
       }
+      vim.keymap.set('i', '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>")
     end,
   }
 
