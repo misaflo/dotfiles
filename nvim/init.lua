@@ -171,6 +171,10 @@ require('packer').startup(function(use)
             ['default'] = require('fzf-lua.actions').file_edit,
           },
         },
+        grep = {
+          git_icons = false,
+          file_icons = false,
+        },
       }
     end,
   }
