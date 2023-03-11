@@ -70,20 +70,6 @@ autocmd('TextYankPost', {
   group   = 'TextYanked',
 })
 
-augroup('PackerUserConfig')
-autocmd('BufWritePost', {
-  desc    = 'Source and compile Packer config',
-  pattern = 'nvim/init.lua',
-  command = 'source ~/.config/nvim/init.lua | PackerCompile',
-  group   = 'PackerUserConfig',
-})
-autocmd('BufWinLeave', {
-  desc    = 'Wait for compilation of Packer config',
-  pattern = 'nvim/init.lua',
-  command = 'sleep 100m',
-  group   = 'PackerUserConfig',
-})
-
 
 -------------------- MAPPINGS ------------------------------
 -- Copy to clipboard, past from clipboard
@@ -114,35 +100,44 @@ map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 
 -------------------- PLUGINS -------------------------------
-require('packer').startup(function(use)
-  -- Plugin manager
-  use 'wbthomason/packer.nvim'
 
+-- Install the package manager
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({
   -- Color scheme
-  use {
+  {
     'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.g.gruvbox_material_better_performance = true
       vim.g.gruvbox_material_foreground = 'original'
       vim.cmd 'colorscheme gruvbox-material'
     end,
-  }
+  },
 
-  -- Icons configuration for plugins
-  use {
+  -- Icons for plugins
+  {
     'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('nvim-web-devicons').setup {
-        color_icons = false,
-      }
-    end,
-  }
-
+    opts = { color_icons = false },
+  },
 
   -- Treesitter configurations and abstraction layer
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         highlight = {
@@ -150,12 +145,15 @@ require('packer').startup(function(use)
         },
       }
     end,
-  }
+  },
 
   -- Fuzzy finder FZF
-  use {
+  {
     'ibhagwan/fzf-lua',
-    cmd = 'FzfLua',
+    keys = {
+      { '<leader>ff', ":lua require('fzf-lua').files()<CR>" },
+      { '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>" },
+    },
     config = function()
       require('fzf-lua').setup {
         keymap = {
@@ -177,29 +175,26 @@ require('packer').startup(function(use)
         },
       }
     end,
-  }
-  map('n', '<leader>ff', ':FzfLua files<CR>')
-  map('n', '<leader>fg', ':FzfLua live_grep<CR>')
+  },
 
   -- Status line
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          icons_enabled = false,
-          theme = 'gruvbox-material',
-          section_separators = '',
-          component_separators = '|',
-        },
-      }
-    end,
-  }
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = 'gruvbox-material',
+        section_separators = '',
+        component_separators = '|',
+      },
+    },
+  },
 
   -- Tabline
-  use {
+  {
     'romgrk/barbar.nvim',
-    requires = 'nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('bufferline').setup {
         auto_hide = true,
@@ -212,10 +207,10 @@ require('packer').startup(function(use)
       vim.keymap.set('n', '<A-p>', ':BufferPin<CR>')
       vim.keymap.set('n', '<A-c>', ':BufferClose<CR>')
     end,
-  }
+  },
 
   -- Syntax checking (linting)
-  use {
+  {
     'dense-analysis/ale',
     config = function()
       vim.g.ale_use_neovim_diagnostics_api = true
@@ -229,12 +224,15 @@ require('packer').startup(function(use)
       vim.keymap.set('n', '<leader>at', ':ALEToggle<CR>')
       vim.keymap.set('n', '<leader>af', ':ALEFix<CR>')
     end,
-  }
+  },
 
   -- French grammar checker
-  use {
+  {
     'dpelle/vim-Grammalecte',
-    cmd = 'GrammalecteCheck',
+    keys = {
+      { '<leader>gc', ':GrammalecteCheck<CR>' },
+      { '<leader>gl', ':GrammalecteClear<CR>' }
+    },
     config = function()
       vim.g.grammalecte_cli_py = '~/.dotfiles/nvim/grammalecte/grammalecte-cli.py'
       vim.g.grammalecte_disable_rules = 'typo_tiret_début_ligne typo_tiret_incise2' ..
@@ -250,54 +248,45 @@ require('packer').startup(function(use)
       ' typo_tiret_incise1'
       vim.cmd 'highlight link GrammalecteGrammarError spellCap'
       vim.cmd 'highlight link GrammalecteSpellingError spellBad'
-      vim.keymap.set('n', '<leader>gl', ':GrammalecteClear<CR>')
     end,
-  }
-  map('n', '<leader>gc', ':GrammalecteCheck<CR>')
+  },
 
   -- Alignment
-  use {
+  {
     'junegunn/vim-easy-align',
-    cmd = 'EasyAlign',
-  }
-  map('v', '<Enter>', ':EasyAlign<CR>')
+    keys = { { '<Enter>', ':EasyAlign<CR>', mode = 'v' } },
+  },
 
   -- Color name highlighter
-  use {
+  {
     'NvChad/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end,
-  }
+    config = true,
+  },
 
   -- Comment
-  use {
+  {
     'numToStr/Comment.nvim',
-    keys = 'gc',
-    config = function()
-      require('Comment').setup()
-    end,
-  }
+    keys = { { 'gc', mode = { 'n', 'v' } } },
+    config = true,
+  },
 
   -- Add/change/delete surrounding delimiter pairs
-  use {
+  {
     'kylechui/nvim-surround',
-    config = function()
-      require('nvim-surround').setup {
-        surrounds = {
-          ['«'] = {
-            add = { '« ', ' »'}
-          },
-          ['»'] = {
-            add = { '«', '»'}
-          },
+    opts =  {
+      surrounds = {
+        ['«'] = {
+          add = { '« ', ' »'}
         },
-      }
-    end,
-  }
+        ['»'] = {
+          add = { '«', '»'}
+        },
+      },
+    }
+  },
 
   -- Enhance to increment/decrement (<C-a>, <C-x>)
-  use {
+  {
     'nishigori/increment-activator',
     config = function()
       vim.g.increment_activator_filetype_candidates = {
@@ -309,13 +298,13 @@ require('packer').startup(function(use)
         },
       }
     end,
-  }
+  },
 
   -- Toggles between hybrid and absolute line numbers automatically
-  use 'jeffkreeftmeijer/vim-numbertoggle'
+  'jeffkreeftmeijer/vim-numbertoggle',
 
   -- Autodect and cd to project directory
-  use {
+  {
     'ahmedkhalf/project.nvim',
     config = function()
       require('project_nvim').setup {
@@ -323,27 +312,24 @@ require('packer').startup(function(use)
         patterns = { '.git' },
       }
     end,
-  }
+  },
 
   -- Outline window for quick navigation
-  use {
+  {
     'stevearc/aerial.nvim',
-    cmd = 'AerialToggle',
-    config = function()
-      require('aerial').setup()
-    end,
-  }
-  map('n', '<F9>', ':AerialToggle<CR>')
+    keys = { { '<F9>', ':AerialToggle<CR>' } },
+    config = true,
+  },
 
   -- Better '%' navigation and highlight matching words
-  use 'andymass/vim-matchup'
+  'andymass/vim-matchup',
 
   ----------------------------------------
   ----------------- Git ------------------
   ----------------------------------------
 
   -- Git integration: signs, hunk actions, blame, etc.
-  use {
+  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
@@ -351,27 +337,22 @@ require('packer').startup(function(use)
       vim.keymap.set('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
       vim.keymap.set('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
     end,
-  }
+  },
 
   -- Magit clone: stage, commit, pull, push
-  use {
+  {
     'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    cmd = 'Neogit',
-    config = function()
-      require('neogit').setup {
-        disable_commit_confirmation = true,
-      }
-    end,
-  }
-  map('n', '<leader>gg', ':Neogit<CR>')
+    dependencies = 'nvim-lua/plenary.nvim',
+    keys = { { '<leader>gg', ":lua require('neogit').open()<CR>" } },
+    opts = { disable_commit_confirmation = true };
+  },
 
   ----------------------------------------
   --------------- Snippets ---------------
   ----------------------------------------
 
   -- Snippet engine
-  use {
+  {
     'dcampos/nvim-snippy',
     config = function()
       require('snippy').setup {
@@ -385,46 +366,45 @@ require('packer').startup(function(use)
       }
       vim.keymap.set('i', '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>")
     end,
-  }
+  },
 
   --- Snippets source
-  use 'honza/vim-snippets'
+  'honza/vim-snippets',
 
   ----------------------------------------
   --------------- Markdown ---------------
   ----------------------------------------
 
   -- Markdown runtime files (more up to date)
-  use {
+  {
     'tpope/vim-markdown',
     ft = 'markdown',
-    setup = function()
+    config = function()
       vim.g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
     end,
-  }
+  },
 
   -- Preview markdown in browser
-  use {
+  {
     'iamcco/markdown-preview.nvim',
-    run = 'cd app && yarn install',
+    build = 'cd app && yarn install',
     ft = 'markdown',
     config = function()
       vim.g.mkdp_theme = 'light'
     end,
-  }
+  },
 
   -- Table creator and formatter
-  use {
+  {
     'dhruvasagar/vim-table-mode',
-    cmd = 'TableModeToggle',
+    keys = { { '<leader>tm', ':TableModeToggle<CR>' } },
     config = function()
       vim.g.table_mode_corner = '|' -- markdown-compatible tables
     end,
-  }
-  map('n', '<leader>tm', ':TableModeToggle<CR>')
+  },
 
   -- Management of markdown notebooks
-  use {
+  {
     'jakewvincent/mkdnflow.nvim',
     ft = 'markdown',
     config = function()
@@ -447,21 +427,21 @@ require('packer').startup(function(use)
         },
       }
     end,
-  }
+  },
 
   ----------------------------------------
   ---------------- Puppet ----------------
   ----------------------------------------
 
   -- Make vim more Puppet friendly
-  use {
+  {
     'rodjek/vim-puppet',
     ft = 'puppet',
-  }
+  },
 
   -- Syntax for highlighting YARD documentation
-  use {
+  {
     'noprompt/vim-yardoc',
     ft = 'puppet',
-  }
-end)
+  },
+}, { diff = { cmd = 'terminal_git' }})

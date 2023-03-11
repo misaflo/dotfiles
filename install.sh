@@ -3,14 +3,9 @@
 DOTFILES="$HOME/.dotfiles"
 
 # neovim
-packer_dir="$HOME/.local/share/nvim/site/pack/packer/start"
-if [[ ! -d "$packer_dir/packer.nvim" ]]; then
-  mkdir -p "$packer_dir"
-  git clone --depth 1 https://github.com/wbthomason/packer.nvim "$packer_dir/packer.nvim"
-fi
 [[ ! -d ~/.config ]] && mkdir ~/.config
 [[ ! -L ~/.config/nvim ]] && ln -sf "$DOTFILES/nvim" ~/.config/nvim
-snippy_dir="$HOME/.local/share/nvim/site/pack/packer/start/nvim-snippy/"
+snippy_dir="$HOME/.local/share/nvim/lazy/nvim-snippy/"
 snippets_dir="$snippy_dir/after/snippets"
 if [[ -d $snippy_dir ]]; then
   [[ ! -d $snippets_dir ]] && mkdir -p "$snippets_dir"

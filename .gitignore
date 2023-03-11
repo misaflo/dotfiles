@@ -1,5 +1,5 @@
-nvim/plugin/
 nvim/grammalecte/
 nvim/spell/
+nvim/lazy-lock.json
 nvim/.netrwhist
 passwords/
