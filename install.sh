@@ -10,6 +10,7 @@ snippets_dir="$snippy_dir/after/snippets"
 if [[ -d $snippy_dir ]]; then
   [[ ! -d $snippets_dir ]] && mkdir -p "$snippets_dir"
   ln -sf "$DOTFILES/nvim/snippets/puppet.snippets" "$snippets_dir"
+  ln -sf "$DOTFILES/nvim/snippets/markdown.snippets" "$snippets_dir"
   ln -sf "$HOME/.config/neomutt/mail.snippets" "$snippets_dir"
 fi
 
