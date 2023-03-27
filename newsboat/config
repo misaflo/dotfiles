@@ -9,12 +9,16 @@ unbind-key k
 unbind-key g
 unbind-key G
 unbind-key s
+unbind-key ^U
+unbind-key ^D
 
 bind-key j down
 bind-key k up
 bind-key g home
 bind-key G end
 bind-key s sort
+bind-key ^U halfpageup
+bind-key ^D halfpagedown
 
 # Podcast: stream audio content with mpv
 macro 1 set browser "alacritty -e mpv --vid=no -- %u &"; one; set browser firefox
