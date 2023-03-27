@@ -3,6 +3,7 @@ include "~/.config/newsboat/gruvbox"
 browser firefox
 selecttag-format "%4i  %T (%n)" # Show unreads instead of number of feeds
 keep-articles-days 90
+notify-program notify-send
 
 unbind-key j
 unbind-key k
