@@ -434,14 +434,8 @@ require('lazy').setup({
   ----------------------------------------
 
   -- Make vim more Puppet friendly
-  {
-    'rodjek/vim-puppet',
-    ft = 'puppet',
-  },
+  'rodjek/vim-puppet',
 
   -- Syntax for highlighting YARD documentation
-  {
-    'noprompt/vim-yardoc',
-    ft = 'puppet',
-  },
+  'noprompt/vim-yardoc',
 }, { diff = { cmd = 'terminal_git' }})
