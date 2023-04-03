@@ -196,9 +196,12 @@ require('lazy').setup({
     'romgrk/barbar.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require('bufferline').setup {
+      require('barbar').setup {
         auto_hide = true,
-        closable = false,
+        icons = {
+          button = false,
+          modified = false,
+        },
       }
       vim.keymap.set('n', '<A-a>', ':BufferPrevious<CR>')
       vim.keymap.set('n', '<A-z>', ':BufferNext<CR>')
