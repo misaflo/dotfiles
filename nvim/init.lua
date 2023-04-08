@@ -98,6 +98,13 @@ map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
 
+-- Search for visually selected text
+-- https://vim.fandom.com/wiki/Search_for_visually_selected_text
+-- https://github.com/neovim/neovim/issues/21676
+-- map('v', '/', 'y/\\V<C-R>=escape(@",\'/\\\')<CR><CR>')
+map('x', '*', [[y/\V<C-R>=substitute(escape(@", '/\'), '\n', '\\n', 'g')<NL>]])
+map('x', '#', [[y?\V<C-R>=substitute(escape(@", '?\'), '\n', '\\n', 'g')<NL>]])
+
 
 -------------------- PLUGINS -------------------------------
 
