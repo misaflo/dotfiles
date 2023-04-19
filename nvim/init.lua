@@ -205,26 +205,34 @@ require('lazy').setup({
   {
     'romgrk/barbar.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('barbar').setup {
-        auto_hide = true,
-        icons = {
-          button = false,
-          modified = false,
-        },
-      }
-      vim.keymap.set('n', '<A-a>', ':BufferPrevious<CR>')
-      vim.keymap.set('n', '<A-z>', ':BufferNext<CR>')
-      vim.keymap.set('n', '<A-A>', ':BufferMovePrevious<CR>')
-      vim.keymap.set('n', '<A-Z>', ':BufferMoveNext<CR>')
-      vim.keymap.set('n', '<A-p>', ':BufferPin<CR>')
-      vim.keymap.set('n', '<A-c>', ':BufferClose<CR>')
-    end,
+    lazy = false,
+    keys = {
+      { '<A-a>', ':BufferPrevious<CR>' },
+      { '<A-z>', ':BufferNext<CR>' },
+      { '<A-A>', ':BufferMovePrevious<CR>' },
+      { '<A-Z>', ':BufferMoveNext<CR>' },
+      { '<A-p>', ':BufferPin<CR>' },
+      { '<A-c>', ':BufferClose<CR>' },
+    },
+    opts = {
+      auto_hide = true,
+      icons = {
+        button = false,
+        modified = false,
+      },
+    },
   },
 
   -- Syntax checking (linting)
   {
     'dense-analysis/ale',
+    lazy = false,
+    keys = {
+      { '<C-k>', ':ALEPreviousWrap<CR>' },
+      { '<C-j>', ':ALENextWrap<CR>' },
+      { '<leader>at', ':ALEToggle<CR>' },
+      { '<leader>af', ':ALEFix<CR>' },
+    },
     config = function()
       vim.g.ale_use_neovim_diagnostics_api = true
       vim.g.ale_fixers = {
@@ -232,10 +240,6 @@ require('lazy').setup({
         ruby   = { 'rubocop' },
         puppet = { 'puppetlint' },
       }
-      vim.keymap.set('n', '<C-k>', ':ALEPreviousWrap<CR>')
-      vim.keymap.set('n', '<C-j>', ':ALENextWrap<CR>')
-      vim.keymap.set('n', '<leader>at', ':ALEToggle<CR>')
-      vim.keymap.set('n', '<leader>af', ':ALEFix<CR>')
     end,
   },
 
@@ -344,12 +348,13 @@ require('lazy').setup({
   -- Git integration: signs, hunk actions, blame, etc.
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-      vim.keymap.set('n', '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>")
-      vim.keymap.set('n', '<leader>gd', ":lua require('gitsigns').diffthis()<CR>")
-      vim.keymap.set('n', '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>")
-    end,
+    lazy = false,
+    keys = {
+      { '<leader>gb', ":lua require('gitsigns').toggle_current_line_blame()<CR>" },
+      { '<leader>gd', ":lua require('gitsigns').diffthis()<CR>" },
+      { '<leader>gm', ":lua require('gitsigns').blame_line{full=true}<CR>" },
+    },
+    config = true,
   },
 
   -- Magit clone: stage, commit, pull, push
@@ -367,18 +372,17 @@ require('lazy').setup({
   -- Snippet engine
   {
     'dcampos/nvim-snippy',
-    config = function()
-      require('snippy').setup {
-        mappings = {
-          is = {
-            ['<Tab>'] = 'expand',
-            ['<C-j>'] = 'next',
-            ['<C-k>'] = 'previous',
-          },
+    lazy = false,
+    keys = { { '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>", mode = 'i' } },
+    opts = {
+      mappings = {
+        is = {
+          ['<Tab>'] = 'expand',
+          ['<C-j>'] = 'next',
+          ['<C-k>'] = 'previous',
         },
-      }
-      vim.keymap.set('i', '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>")
-    end,
+      },
+    },
   },
 
   --- Snippets source
