@@ -388,15 +388,6 @@ require('lazy').setup({
   --------------- Markdown ---------------
   ----------------------------------------
 
-  -- Markdown runtime files (more up to date)
-  {
-    'tpope/vim-markdown',
-    ft = 'markdown',
-    config = function()
-      vim.g.markdown_fenced_languages = { 'sh', 'bash=sh', 'sql' }
-    end,
-  },
-
   -- Preview markdown in browser
   {
     'iamcco/markdown-preview.nvim',
