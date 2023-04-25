@@ -223,26 +223,6 @@ require('lazy').setup({
     },
   },
 
-  -- Syntax checking (linting)
-  {
-    'dense-analysis/ale',
-    lazy = false,
-    keys = {
-      { '<C-k>', ':ALEPreviousWrap<CR>' },
-      { '<C-j>', ':ALENextWrap<CR>' },
-      { '<leader>at', ':ALEToggle<CR>' },
-      { '<leader>af', ':ALEFix<CR>' },
-    },
-    config = function()
-      vim.g.ale_use_neovim_diagnostics_api = true
-      vim.g.ale_fixers = {
-        ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
-        ruby   = { 'rubocop' },
-        puppet = { 'puppetlint' },
-      }
-    end,
-  },
-
   -- French grammar checker
   {
     'dpelle/vim-Grammalecte',
