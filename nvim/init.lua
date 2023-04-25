@@ -141,6 +141,9 @@ require('lazy').setup({
     opts = { color_icons = false },
   },
 
+  -- Improve the default vim.ui interfaces
+  'stevearc/dressing.nvim',
+
   -- Treesitter configurations and abstraction layer
   {
     'nvim-treesitter/nvim-treesitter',
