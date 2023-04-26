@@ -459,9 +459,6 @@ require('lazy').setup({
   {
     'neovim/nvim-lspconfig',
     config = function()
-      -- Setup language servers.
-      local lspconfig = require('lspconfig')
-
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
