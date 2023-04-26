@@ -515,6 +515,9 @@ require('lazy').setup({
           -- Puppet
           null_ls.builtins.diagnostics.puppet_lint,
           null_ls.builtins.formatting.puppet_lint,
+          -- Common
+          null_ls.builtins.formatting.trim_newlines,
+          null_ls.builtins.formatting.trim_whitespace,
         },
       }
     end,
