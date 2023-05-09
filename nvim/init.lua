@@ -47,12 +47,12 @@ end
 
 
 -------------------- AUTOCMD -------------------------------
-augroup('Eyaml')
-autocmd('BufEnter', {
-  pattern = '*.eyaml',
-  command = 'set filetype=yaml',
-  group   = 'Eyaml',
-})
+-- augroup('Eyaml')
+-- autocmd('BufEnter', {
+--   pattern = '*.eyaml',
+--   command = 'set filetype=yaml',
+--   group   = 'Eyaml',
+-- })
 
 augroup('TermConfig')
 autocmd('TermOpen', {
