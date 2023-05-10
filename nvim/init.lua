@@ -496,6 +496,8 @@ require('lazy').setup({
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
+    lazy = false,
+    keys = { { '<leader>d', ":lua require('null-ls').toggle({})<CR>" } },
     config = function()
       local null_ls = require('null-ls')
 
