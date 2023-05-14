@@ -337,6 +337,12 @@ require('lazy').setup({
   -- Better '%' navigation and highlight matching words
   'andymass/vim-matchup',
 
+  -- Make vim more Puppet friendly
+  {
+    'rodjek/vim-puppet',
+    ft = 'puppet',
+  },
+
   ----------------------------------------
   ----------------- Git ------------------
   ----------------------------------------
@@ -432,16 +438,6 @@ require('lazy').setup({
       }
     end,
   },
-
-  ----------------------------------------
-  ---------------- Puppet ----------------
-  ----------------------------------------
-
-  -- Make vim more Puppet friendly
-  'rodjek/vim-puppet',
-
-  -- Syntax for highlighting YARD documentation
-  'noprompt/vim-yardoc',
 
   ----------------------------------------
   ----------------- LSP ------------------
