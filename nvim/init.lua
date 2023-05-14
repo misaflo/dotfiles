@@ -131,11 +131,12 @@ require('lazy').setup({
   -- Icons for plugins
   {
     'nvim-tree/nvim-web-devicons',
+    lazy = true,
     opts = { color_icons = false },
   },
 
   -- Improve the default vim.ui interfaces
-  'stevearc/dressing.nvim',
+  { 'stevearc/dressing.nvim', event = 'VeryLazy' },
 
   -- Treesitter configurations and abstraction layer
   {
@@ -286,6 +287,7 @@ require('lazy').setup({
   -- Add/change/delete surrounding delimiter pairs
   {
     'kylechui/nvim-surround',
+    event = 'VeryLazy',
     opts =  {
       surrounds = {
         ['«'] = {
@@ -301,6 +303,7 @@ require('lazy').setup({
   -- Enhance to increment/decrement (<C-a>, <C-x>)
   {
     'nishigori/increment-activator',
+    keys = { '<C-a>', '<C-x>' },
     config = function()
       vim.g.increment_activator_filetype_candidates = {
         puppet = {
@@ -374,7 +377,8 @@ require('lazy').setup({
   -- Snippet engine
   {
     'dcampos/nvim-snippy',
-    lazy = false,
+    dependencies = { 'honza/vim-snippets' },
+    event = 'InsertEnter',
     keys = { { '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>", mode = 'i' } },
     opts = {
       mappings = {
@@ -386,9 +390,6 @@ require('lazy').setup({
       },
     },
   },
-
-  --- Snippets source
-  'honza/vim-snippets',
 
   ----------------------------------------
   --------------- Markdown ---------------
@@ -512,7 +513,7 @@ require('lazy').setup({
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     keys = { { '<leader>d', ":lua require('null-ls').toggle({})<CR>" } },
     config = function()
       local null_ls = require('null-ls')
