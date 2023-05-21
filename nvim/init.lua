@@ -317,7 +317,7 @@ require('lazy').setup({
   },
 
   -- Toggles between hybrid and absolute line numbers automatically
-  'jeffkreeftmeijer/vim-numbertoggle',
+  'sitiom/nvim-numbertoggle',
 
   -- Autodect and cd to project directory
   {
