@@ -239,6 +239,7 @@ exec mako
 
 # Clipboard
 exec wl-paste -t text --watch clipman store
+bindsym $mod+c exec "clipman pick --tool=wofi"
 
 # Adjust the color temperature
 # Defaut color temperature: Daytime: 6500K, night: 4500K
