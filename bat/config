@@ -1,3 +1,4 @@
 --theme="gruvbox-dark"
 --map-syntax "*.mdwn:Markdown"
+--map-syntax "*.eyaml:YAML"
 --italic-text=always
