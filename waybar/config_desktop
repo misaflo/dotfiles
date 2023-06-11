@@ -35,12 +35,20 @@
     },
     "clock": {
         "format": "{:%a %d %b %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<span color='#fb4934'><b><u>{}</u></b></span>",
-        "format-calendar": "<b>{}</b>",
-        "format-calendar-weekdays": "<span color='#fe8010'><b>{}</b></span>",
-        "on-scroll": {
-            "calendar": 1
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode-mon-col"  : 3,
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "weekdays":   "<span color='#fe8010'><b>{}</b></span>",
+                "today":      "<span color='#fb4934'><b><u>{}</u></b></span>"
+            },
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
         }
     },
     "network": {
