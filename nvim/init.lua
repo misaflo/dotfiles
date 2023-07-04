@@ -383,7 +383,7 @@ require('lazy').setup({
 
   -- Magit clone: stage, commit, pull, push
   {
-    'TimUntersberger/neogit',
+    'NeogitOrg/neogit',
     dependencies = 'nvim-lua/plenary.nvim',
     keys = { { '<leader>gg', ":lua require('neogit').open()<CR>" } },
     opts = { disable_commit_confirmation = true };
