@@ -528,28 +528,25 @@ require('lazy').setup({
     end,
   },
 
-  -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more
+  -- Syntax checking (linting)
   {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    event = 'VeryLazy',
-    keys = { { '<leader>d', ":lua require('null-ls').toggle({})<CR>" } },
+    'dense-analysis/ale',
+    lazy = false,
+    keys = {
+      { '<leader>at', ':ALEToggle<CR>' },
+      { '<leader>af', ':ALEFix<CR>' },
+    },
     config = function()
-      local null_ls = require('null-ls')
-
-      null_ls.setup {
-        sources = {
-          -- Shell
-          null_ls.builtins.diagnostics.shellcheck,
-          -- YAML
-          null_ls.builtins.diagnostics.yamllint,
-          -- Puppet
-          null_ls.builtins.diagnostics.puppet_lint,
-          null_ls.builtins.formatting.puppet_lint,
-          -- Common
-          null_ls.builtins.formatting.trim_newlines,
-          null_ls.builtins.formatting.trim_whitespace,
-        },
+      vim.g.ale_use_neovim_diagnostics_api = true
+      vim.g.ale_linters_explicit = true
+      vim.g.ale_linters = {
+        sh     = { 'shellcheck' },
+        yaml   = { 'yamllint' },
+        puppet = { 'puppetlint' },
+      }
+      vim.g.ale_fixers = {
+        ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
+        puppet = { 'puppetlint' },
       }
     end,
   },
