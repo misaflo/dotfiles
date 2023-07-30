@@ -164,7 +164,7 @@ function fzf_preview() {
     cat {}) 2> /dev/null | head -100'
 }
 
-alias -g F='$(fzf_preview)'
+alias -g F='"$(fzf_preview)"'
 
 [[ -f "$fzf_completion" ]] && source "$fzf_completion"
 # Use fd instead of the default find command for listing path candidates
