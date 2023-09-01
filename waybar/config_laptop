@@ -36,6 +36,7 @@
     "clock": {
         "format": "{:%a %d %b %H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
+        "locale"        : "fr_FR.UTF-8",
         "calendar": {
             "mode-mon-col"  : 3,
             "on-scroll"     : 1,
