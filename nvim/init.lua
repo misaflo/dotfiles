@@ -173,6 +173,31 @@ require('lazy').setup({
     }
   },
 
+  -- Jump anywhere in a document with as few keystrokes as possible
+  {
+    'phaazon/hop.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+
+      local hop = require('hop')
+      local directions = require('hop.hint').HintDirection
+      map('', 'f', function()
+        hop.hint_char1( { direction = directions.AFTER_CURSOR, current_line_only = true } )
+      end)
+      map('', 'F', function()
+        hop.hint_char1( { direction = directions.BEFORE_CURSOR, current_line_only = true } )
+      end)
+      map('', 't', function()
+        hop.hint_char1( { direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 } )
+      end)
+      map('', 'T', function()
+        hop.hint_char1( { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 } )
+      end)
+      map('n', 's', ':HopWord<CR>')
+    end,
+  },
+
   -- Fuzzy finder FZF
   {
     'ibhagwan/fzf-lua',
