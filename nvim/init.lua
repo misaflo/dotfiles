@@ -558,7 +558,6 @@ require('lazy').setup({
       { '<leader>af', ':ALEFix<CR>' },
     },
     config = function()
-      vim.g.ale_use_neovim_diagnostics_api = true
       vim.g.ale_linters_explicit = true
       vim.g.ale_linters = {
         sh     = { 'shellcheck' },
