@@ -172,7 +172,7 @@ require('lazy').setup({
 
   -- Jump anywhere in a document with as few keystrokes as possible
   {
-    'phaazon/hop.nvim',
+    'smoka7/hop.nvim',
     event = 'VeryLazy',
     config = function()
       require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
