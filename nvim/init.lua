@@ -212,6 +212,22 @@ require('lazy').setup({
     },
     config = function()
       require('fzf-lua').setup {
+        fzf_colors = {
+          ['fg']      = { 'fg', 'CursorLine' },
+          ['bg']      = { 'bg', 'Normal' },
+          ['hl']      = { 'fg', 'Aqua' },
+          ['fg+']     = { 'fg', 'Normal' },
+          ['bg+']     = { 'bg', 'CursorLine' },
+          ['hl+']     = { 'fg', 'Aqua' },
+          ['info']    = { 'fg', 'PreProc' },
+          ['border']  = { 'fg', 'Grey' },
+          ['prompt']  = { 'fg', 'Blue' },
+          ['pointer'] = { 'fg', 'Exception' },
+          ['marker']  = { 'fg', 'Keyword' },
+          ['spinner'] = { 'fg', 'Label' },
+          ['header']  = { 'fg', 'Comment' },
+          ['gutter']  = { 'bg', 'Normal' },
+    },
         keymap = {
           builtin = {
             ['<A-j>'] = 'preview-page-down',
