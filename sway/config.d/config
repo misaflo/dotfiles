@@ -215,7 +215,7 @@ bar {
     swaybar_command waybar
 }
 # Map workspace name to icons
-exec sworkstyle -d &> /var/log/sworkstyle.log
+exec sworkstyle -d &> /tmp/sworkstyle.log
 
 
 # Disable windows title bars
