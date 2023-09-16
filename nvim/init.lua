@@ -192,6 +192,14 @@ require('lazy').setup({
         hop.hint_char1( { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 } )
       end)
       map('n', 's', ':HopWord<CR>')
+
+      -- Gruvbox colors
+      cmd [[
+      highlight! HopNextKey ctermfg=208 guifg=#fe8019
+      highlight! HopNextKey1 ctermfg=142 guifg=#b8bb26
+      highlight! link HopNextKey2 Green
+      highlight! link HopUnmatched Grey
+      ]]
     end,
   },
 
