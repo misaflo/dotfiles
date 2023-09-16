@@ -1,2 +1,1 @@
-vim.opt.spell     = true
-vim.opt.spelllang = 'fr'
+vim.cmd 'LspStart'

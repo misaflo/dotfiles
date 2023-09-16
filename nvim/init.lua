@@ -518,12 +518,34 @@ require('lazy').setup({
   -- Makes it easier to use lspconfig with mason.nvim
   {
     'williamboman/mason-lspconfig.nvim',
+    dependencies = 'barreiroleo/ltex_extra.nvim',
     config = function()
       require('mason-lspconfig').setup()
+
       -- Automatic server setup
       require('mason-lspconfig').setup_handlers {
+        -- Default handler
         function (server_name)
           require('lspconfig')[server_name].setup {}
+        end,
+
+        -- Grammar/Spell Checker Using LanguageTool
+        ['ltex'] = function()
+          require('lspconfig').ltex.setup {
+            filetypes = { 'gitcommit', 'markdown', 'mail' },
+            autostart = false,
+            on_attach = function(client, bufnr)
+              require('ltex_extra').setup {
+                load_langs = { 'fr' },
+                path = vim.fn.expand('~') .. '/.local/share/ltex',
+              }
+            end,
+            settings = {
+              ltex = {
+                language = 'fr',
+              },
+            },
+          }
         end,
       }
     end,
