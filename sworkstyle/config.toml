@@ -1,0 +1,16 @@
+# To see apps name: swaymsg -t get_tree
+# For icons: https://www.nerdfonts.com/cheat-sheet
+
+fallback = ''
+separator = ' '
+
+[matching]
+'firefox' = ''
+'/\w* - NVIM/' = ''
+'/NeoMutt/' = ''
+'org.gnome.Nautilus' = ''
+'org.keepassxc.KeePassXC' = ''
+'imv' = ''
+'mpv' = '󰐌'
+'wdisplays' = ''
+'Gimp-2.10' = ''

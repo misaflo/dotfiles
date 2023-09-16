@@ -33,6 +33,9 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 # wofi
 [[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
 
+# sworkstyle
+[[ ! -L ~/.config/sworkstyle ]] && ln -sf "$DOTFILES/sworkstyle" ~/.config/sworkstyle
+
 # mako
 [[ ! -d ~/.config/mako ]] && mkdir ~/.config/mako
 [[ ! -L ~/.config/mako/config ]] && ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
