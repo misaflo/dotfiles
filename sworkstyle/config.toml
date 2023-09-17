@@ -1,15 +1,19 @@
 # To see apps name: swaymsg -t get_tree
-# For icons: https://www.nerdfonts.com/cheat-sheet
+# For icons:
+# - https://fontawesome.com/icons
+# - https://www.nerdfonts.com/cheat-sheet
 
 fallback = ''
 separator = ' '
 
 [matching]
-'firefox' = ''
+'firefox' = '' # Arch
+'Firefox' = '' # Debian
 '/\w* - NVIM/' = ''
 '/NeoMutt/' = ''
 'org.gnome.Nautilus' = ''
 'org.keepassxc.KeePassXC' = ''
+'KeePassXC' = ''
 'imv' = ''
 'mpv' = '󰐌'
 'wdisplays' = ''
@@ -17,4 +21,4 @@ separator = ' '
 'org.pwmt.zathura' = ''
 'libreoffice-calc' = ''
 'libreoffice-writer' = ''
-'steam' = ''
+'steam' = '󰓓'
