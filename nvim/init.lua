@@ -161,6 +161,20 @@ require('lazy').setup({
   -- Improve the default vim.ui interfaces
   { 'stevearc/dressing.nvim', event = 'VeryLazy' },
 
+  -- Notification manager
+  {
+    'rcarriga/nvim-notify',
+    event = 'VeryLazy',
+    config = function()
+      require('notify').setup {
+        stages = 'static',
+        timeout = 4000,
+      }
+      vim.notify = require('notify')
+    end,
+  },
+
+
   -- Treesitter configurations and abstraction layer
   {
     'nvim-treesitter/nvim-treesitter',
