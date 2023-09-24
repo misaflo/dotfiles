@@ -427,6 +427,9 @@ require('lazy').setup({
   -- Better '%' navigation and highlight matching words
   'andymass/vim-matchup',
 
+  -- "Edit" mp3 files with Vim, or rather, their ID3 tags
+  'AndrewRadev/id3.vim',
+
   -- Make vim more Puppet friendly
   {
     'rodjek/vim-puppet',
