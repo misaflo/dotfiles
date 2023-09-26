@@ -573,7 +573,7 @@ require('lazy').setup({
         -- Grammar/Spell Checker Using LanguageTool
         ['ltex'] = function()
           require('lspconfig').ltex.setup {
-            filetypes = { 'gitcommit', 'markdown', 'mail' },
+            filetypes = { 'gitcommit', 'NeogitCommitMessage', 'markdown', 'mail' },
             autostart = false,
             on_attach = function(client, bufnr)
               require('ltex_extra').setup {
