@@ -587,6 +587,7 @@ require('lazy').setup({
               },
             },
           }
+          vim.diagnostic.config({ virtual_text = false })
         end,
       }
     end,
