@@ -66,6 +66,12 @@ function toggle_diagnostics()
   vim.schedule(function() vim.diagnostic[cmd](bufnr) end)
 end
 
+-- Forgit log the file
+function git_log(file)
+  file = (file or '')
+  vim.api.nvim_command('terminal ~/.zsh/forgit/bin/git-forgit log ' .. file)
+  vim.api.nvim_command('startinsert')
+end
 
 -------------------- AUTOCMD -------------------------------
 augroup('TermConfig')
@@ -122,6 +128,9 @@ map('n', '<C-Right>', ':vertical resize +2<CR>')
 map('x', '*', [[y/\V<C-R>=substitute(escape(@", '/\'), '\n', '\\n', 'g')<NL>]])
 map('x', '#', [[y?\V<C-R>=substitute(escape(@", '?\'), '\n', '\\n', 'g')<NL>]])
 
+-- Forgit log in terminal
+map('n', '<Leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
+map('n', '<Leader>gL', ":lua git_log()<CR>")
 
 -------------------- PLUGINS -------------------------------
 
