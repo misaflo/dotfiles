@@ -336,10 +336,13 @@ require('lazy').setup({
     },
   },
 
-  -- Alignment
+  -- Align text interactively
   {
-    'junegunn/vim-easy-align',
-    keys = { { '<Enter>', ':EasyAlign<CR>', mode = 'v' } },
+    'echasnovski/mini.align',
+    event = 'VeryLazy',
+    config = function()
+      require('mini.align').setup()
+    end,
   },
 
   -- Color name highlighter
