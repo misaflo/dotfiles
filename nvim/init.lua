@@ -256,8 +256,8 @@ require('lazy').setup({
   {
     'ibhagwan/fzf-lua',
     keys = {
-      { '<leader>ff', ":lua require('fzf-lua').files()<CR>" },
-      { '<leader>fg', ":lua require('fzf-lua').live_grep()<CR>" },
+      { '<leader>ff', ":FzfLua files<CR>" },
+      { '<leader>fg', ":FzfLua live_grep<CR>" },
     },
     config = function()
       require('fzf-lua').setup {
