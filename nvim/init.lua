@@ -627,26 +627,44 @@ require('lazy').setup({
     end,
   },
 
-  -- Syntax checking (linting)
+  -- Linter
   {
-    'dense-analysis/ale',
-    lazy = false,
-    keys = {
-      { '<leader>at', ':ALEToggle<CR>' },
-      { '<leader>af', ':ALEFix<CR>' },
-    },
+    'mfussenegger/nvim-lint',
+    ft = { 'puppet', 'sh', 'yaml' },
     config = function()
-      vim.g.ale_linters_explicit = true
-      vim.g.ale_linters = {
+      require('lint').linters_by_ft = {
+        puppet = { 'puppet-lint' },
         sh     = { 'shellcheck' },
         yaml   = { 'yamllint' },
-        puppet = { 'puppetlint' },
       }
-      vim.g.ale_fixers = {
-        ['*']  = { 'remove_trailing_lines', 'trim_whitespace' },
-        puppet = { 'puppetlint' },
-      }
+
+      augroup('Lint')
+      autocmd({ 'BufEnter', 'BufWritePost' }, {
+        desc     = 'Check the file',
+        callback = function() require('lint').try_lint() end,
+        group    = 'Lint',
+      })
     end,
+  },
+
+  -- Formatter
+  {
+    'stevearc/conform.nvim',
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<space>f',
+        function() require('conform').format({ async = true, lsp_fallback = true }) end,
+        desc = 'Format buffer',
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        puppet = { 'puppet-lint' },
+        sh     = { 'shellcheck' },
+        ['*']  = { 'trim_newlines', 'trim_whitespace' },
+      },
+    },
   },
 
   ----------------------------------------
