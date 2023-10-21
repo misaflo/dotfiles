@@ -258,6 +258,7 @@ require('lazy').setup({
     keys = {
       { '<leader>ff', ":FzfLua files<CR>" },
       { '<leader>fg', ":FzfLua live_grep<CR>" },
+      { '<leader>fb', ":FzfLua buffers<CR>" },
     },
     config = function()
       require('fzf-lua').setup {
