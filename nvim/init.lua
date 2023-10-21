@@ -83,9 +83,9 @@ autocmd('TermOpen', {
 
 augroup('TextYanked')
 autocmd('TextYankPost', {
-  desc    = 'Highlight yanked region',
-  command = 'lua vim.highlight.on_yank{higroup="Search", timeout=700}',
-  group   = 'TextYanked',
+  desc     = 'Highlight yanked region',
+  callback = function() vim.highlight.on_yank({ higroup = 'Search', timeout = 700 }) end,
+  group    = 'TextYanked',
 })
 
 
@@ -103,7 +103,7 @@ map('n', '<Leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
 map('n', '<Leader>ls', ':lua ldap_lookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
 
 -- LSP: toogle diagnostic
-map('n', '<Leader>td', ':lua toggle_diagnostics()<CR>')
+map('n', '<Leader>td', function() toggle_diagnostics() end)
 
 -- Terminal
 map('n', '<Leader>c', ':split +terminal<CR>:resize -4<CR>i')
@@ -127,8 +127,8 @@ map('x', '*', [[y/\V<C-R>=substitute(escape(@", '/\'), '\n', '\\n', 'g')<NL>]])
 map('x', '#', [[y?\V<C-R>=substitute(escape(@", '?\'), '\n', '\\n', 'g')<NL>]])
 
 -- Forgit log in terminal
-map('n', '<Leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
-map('n', '<Leader>gL', ":lua git_log()<CR>")
+map('n', '<Leader>gl', function() git_log(vim.api.nvim_buf_get_name(0)) end)
+map('n', '<Leader>gL', function() git_log() end)
 
 -------------------- PLUGINS -------------------------------
 
@@ -461,7 +461,7 @@ require('lazy').setup({
   {
     'NeogitOrg/neogit',
     dependencies = 'nvim-lua/plenary.nvim',
-    keys = { { '<leader>gg', ":lua require('neogit').open()<CR>" } },
+    keys = { { '<leader>gg', function() require('neogit').open() end } },
     opts = { disable_commit_confirmation = true };
   },
 
@@ -474,7 +474,7 @@ require('lazy').setup({
     'dcampos/nvim-snippy',
     dependencies = { 'honza/vim-snippets' },
     event = 'InsertEnter',
-    keys = { { '<C-x><C-s>', "<cmd>lua require('snippy').complete()<CR>", mode = 'i' } },
+    keys = { { '<C-x><C-s>', function() require('snippy').complete() end, mode = 'i' } },
     opts = {
       mappings = {
         is = {
