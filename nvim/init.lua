@@ -77,7 +77,6 @@ end
 augroup('TermConfig')
 autocmd('TermOpen', {
   desc    = 'Disable line number in terminal-mode',
-  pattern = '*',
   command = 'setlocal nonumber norelativenumber',
   group   = 'TermConfig',
 })
@@ -85,7 +84,6 @@ autocmd('TermOpen', {
 augroup('TextYanked')
 autocmd('TextYankPost', {
   desc    = 'Highlight yanked region',
-  pattern = '*',
   command = 'lua vim.highlight.on_yank{higroup="Search", timeout=700}',
   group   = 'TextYanked',
 })
