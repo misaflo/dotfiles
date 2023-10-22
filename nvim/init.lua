@@ -1,48 +1,46 @@
 -------------------- HELPERS -------------------------------
-local opt     = vim.opt
-local g       = vim.g
-local map     = vim.keymap.set
+local opt = vim.opt
+local g = vim.g
+local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
-local cmd     = vim.cmd
+local cmd = vim.cmd
 
 local function augroup(group)
   vim.api.nvim_create_augroup(group, { clear = true })
 end
 
-
 -------------------- OPTIONS -------------------------------
-g.mapleader       = ','
+g.mapleader = ','
 
 opt.termguicolors = true
-opt.number        = true
-opt.foldenable    = false -- Disable folding
-opt.splitbelow    = true  -- Split at the bottom
-opt.splitright    = true  -- Vsplit at the right
-opt.showmatch     = true  -- When a bracket is inserted, briefly jump to the matching one
-opt.scrolloff     = 2     -- Minimal number of screen lines to keep above and below the cursor
-opt.cursorline    = true  -- Highlight the screen line of the cursor
-opt.ignorecase    = true  -- Ignoring case in a pattern
-opt.smartcase     = true  -- Ignore uppercase letters unless the search term has an uppercase letter
-opt.smartindent   = true  -- Do smart autoindenting when starting a new line
-opt.tabstop       = 2     -- Number of spaces that a <Tab> in the file counts for
-opt.shiftwidth    = 2     -- Alignment with '<' and '>'
-opt.expandtab     = true  -- Use spaces instead of tab
-opt.list          = true  -- Show hidden characters
-opt.title         = true  -- Show the title of the window
-opt.mouse         = ''    -- Disable mouse
+opt.number = true
+opt.foldenable = false -- Disable folding
+opt.splitbelow = true -- Split at the bottom
+opt.splitright = true -- Vsplit at the right
+opt.showmatch = true -- When a bracket is inserted, briefly jump to the matching one
+opt.scrolloff = 2 -- Minimal number of screen lines to keep above and below the cursor
+opt.cursorline = true -- Highlight the screen line of the cursor
+opt.ignorecase = true -- Ignoring case in a pattern
+opt.smartcase = true -- Ignore uppercase letters unless the search term has an uppercase letter
+opt.smartindent = true -- Do smart autoindenting when starting a new line
+opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+opt.shiftwidth = 2 -- Alignment with '<' and '>'
+opt.expandtab = true -- Use spaces instead of tab
+opt.list = true -- Show hidden characters
+opt.title = true -- Show the title of the window
+opt.mouse = '' -- Disable mouse
 
 if opt.diff:get() then
   opt.cursorline = false
 end
 
 -- Spellcheck
-opt.spellsuggest:prepend { 5 }
+opt.spellsuggest:prepend({ 5 })
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
-
 
 ------------------- FUNCTIONS ------------------------------
 function ldap_lookup()
-  cmd "let @a = system('ldap_search_email '.expand('<cword>'))"
+  cmd("let @a = system('ldap_search_email '.expand('<cword>'))")
 end
 
 -- https://github.com/neovim/neovim/issues/14825#issuecomment-1304791407
@@ -63,7 +61,9 @@ function toggle_diagnostics()
     cmd = 'enable'
     vim.api.nvim_echo({ { 'Enabling diagnostics…' } }, false, {})
   end
-  vim.schedule(function() vim.diagnostic[cmd](bufnr) end)
+  vim.schedule(function()
+    vim.diagnostic[cmd](bufnr)
+  end)
 end
 
 -- Forgit log the file
@@ -76,18 +76,19 @@ end
 -------------------- AUTOCMD -------------------------------
 augroup('TermConfig')
 autocmd('TermOpen', {
-  desc    = 'Disable line number in terminal-mode',
+  desc = 'Disable line number in terminal-mode',
   command = 'setlocal nonumber norelativenumber',
-  group   = 'TermConfig',
+  group = 'TermConfig',
 })
 
 augroup('TextYanked')
 autocmd('TextYankPost', {
-  desc     = 'Highlight yanked region',
-  callback = function() vim.highlight.on_yank({ higroup = 'Search', timeout = 700 }) end,
-  group    = 'TextYanked',
+  desc = 'Highlight yanked region',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'Search', timeout = 700 })
+  end,
+  group = 'TextYanked',
 })
-
 
 -------------------- MAPPINGS ------------------------------
 -- Copy to clipboard, past from clipboard
@@ -103,7 +104,9 @@ map('n', '<Leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
 map('n', '<Leader>ls', ':lua ldap_lookup() <CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
 
 -- LSP: toogle diagnostic
-map('n', '<Leader>td', function() toggle_diagnostics() end)
+map('n', '<Leader>td', function()
+  toggle_diagnostics()
+end)
 
 -- Terminal
 map('n', '<Leader>c', ':split +terminal<CR>:resize -4<CR>i')
@@ -127,8 +130,12 @@ map('x', '*', [[y/\V<C-R>=substitute(escape(@", '/\'), '\n', '\\n', 'g')<NL>]])
 map('x', '#', [[y?\V<C-R>=substitute(escape(@", '?\'), '\n', '\\n', 'g')<NL>]])
 
 -- Forgit log in terminal
-map('n', '<Leader>gl', function() git_log(vim.api.nvim_buf_get_name(0)) end)
-map('n', '<Leader>gL', function() git_log() end)
+map('n', '<Leader>gl', function()
+  git_log(vim.api.nvim_buf_get_name(0))
+end)
+map('n', '<Leader>gL', function()
+  git_log()
+end)
 
 -------------------- PLUGINS -------------------------------
 
@@ -154,7 +161,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.g.gruvbox_material_foreground = 'original'
-      vim.cmd 'colorscheme gruvbox-material'
+      vim.cmd('colorscheme gruvbox-material')
     end,
   },
 
@@ -173,21 +180,20 @@ require('lazy').setup({
     'rcarriga/nvim-notify',
     event = 'VeryLazy',
     config = function()
-      require('notify').setup {
+      require('notify').setup({
         stages = 'static',
         timeout = 4000,
-      }
+      })
       vim.notify = require('notify')
     end,
   },
-
 
   -- Treesitter configurations and abstraction layer
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup {
+      require('nvim-treesitter.configs').setup({
         highlight = {
           enable = true,
         },
@@ -195,7 +201,7 @@ require('lazy').setup({
           enable = true,
           disable = { 'markdown' },
         },
-      }
+      })
     end,
   },
 
@@ -216,7 +222,7 @@ require('lazy').setup({
           hl = 'Identifier',
         },
       },
-    }
+    },
   },
 
   -- Jump anywhere in a document with as few keystrokes as possible
@@ -224,31 +230,31 @@ require('lazy').setup({
     'smoka7/hop.nvim',
     event = 'VeryLazy',
     config = function()
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+      require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
 
       local hop = require('hop')
       local directions = require('hop.hint').HintDirection
       map('', 'f', function()
-        hop.hint_char1( { direction = directions.AFTER_CURSOR, current_line_only = true } )
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
       end)
       map('', 'F', function()
-        hop.hint_char1( { direction = directions.BEFORE_CURSOR, current_line_only = true } )
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
       end)
       map('', 't', function()
-        hop.hint_char1( { direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 } )
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
       end)
       map('', 'T', function()
-        hop.hint_char1( { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 } )
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end)
       map('n', 's', ':HopWord<CR>')
 
       -- Gruvbox colors
-      cmd [[
+      cmd([[
       highlight! HopNextKey ctermfg=208 guifg=#fe8019
       highlight! HopNextKey1 ctermfg=142 guifg=#b8bb26
       highlight! link HopNextKey2 Green
       highlight! link HopUnmatched Grey
-      ]]
+      ]])
     end,
   },
 
@@ -256,28 +262,28 @@ require('lazy').setup({
   {
     'ibhagwan/fzf-lua',
     keys = {
-      { '<leader>ff', ":FzfLua files<CR>" },
-      { '<leader>fg', ":FzfLua live_grep<CR>" },
-      { '<leader>fb', ":FzfLua buffers<CR>" },
+      { '<leader>ff', ':FzfLua files<CR>' },
+      { '<leader>fg', ':FzfLua live_grep<CR>' },
+      { '<leader>fb', ':FzfLua buffers<CR>' },
     },
     config = function()
-      require('fzf-lua').setup {
+      require('fzf-lua').setup({
         fzf_colors = {
-          ['fg']      = { 'fg', 'CursorLine' },
-          ['bg']      = { 'bg', 'Normal' },
-          ['hl']      = { 'fg', 'Aqua' },
-          ['fg+']     = { 'fg', 'Normal' },
-          ['bg+']     = { 'bg', 'CursorLine' },
-          ['hl+']     = { 'fg', 'Aqua' },
-          ['info']    = { 'fg', 'PreProc' },
-          ['border']  = { 'fg', 'Grey' },
-          ['prompt']  = { 'fg', 'Blue' },
+          ['fg'] = { 'fg', 'CursorLine' },
+          ['bg'] = { 'bg', 'Normal' },
+          ['hl'] = { 'fg', 'Aqua' },
+          ['fg+'] = { 'fg', 'Normal' },
+          ['bg+'] = { 'bg', 'CursorLine' },
+          ['hl+'] = { 'fg', 'Aqua' },
+          ['info'] = { 'fg', 'PreProc' },
+          ['border'] = { 'fg', 'Grey' },
+          ['prompt'] = { 'fg', 'Blue' },
           ['pointer'] = { 'fg', 'Exception' },
-          ['marker']  = { 'fg', 'Keyword' },
+          ['marker'] = { 'fg', 'Keyword' },
           ['spinner'] = { 'fg', 'Label' },
-          ['header']  = { 'fg', 'Comment' },
-          ['gutter']  = { 'bg', 'Normal' },
-    },
+          ['header'] = { 'fg', 'Comment' },
+          ['gutter'] = { 'bg', 'Normal' },
+        },
         keymap = {
           builtin = {
             ['<A-j>'] = 'preview-page-down',
@@ -295,7 +301,7 @@ require('lazy').setup({
           git_icons = false,
           file_icons = false,
         },
-      }
+      })
     end,
   },
 
@@ -361,16 +367,16 @@ require('lazy').setup({
   {
     'kylechui/nvim-surround',
     event = 'VeryLazy',
-    opts =  {
+    opts = {
       surrounds = {
         ['«'] = {
-          add = { '« ', ' »'}
+          add = { '« ', ' »' },
         },
         ['»'] = {
-          add = { '«', '»'}
+          add = { '«', '»' },
         },
       },
-    }
+    },
   },
 
   -- Enhance to increment/decrement (<C-a>, <C-x>)
@@ -396,10 +402,10 @@ require('lazy').setup({
   {
     'ahmedkhalf/project.nvim',
     config = function()
-      require('project_nvim').setup {
+      require('project_nvim').setup({
         detection_methods = { 'pattern' },
         patterns = { '.git' },
-      }
+      })
     end,
   },
 
@@ -408,7 +414,7 @@ require('lazy').setup({
     'stevearc/aerial.nvim',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons',
     },
     keys = { { '<F9>', ':AerialToggle<CR>' } },
     config = true,
@@ -439,30 +445,38 @@ require('lazy').setup({
 
         -- Navigation
         map('n', ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
           return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         map('n', '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
+          if vim.wo.diff then
+            return '[c'
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
           return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         -- Actions
         map('n', '<leader>gb', gs.toggle_current_line_blame)
         map('n', '<leader>gd', gs.diffthis)
-      end
-    }
+      end,
+    },
   },
 
   -- Magit clone: stage, commit, pull, push
   {
     'NeogitOrg/neogit',
     dependencies = 'nvim-lua/plenary.nvim',
-    keys = { { '<leader>gg', function() require('neogit').open() end } },
-    opts = { disable_commit_confirmation = true };
+    keys = { { '<leader>gg', ':Neogit<CR>' } },
+    opts = { disable_commit_confirmation = true },
   },
 
   ----------------------------------------
@@ -474,7 +488,15 @@ require('lazy').setup({
     'dcampos/nvim-snippy',
     dependencies = { 'honza/vim-snippets' },
     event = 'InsertEnter',
-    keys = { { '<C-x><C-s>', function() require('snippy').complete() end, mode = 'i' } },
+    keys = {
+      {
+        '<C-x><C-s>',
+        function()
+          require('snippy').complete()
+        end,
+        mode = 'i',
+      },
+    },
     opts = {
       mappings = {
         is = {
@@ -514,24 +536,24 @@ require('lazy').setup({
     'jakewvincent/mkdnflow.nvim',
     ft = 'markdown',
     config = function()
-      require('mkdnflow').setup {
+      require('mkdnflow').setup({
         modules = {
           bib = false,
           buffers = false,
           conceal = false,
           folds = false,
-          tables = false
+          tables = false,
         },
         filetypes = { md = true, mdwn = true, markdown = true },
         links = {
           transform_implicit = false,
           transform_explicit = function(text)
-            text = text:gsub(" ", "-")
+            text = text:gsub(' ', '-')
             text = text:lower()
-            return(text)
-          end
+            return text
+          end,
         },
-      }
+      })
     end,
   },
 
@@ -542,7 +564,7 @@ require('lazy').setup({
   -- Install and manage LSP servers, DAP servers, linters, and formatters
   {
     'williamboman/mason.nvim',
-    build = ":MasonUpdate",
+    build = ':MasonUpdate',
     config = true,
   },
 
@@ -554,31 +576,31 @@ require('lazy').setup({
       require('mason-lspconfig').setup()
 
       -- Automatic server setup
-      require('mason-lspconfig').setup_handlers {
+      require('mason-lspconfig').setup_handlers({
         -- Default handler
-        function (server_name)
-          require('lspconfig')[server_name].setup {}
+        function(server_name)
+          require('lspconfig')[server_name].setup({})
         end,
 
         -- Grammar/Spell Checker Using LanguageTool
         ['ltex'] = function()
-          require('lspconfig').ltex.setup {
+          require('lspconfig').ltex.setup({
             filetypes = { 'gitcommit', 'NeogitCommitMessage', 'markdown', 'mail' },
             autostart = false,
             on_attach = function(client, bufnr)
-              require('ltex_extra').setup {
+              require('ltex_extra').setup({
                 load_langs = { 'fr' },
                 path = vim.fn.expand('~') .. '/.local/share/ltex',
-              }
+              })
             end,
             settings = {
               ltex = {
                 language = 'fr',
               },
             },
-          }
+          })
         end,
-      }
+      })
     end,
   },
 
@@ -619,7 +641,7 @@ require('lazy').setup({
           vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
           vim.keymap.set('n', '<space>f', function()
-            vim.lsp.buf.format { async = true }
+            vim.lsp.buf.format({ async = true })
           end, opts)
         end,
       })
@@ -633,15 +655,17 @@ require('lazy').setup({
     config = function()
       require('lint').linters_by_ft = {
         puppet = { 'puppet-lint' },
-        sh     = { 'shellcheck' },
-        yaml   = { 'yamllint' },
+        sh = { 'shellcheck' },
+        yaml = { 'yamllint' },
       }
 
       augroup('Lint')
       autocmd({ 'BufEnter', 'BufWritePost' }, {
-        desc     = 'Check the file',
-        callback = function() require('lint').try_lint() end,
-        group    = 'Lint',
+        desc = 'Check the file',
+        callback = function()
+          require('lint').try_lint()
+        end,
+        group = 'Lint',
       })
     end,
   },
@@ -653,17 +677,19 @@ require('lazy').setup({
     keys = {
       {
         '<space>f',
-        function() require('conform').format({ async = true, lsp_fallback = true }) end,
+        function()
+          require('conform').format({ async = true, lsp_fallback = true })
+        end,
         mode = '',
         desc = 'Format buffer',
       },
     },
     opts = {
       formatters_by_ft = {
-        lua    = { 'stylua' },
+        lua = { 'stylua' },
         puppet = { 'puppet-lint' },
-        sh     = { 'shellcheck' },
-        ['*']  = { 'trim_newlines', 'trim_whitespace' },
+        sh = { 'shellcheck' },
+        ['*'] = { 'trim_newlines', 'trim_whitespace' },
       },
     },
   },
@@ -705,9 +731,9 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'snippy' },
         }, {
-            { name = 'buffer' },
-          })
+          { name = 'buffer' },
+        }),
       })
     end,
-  }
-}, { diff = { cmd = 'terminal_git' }})
+  },
+}, { diff = { cmd = 'terminal_git' } })
