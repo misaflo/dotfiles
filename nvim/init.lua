@@ -660,6 +660,7 @@ require('lazy').setup({
     },
     opts = {
       formatters_by_ft = {
+        lua    = { 'stylua' },
         puppet = { 'puppet-lint' },
         sh     = { 'shellcheck' },
         ['*']  = { 'trim_newlines', 'trim_whitespace' },
