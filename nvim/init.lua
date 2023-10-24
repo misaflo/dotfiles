@@ -487,6 +487,7 @@ require('lazy').setup({
   {
     'dcampos/nvim-snippy',
     dependencies = { 'honza/vim-snippets' },
+    ft = { 'snippets' },
     event = 'InsertEnter',
     keys = {
       {
