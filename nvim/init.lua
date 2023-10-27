@@ -37,10 +37,12 @@ opt.spellsuggest:prepend({ 5 })
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 
 ------------------- FUNCTIONS ------------------------------
+-- Search LDAP email
 function ldap_lookup()
   vim.cmd("let @a = system('ldap_search_email '.expand('<cword>'))")
 end
 
+-- Toggle display of diagnostics
 -- https://github.com/neovim/neovim/issues/14825#issuecomment-1304791407
 function toggle_diagnostics()
   local vars, bufnr, cmd
