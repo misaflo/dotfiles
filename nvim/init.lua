@@ -90,6 +90,18 @@ autocmd('TextYankPost', {
   group = 'TextYanked',
 })
 
+augroup('Help')
+autocmd('BufEnter', {
+  desc = 'Open help in vertical split',
+  callback = function()
+    if vim.bo.filetype == 'help' and vim.api.nvim_win_get_width(0) > 180 then
+      vim.cmd.wincmd('L')
+      vim.api.nvim_win_set_width(0, 80)
+    end
+  end,
+  group = 'Help',
+})
+
 -------------------- MAPPINGS ------------------------------
 -- Copy to clipboard, past from clipboard
 map('', '<leader>y', '"+y')
