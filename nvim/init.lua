@@ -353,7 +353,9 @@ require('lazy').setup({
   -- Color name highlighter
   {
     'NvChad/nvim-colorizer.lua',
-    config = true,
+    opts = {
+      filetypes = { 'conf', 'css', 'json', 'jsonc', 'yaml' },
+    },
   },
 
   -- Comment
