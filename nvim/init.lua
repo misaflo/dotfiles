@@ -1,16 +1,14 @@
 -------------------- HELPERS -------------------------------
 local opt = vim.opt
-local g = vim.g
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
-local cmd = vim.cmd
 
 local function augroup(group)
   vim.api.nvim_create_augroup(group, { clear = true })
 end
 
 -------------------- OPTIONS -------------------------------
-g.mapleader = ','
+vim.g.mapleader = ','
 
 opt.termguicolors = true
 opt.number = true
@@ -40,7 +38,7 @@ opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 
 ------------------- FUNCTIONS ------------------------------
 function ldap_lookup()
-  cmd("let @a = system('ldap_search_email '.expand('<cword>'))")
+  vim.cmd("let @a = system('ldap_search_email '.expand('<cword>'))")
 end
 
 -- https://github.com/neovim/neovim/issues/14825#issuecomment-1304791407
@@ -69,8 +67,8 @@ end
 -- Forgit log the file
 function git_log(file)
   file = (file or '')
-  vim.api.nvim_command('terminal ~/.zsh/forgit/bin/git-forgit log ' .. file)
-  vim.api.nvim_command('startinsert')
+  vim.cmd('terminal ~/.zsh/forgit/bin/git-forgit log ' .. file)
+  vim.cmd('startinsert')
 end
 
 -------------------- AUTOCMD -------------------------------
@@ -249,7 +247,7 @@ require('lazy').setup({
       map('n', 's', ':HopWord<CR>')
 
       -- Gruvbox colors
-      cmd([[
+      vim.cmd([[
       highlight! HopNextKey ctermfg=208 guifg=#fe8019
       highlight! HopNextKey1 ctermfg=142 guifg=#b8bb26
       highlight! link HopNextKey2 Green
