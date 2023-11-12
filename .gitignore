@@ -1,4 +1,5 @@
 nvim/spell/
 nvim/lazy-lock.json
+nvim/snippets/mail.snippets
 nvim/.netrwhist
 passwords/
