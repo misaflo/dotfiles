@@ -5,14 +5,7 @@ DOTFILES="$HOME/.dotfiles"
 # neovim
 [[ ! -d ~/.config ]] && mkdir ~/.config
 [[ ! -L ~/.config/nvim ]] && ln -sf "$DOTFILES/nvim" ~/.config/nvim
-snippy_dir="$HOME/.local/share/nvim/lazy/nvim-snippy/"
-snippets_dir="$snippy_dir/after/snippets"
-if [[ -d $snippy_dir ]]; then
-  [[ ! -d $snippets_dir ]] && mkdir -p "$snippets_dir"
-  ln -sf "$DOTFILES/nvim/snippets/puppet.snippets" "$snippets_dir"
-  ln -sf "$DOTFILES/nvim/snippets/markdown.snippets" "$snippets_dir"
-  ln -sf "$HOME/.config/neomutt/mail.snippets" "$snippets_dir"
-fi
+ln -sf "$HOME/.config/neomutt/mail.snippets" "$DOTFILES/nvim/snippets"
 
 # zsh
 [[ ! -d ~/.zsh ]] && mkdir ~/.zsh
