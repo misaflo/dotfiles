@@ -71,5 +71,5 @@ map('x', '*', [[y/\V<C-R>=substitute(escape(@", '/\'), '\n', '\\n', 'g')<NL>]])
 map('x', '#', [[y?\V<C-R>=substitute(escape(@", '?\'), '\n', '\\n', 'g')<NL>]])
 
 -- Forgit log in terminal
-map('n', '<Leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))')
+map('n', '<Leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
 map('n', '<Leader>gL', ':lua git_log()<CR>')
