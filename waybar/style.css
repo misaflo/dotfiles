@@ -2,6 +2,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Roboto, Helvetica, Arial, sans-serif, "FontAwesome 6 Free Solid", "DejaVuSansM Nerd Font";
     font-size: 13px;
+    transition-duration: 0;
 }
 
 @import "gruvbox.css";
@@ -34,14 +35,17 @@ button {
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: @white_b;
+    /* https://github.com/Alexays/Waybar/wiki/FAQ#workspace-buttons-are-too-wide-with-some-gtk-themes */
+    min-width: 20px;
 }
 
 #workspaces button:hover {
