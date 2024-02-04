@@ -110,18 +110,19 @@ fi
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias ll='ls -l'
 if [[ -x "$(whence eza)" ]]; then
   alias ls='eza --group-directories-first -F'
   alias la='ls -a'
-  alias lla='ll -a'
+  alias ll='ls --icons -l'
+  alias lla='ll --icons -a'
   alias lsd='ls -D'
   alias lsda='ls -Da'
-  alias llt='eza -lFs new'
+  alias llt='ls --icons -ls changed'
   alias tree='eza --tree --group-directories-first'
 else
   alias ls='ls --color --group-directories-first -Fh'
   alias la='ls -A'
+  alias ll='ls -l'
   alias lla='ll -A'
   # https://unix.stackexchange.com/questions/1645/is-there-any-option-with-ls-command-that-i-see-only-the-directories#answer-502028
   alias lsd='ls -d -- *(/)'
