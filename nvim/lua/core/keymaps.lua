@@ -51,9 +51,6 @@ map('n', '<Leader>ls', ':lua ldap_lookup()<CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<
 -- LSP: toogle diagnostic
 map('n', '<Leader>td', ':lua toggle_diagnostics()<CR>')
 
--- Terminal
-map('n', '<Leader>c', ':split +terminal<CR>:resize -4<CR>i')
-
 -- Spellchecking
 map('n', '<leader>lf', ':set spell spelllang=fr<CR>')
 map('n', '<leader>le', ':set spell spelllang=en<CR>')
