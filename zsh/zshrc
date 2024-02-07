@@ -111,7 +111,7 @@ fi
 alias cp='cp -i'
 alias mv='mv -i'
 if [[ -x "$(whence eza)" ]]; then
-  alias ls='eza --group-directories-first -F'
+  alias ls='eza -F --group-directories-first'
   alias la='ls -a'
   alias ll='ls --icons -l'
   alias lla='ll --icons -a'
