@@ -105,6 +105,16 @@ snippet apt::source
 	  },
 	}
 #
+# vcsrepo
+#
+snippet vcsrepo
+	vcsrepo { '${1:/path/to/repo}':
+		ensure   => present,
+		provider => git,
+		source   => '${2:git://example.com/repo.git}',
+		revision => '${3:main}',
+	}
+#
 # facts
 #
 snippet $fqdn
