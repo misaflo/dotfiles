@@ -4,6 +4,7 @@ return {
   keys = {
     { '<leader>ff', ':FzfLua files<CR>' },
     { '<leader>fg', ':FzfLua live_grep<CR>' },
+    { '<leader>fo', ':FzfLua oldfiles<CR>' },
     { '<leader>fb', ':FzfLua buffers<CR>' },
   },
   config = function()
