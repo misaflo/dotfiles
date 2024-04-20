@@ -31,16 +31,14 @@ return {
           ['<A-k>'] = 'preview-page-up',
         },
       },
-      files = {
+      defaults = {
         git_icons = false,
         file_icons = false,
+      },
+      files = {
         actions = {
           ['default'] = require('fzf-lua.actions').file_edit,
         },
-      },
-      grep = {
-        git_icons = false,
-        file_icons = false,
       },
     })
   end,
