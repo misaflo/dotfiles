@@ -7,8 +7,8 @@ fallback = ''
 separator = ' '
 
 [matching]
-'firefox' = '' # Arch
-'Firefox' = '' # Debian
+'firefox' = '󰈹' # Arch
+'Firefox' = '󰈹' # Debian
 '/\w* - NVIM/' = ''
 '/NeoMutt/' = ''
 'org.gnome.Nautilus' = ''
