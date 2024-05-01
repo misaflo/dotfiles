@@ -11,6 +11,9 @@ return {
         enable = true,
         disable = { 'markdown' },
       },
+      matchup = {
+        enable = true,
+      },
     })
   end,
 }
