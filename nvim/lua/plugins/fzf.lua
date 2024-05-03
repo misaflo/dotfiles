@@ -6,6 +6,7 @@ return {
     { '<leader>fg', ':FzfLua live_grep<CR>' },
     { '<leader>fo', ':FzfLua oldfiles<CR>' },
     { '<leader>fb', ':FzfLua buffers<CR>' },
+    { '<leader>fr', ':FzfLua registers<CR>' },
   },
   config = function()
     require('fzf-lua').setup({
