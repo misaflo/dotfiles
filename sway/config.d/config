@@ -271,3 +271,5 @@ mode "gaps_inner" {
     bindsym Return mode "gaps_inner"
     bindsym Escape mode "default"
 }
+
+# vim: ft=swayconfig

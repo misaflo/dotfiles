@@ -8,3 +8,5 @@ output * bg ~/Images/Wallpapers/arch.png fill
 exec swayidle -w \
          timeout 300 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"'
+
+# vim: ft=swayconfig
