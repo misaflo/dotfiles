@@ -2,6 +2,7 @@ local opt = vim.opt
 
 vim.g.mapleader = ','
 
+opt.termguicolors = true
 opt.number = true
 opt.foldenable = false -- Disable folding
 opt.splitbelow = true -- Split at the bottom
