@@ -5,6 +5,9 @@ return {
     config = function()
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+      -- https://github.com/neovim/neovim/issues/28909#issuecomment-2123773710
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
       vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
       -- Use LspAttach autocommand to only map the following keys
