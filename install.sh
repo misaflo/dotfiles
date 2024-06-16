@@ -54,7 +54,7 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 [[ ! -L ~/.config/fontconfig/fonts.conf ]] && ln -sf "$DOTFILES/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
 
 # GTK theme and icons
-GTK_THEME='Gruvbox-Dark-BL-LB'
+GTK_THEME='Gruvbox-Dark'
 ICON_THEME='Gruvbox-Dark'
 if [[ ! -d "$DOTFILES/gruvbox-gtk" ]]; then
   git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme "$DOTFILES/gruvbox-gtk"
@@ -62,10 +62,10 @@ fi
 [[ ! -d ~/.themes ]] && mkdir ~/.themes
 [[ ! -d ~/.config/gtk-4.0 ]] && mkdir ~/.config/gtk-4.0
 [[ ! -d ~/.local/share/icons ]] && mkdir ~/.local/share/icons
-ln -sf "$DOTFILES/gruvbox-gtk/themes/$GTK_THEME" ~/.themes/
-ln -sf "$DOTFILES/gruvbox-gtk/themes/$GTK_THEME/gtk-4.0/assets" ~/.config/gtk-4.0/
-ln -sf "$DOTFILES/gruvbox-gtk/themes/$GTK_THEME/gtk-4.0/gtk.css" ~/.config/gtk-4.0/
-ln -sf "$DOTFILES/gruvbox-gtk/themes/$GTK_THEME/gtk-4.0/gtk-dark.css" ~/.config/gtk-4.0/
+source "$DOTFILES"/gruvbox-gtk/themes/install.sh
+ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/assets" ~/.config/gtk-4.0/
+ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/gtk.css" ~/.config/gtk-4.0/
+ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/gtk-dark.css" ~/.config/gtk-4.0/
 ln -sf "$DOTFILES/gruvbox-gtk/icons/$ICON_THEME" ~/.local/share/icons/
 gsettings set org.gnome.desktop.interface gtk-theme $GTK_THEME
 gsettings set org.gnome.desktop.interface icon-theme $ICON_THEME
