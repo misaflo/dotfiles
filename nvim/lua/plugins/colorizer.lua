@@ -2,6 +2,12 @@
 return {
   'NvChad/nvim-colorizer.lua',
   opts = {
-    filetypes = { '*', '!lazy', '!gitcommit', '!NeogitCommitMessage', '!lazy', '!mail' },
+    filetypes = {
+      '*',
+      '!NeogitCommitMessage', '!NeogitStatus',
+      '!gitcommit',
+      '!lazy',
+      '!mail'
+    },
   },
 }
