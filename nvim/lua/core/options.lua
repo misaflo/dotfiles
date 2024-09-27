@@ -21,6 +21,7 @@ opt.title = true -- Show the title of the window
 opt.mouse = '' -- Disable mouse
 
 -- Spellcheck
+opt.spelllang = 'fr'
 opt.spellsuggest:prepend({ 5 })
 opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 
