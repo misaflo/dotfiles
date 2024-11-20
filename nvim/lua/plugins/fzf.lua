@@ -41,6 +41,11 @@ return {
           ['default'] = require('fzf-lua.actions').file_edit,
         },
       },
+      oldfiles = {
+        actions = {
+          ['default'] = require('fzf-lua.actions').file_edit,
+        },
+      },
     })
   end,
 }
