@@ -29,6 +29,8 @@ return {
       -- Actions
       vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame)
       vim.keymap.set('n', '<leader>gd', gs.diffthis)
+      vim.keymap.set('n', '<leader>gr', gs.reset_hunk)
+      vim.keymap.set('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
     end,
   },
 }
