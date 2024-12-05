@@ -24,6 +24,9 @@ return {
 
       -- Actions
       vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame)
+      vim.keymap.set('n', '<leader>gB', function()
+        gitsigns.blame_line({ full = true })
+      end)
       vim.keymap.set('n', '<leader>gd', gitsigns.diffthis)
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk)
       vim.keymap.set('v', '<leader>gr', function()
