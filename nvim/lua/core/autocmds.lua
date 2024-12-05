@@ -18,7 +18,7 @@ autocmd('TextYankPost', {
   group = augroup('yank'),
 })
 
-autocmd('BufEnter', {
+autocmd('BufWinEnter', {
   desc = 'Open help in vertical split',
   callback = function()
     if vim.bo.filetype == 'help' and vim.api.nvim_win_get_width(0) > 180 then
