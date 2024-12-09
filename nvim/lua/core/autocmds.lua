@@ -23,7 +23,6 @@ autocmd('BufWinEnter', {
   callback = function()
     if vim.bo.filetype == 'help' and vim.api.nvim_win_get_width(0) > 180 then
       vim.cmd.wincmd('L')
-      vim.api.nvim_win_set_width(0, 80)
     end
   end,
   group = augroup('help'),
