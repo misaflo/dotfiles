@@ -8,18 +8,18 @@ return {
         bib = false,
         buffers = false,
         conceal = false,
+        cursor = false,
         folds = false,
+        foldtext = false,
+        links = false,
+        lists = true,
+        maps = true,
+        paths = false,
         tables = false,
+        yaml = false,
+        cmp = false,
       },
       filetypes = { md = true, mdwn = true, markdown = true },
-      links = {
-        transform_implicit = false,
-        transform_explicit = function(text)
-          text = text:gsub(' ', '-')
-          text = text:lower()
-          return text
-        end,
-      },
     })
   end,
 }
