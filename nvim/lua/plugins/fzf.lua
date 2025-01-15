@@ -28,6 +28,7 @@ return {
       },
       keymap = {
         builtin = {
+          true,
           ['<A-j>'] = 'preview-page-down',
           ['<A-k>'] = 'preview-page-up',
         },
