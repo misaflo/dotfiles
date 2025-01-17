@@ -13,6 +13,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
+  git = {
+    log = { '--since=3 days ago' },
+  },
   change_detection = {
     notify = false,
   },
