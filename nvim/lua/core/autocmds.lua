@@ -18,7 +18,6 @@ autocmd('TextYankPost', {
   group = augroup('yank'),
 })
 
-autocmd('FileType', {
 autocmd('BufWinEnter', {
   pattern = '*.txt',
   desc = 'Open help in vertical split',
