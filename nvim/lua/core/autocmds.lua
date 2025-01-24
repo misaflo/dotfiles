@@ -18,9 +18,17 @@ autocmd('TextYankPost', {
   group = augroup('yank'),
 })
 
+-- Always open quickfix window automatically.
+-- This uses cwindows which will open it only if there are entries.
+autocmd('QuickFixCmdPost', {
+  pattern = { '[^l]*' },
+  command = 'cwindow',
+  group = augroup('quickfix'),
+})
+
 autocmd('BufWinEnter', {
-  pattern = '*.txt',
   desc = 'Open help in vertical split',
+  pattern = '*.txt',
   callback = function()
     if vim.bo.filetype == 'help' and vim.api.nvim_win_get_width(0) > 180 then
       vim.cmd.wincmd('L')
