@@ -4,14 +4,14 @@ local function augroup(name)
   vim.api.nvim_create_augroup('misaflo_' .. name, { clear = true })
 end
 
+-- Disable line number in terminal-mode
 autocmd('TermOpen', {
-  desc = 'Disable line number in terminal-mode',
   command = 'setlocal nonumber norelativenumber',
   group = augroup('term'),
 })
 
+-- Highlight yanked region
 autocmd('TextYankPost', {
-  desc = 'Highlight yanked region',
   callback = function()
     vim.highlight.on_yank({ higroup = 'Search', timeout = 700 })
   end,
@@ -26,8 +26,8 @@ autocmd('QuickFixCmdPost', {
   group = augroup('quickfix'),
 })
 
+-- Open help in vertical split
 autocmd('BufWinEnter', {
-  desc = 'Open help in vertical split',
   pattern = '*.txt',
   callback = function()
     if vim.bo.filetype == 'help' and vim.api.nvim_win_get_width(0) > 180 then
