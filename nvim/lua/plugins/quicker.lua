@@ -1,3 +1,4 @@
+-- Improved UI and workflow for the quickfix
 return {
   'stevearc/quicker.nvim',
   event = 'VeryLazy',
