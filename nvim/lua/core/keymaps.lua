@@ -52,9 +52,9 @@ map('n', '<Leader>ls', ':lua ldap_lookup()<CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<
 map('n', '<Leader>td', ':lua toggle_diagnostics()<CR>')
 
 -- Spellchecking
-map('n', '<leader>lf', ':set spell spelllang=fr<CR>')
-map('n', '<leader>le', ':set spell spelllang=en<CR>')
-map('n', '<leader>ln', ':set nospell<CR>')
+map('n', '<leader>sf', ':set spell spelllang=fr<CR>')
+map('n', '<leader>se', ':set spell spelllang=en<CR>')
+map('n', '<leader>sn', ':set nospell<CR>')
 
 -- Resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>')
