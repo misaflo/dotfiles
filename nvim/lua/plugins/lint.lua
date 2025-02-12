@@ -1,9 +1,10 @@
 -- Linter
 return {
   'mfussenegger/nvim-lint',
-  ft = { 'puppet', 'sh', 'yaml' },
+  ft = { 'bash', 'puppet', 'sh', 'yaml' },
   config = function()
     require('lint').linters_by_ft = {
+      bash = { 'shellcheck' },
       puppet = { 'puppet-lint' },
       sh = { 'shellcheck' },
       yaml = { 'yamllint' },
