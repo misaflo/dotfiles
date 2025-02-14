@@ -42,6 +42,7 @@ return {
   -- Install and manage LSP servers, DAP servers, linters, and formatters
   {
     'williamboman/mason.nvim',
+    dependencies = { 'ibhagwan/fzf-lua' },
     build = ':MasonUpdate',
     config = true,
   },

@@ -48,5 +48,8 @@ return {
         },
       },
     })
+
+    -- Use fzf-lua as the UI interface for vim.ui.select
+    require('fzf-lua').register_ui_select()
   end,
 }
