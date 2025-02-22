@@ -1,7 +1,6 @@
 -- Improved UI and workflow for the quickfix
 return {
   'stevearc/quicker.nvim',
-  ft = 'qf',
   opts = {
     keys = {
       {
@@ -26,5 +25,13 @@ return {
       N = 'N ',
       H = 'H ',
     },
+    -- Hide filename for TOC (table of contents)
+    -- https://github.com/stevearc/quicker.nvim/issues/36
+    max_filename_width = function()
+      if vim.w.qf_toc or (vim.w.quickfix_title and vim.w.quickfix_title:find('TOC')) then
+        return 0
+      end
+      return math.floor(math.min(95, vim.o.columns / 2))
+    end,
   },
 }
