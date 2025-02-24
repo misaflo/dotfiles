@@ -1,7 +1,11 @@
 return {
-  -- Quickstart configs for Neovim LSP
+  -- Configs for Neovim LSP
   {
     'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'barreiroleo/ltex_extra.nvim',
+    },
     config = function()
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -36,6 +40,36 @@ return {
           vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
         end,
       })
+
+      -- Add additional capabilities supported by nvim-cmp
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
+      if vim.fn.executable('ltex-ls-plus') == 1 then
+        require('lspconfig').ltex_plus.setup({
+          -- autostart = false,
+          settings = {
+            ltex = {
+              language = 'fr',
+            },
+          },
+          -- sed -i 's/name = "ltex"/name = "ltex_plus"/' ~/.local/share/nvim/lazy/ltex_extra.nvim/lua/ltex_extra/commands-lsp.lua
+          -- waiting for https://github.com/barreiroleo/ltex_extra.nvim/pull/66
+          on_attach = function(client, bufnr)
+            require('ltex_extra').setup({
+              load_langs = { 'fr' },
+              path = vim.fn.expand('~') .. '/.local/share/ltex',
+            })
+          end,
+        })
+      end
+
+      -- solargraph (Ruby)
+      if vim.fn.executable('solargraph') == 1 then
+        require('lspconfig').solargraph.setup({
+          capabilities = capabilities,
+        })
+      end
     end,
   },
 
@@ -44,47 +78,11 @@ return {
     'williamboman/mason.nvim',
     dependencies = { 'ibhagwan/fzf-lua' },
     build = ':MasonUpdate',
-    config = true,
-  },
-
-  -- Makes it easier to use lspconfig with mason.nvim
-  {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = 'barreiroleo/ltex_extra.nvim',
-    config = function()
-      require('mason-lspconfig').setup()
-
-      -- Add additional capabilities supported by nvim-cmp
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      -- Automatic server setup
-      require('mason-lspconfig').setup_handlers({
-        -- Default handler
-        function(server_name)
-          require('lspconfig')[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        -- Grammar/Spell Checker Using LanguageTool
-        ['ltex'] = function()
-          require('lspconfig').ltex.setup({
-            filetypes = { 'gitcommit', 'NeogitCommitMessage', 'markdown', 'mail' },
-            autostart = false,
-            on_attach = function(client, bufnr)
-              require('ltex_extra').setup({
-                load_langs = { 'fr' },
-                path = vim.fn.expand('~') .. '/.local/share/ltex',
-              })
-            end,
-            settings = {
-              ltex = {
-                language = 'fr',
-              },
-            },
-          })
-        end,
-      })
-    end,
+    opts = {
+      registries = {
+        'github:mason-org/mason-registry',
+        'github:visimp/mason-registry', -- for ltex_plus
+      },
+    },
   },
 }
