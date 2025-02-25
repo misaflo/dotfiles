@@ -47,7 +47,7 @@ return {
       -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
       if vim.fn.executable('ltex-ls-plus') == 1 then
         require('lspconfig').ltex_plus.setup({
-          -- autostart = false,
+          autostart = false,
           settings = {
             ltex = {
               language = 'fr',
