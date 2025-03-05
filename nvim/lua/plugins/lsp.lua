@@ -53,8 +53,7 @@ return {
               language = 'fr',
             },
           },
-          -- sed -i 's/name = "ltex"/name = "ltex_plus"/' ~/.local/share/nvim/lazy/ltex_extra.nvim/lua/ltex_extra/commands-lsp.lua
-          -- waiting for https://github.com/barreiroleo/ltex_extra.nvim/pull/66
+
           on_attach = function(client, bufnr)
             require('ltex_extra').setup({
               load_langs = { 'fr' },
