@@ -244,8 +244,7 @@ exec wl-paste -t text --watch clipman store
 bindsym $mod+c exec "clipman pick --tool=wofi"
 
 # Adjust the color temperature
-# Defaut color temperature: Daytime: 6500K, night: 4500K
-exec gammastep -l geoclue2 -t 6500:4500
+exec systemctl --user start gammastep.service
 
 # blue gruvbox
 # class                 border   |backgr   |text     |indicator|child_border
