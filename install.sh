@@ -33,6 +33,9 @@ ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 [[ ! -d ~/.config/mako ]] && mkdir ~/.config/mako
 [[ ! -L ~/.config/mako/config ]] && ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
 
+# gammastep
+[[ ! -L ~/.config/gammastep ]] && ln -sf "$DOTFILES/gammastep" ~/.config/gammastep
+
 # alacritty
 [[ ! -L ~/.config/alacritty ]] && ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
 
