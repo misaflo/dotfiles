@@ -77,11 +77,6 @@ return {
     'williamboman/mason.nvim',
     dependencies = { 'ibhagwan/fzf-lua' },
     build = ':MasonUpdate',
-    opts = {
-      registries = {
-        'github:mason-org/mason-registry',
-        'github:visimp/mason-registry', -- for ltex_plus
-      },
-    },
+    config = true,
   },
 }
