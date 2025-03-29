@@ -4,16 +4,10 @@ local function augroup(name)
   vim.api.nvim_create_augroup('misaflo_' .. name, { clear = true })
 end
 
--- Disable line number in terminal-mode
-autocmd('TermOpen', {
-  command = 'setlocal nonumber norelativenumber',
-  group = augroup('term'),
-})
-
 -- Highlight yanked region
 autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank({ higroup = 'Search', timeout = 700 })
+    vim.hl.on_yank({ higroup = 'Search', timeout = 700 })
   end,
   group = augroup('yank'),
 })
