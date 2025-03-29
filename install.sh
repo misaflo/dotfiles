@@ -24,37 +24,37 @@ ln -sf "$DOTFILES/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 
 # wofi
-[[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
+ln -sf "$DOTFILES/wofi" ~/.config/wofi
 
 # sworkstyle
-[[ ! -L ~/.config/sworkstyle ]] && ln -sf "$DOTFILES/sworkstyle" ~/.config/sworkstyle
+ln -sf "$DOTFILES/sworkstyle" ~/.config/sworkstyle
 
 # mako
 [[ ! -d ~/.config/mako ]] && mkdir ~/.config/mako
-[[ ! -L ~/.config/mako/config ]] && ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
+ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
 
 # gammastep
-[[ ! -L ~/.config/gammastep ]] && ln -sf "$DOTFILES/gammastep" ~/.config/gammastep
+ln -sf "$DOTFILES/gammastep" ~/.config/gammastep
 
 # alacritty
-[[ ! -L ~/.config/alacritty ]] && ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
+ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
 
 # zathura
-[[ ! -L ~/.config/zathura ]] && ln -sf "$DOTFILES/zathura" ~/.config/zathura
+ln -sf "$DOTFILES/zathura" ~/.config/zathura
 
 # bat
 [[ ! -d ~/.config/bat ]] && mkdir ~/.config/bat
-[[ ! -L ~/.config/bat/config ]] && ln -sf "$DOTFILES/bat/config" ~/.config/bat/config
+ln -sf "$DOTFILES/bat/config" ~/.config/bat/config
 
 # profanity
-[[ -d ~/.config/profanity ]] && ln -sf "$DOTFILES/profanity/profrc" ~/.config/profanity/profrc
+ln -sf "$DOTFILES/profanity/profrc" ~/.config/profanity/profrc
 
 # newsboat
-[[ ! -L ~/.config/newsboat ]] && ln -sf "$DOTFILES/newsboat" ~/.config/newsboat
+ln -sf "$DOTFILES/newsboat" ~/.config/newsboat
 
 # fontconfig
 [[ ! -d ~/.config/fontconfig ]] && mkdir ~/.config/fontconfig
-[[ ! -L ~/.config/fontconfig/fonts.conf ]] && ln -sf "$DOTFILES/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
+ln -sf "$DOTFILES/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
 
 # GTK theme and icons
 GTK_THEME='Gruvbox-Dark'
@@ -65,7 +65,7 @@ fi
 [[ ! -d ~/.themes ]] && mkdir ~/.themes
 [[ ! -d ~/.config/gtk-4.0 ]] && mkdir ~/.config/gtk-4.0
 [[ ! -d ~/.local/share/icons ]] && mkdir ~/.local/share/icons
-source "$DOTFILES"/gruvbox-gtk/themes/install.sh
+source "$DOTFILES/gruvbox-gtk/themes/install.sh"
 ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/assets" ~/.config/gtk-4.0/
 ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/gtk.css" ~/.config/gtk-4.0/
 ln -sf "$HOME/.themes/$GTK_THEME/gtk-4.0/gtk-dark.css" ~/.config/gtk-4.0/
