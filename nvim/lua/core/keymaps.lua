@@ -1,29 +1,5 @@
 local map = vim.keymap.set
 
--- Toggle display of diagnostics
--- https://github.com/neovim/neovim/issues/14825#issuecomment-1304791407
-function toggle_diagnostics()
-  local vars, bufnr, cmd
-  if global then
-    vars = vim.g
-    bufnr = nil
-  else
-    vars = vim.b
-    bufnr = 0
-  end
-  vars.diagnostics_disabled = not vars.diagnostics_disabled
-  if vars.diagnostics_disabled then
-    cmd = 'disable'
-    vim.api.nvim_echo({ { 'Disabling diagnostics…' } }, false, {})
-  else
-    cmd = 'enable'
-    vim.api.nvim_echo({ { 'Enabling diagnostics…' } }, false, {})
-  end
-  vim.schedule(function()
-    vim.diagnostic[cmd](bufnr)
-  end)
-end
-
 -- Forgit log the file
 function git_log(file)
   file = (file or '')
@@ -47,9 +23,6 @@ map('n', '<Leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
 
 -- Search email in LDAP
 map('n', '<Leader>ls', ':lua ldap_lookup()<CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
-
--- LSP: toogle diagnostic
-map('n', '<Leader>td', ':lua toggle_diagnostics()<CR>')
 
 -- Spellchecking
 map('n', '<leader>sf', ':set spell spelllang=fr<CR>')
