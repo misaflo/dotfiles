@@ -9,7 +9,7 @@ separator = ' '
 [matching]
 'firefox' = '󰈹' # Arch
 'Firefox' = '󰈹' # Debian
-'/\w* - NVIM/' = ''
+'/\w* - Nvim/' = ''
 '/NeoMutt/' = ''
 'org.gnome.Nautilus' = ''
 'org.keepassxc.KeePassXC' = ''
