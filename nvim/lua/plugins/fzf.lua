@@ -47,6 +47,10 @@ return {
           ['default'] = require('fzf-lua.actions').file_edit,
         },
       },
+      marks = {
+        -- Only show user defined marks
+        marks = '%a',
+      },
     })
 
     -- Use fzf-lua as the UI interface for vim.ui.select
