@@ -24,23 +24,23 @@ ln -sf "$DOTFILES/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES/git/gitconfig" ~/.gitconfig
 
 # wofi
-ln -sf "$DOTFILES/wofi" ~/.config/wofi
+[[ ! -L ~/.config/wofi ]] && ln -sf "$DOTFILES/wofi" ~/.config/wofi
 
 # sworkstyle
-ln -sf "$DOTFILES/sworkstyle" ~/.config/sworkstyle
+[[ ! -L ~/.config/sworkstyle ]] &&  ln -sf "$DOTFILES/sworkstyle" ~/.config/sworkstyle
 
 # mako
 [[ ! -d ~/.config/mako ]] && mkdir ~/.config/mako
 ln -sf "$DOTFILES/mako/config" ~/.config/mako/config
 
 # gammastep
-ln -sf "$DOTFILES/gammastep" ~/.config/gammastep
+[[ ! -L ~/.config/gammastep ]] && ln -sf "$DOTFILES/gammastep" ~/.config/gammastep
 
 # alacritty
-ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
+[[ ! -L ~/.config/alacritty ]] &&  ln -sf "$DOTFILES/alacritty" ~/.config/alacritty
 
 # zathura
-ln -sf "$DOTFILES/zathura" ~/.config/zathura
+[[ ! -L ~/.config/zathura ]] &&  ln -sf "$DOTFILES/zathura" ~/.config/zathura
 
 # bat
 [[ ! -d ~/.config/bat ]] && mkdir ~/.config/bat
@@ -50,7 +50,7 @@ ln -sf "$DOTFILES/bat/config" ~/.config/bat/config
 ln -sf "$DOTFILES/profanity/profrc" ~/.config/profanity/profrc
 
 # newsboat
-ln -sf "$DOTFILES/newsboat" ~/.config/newsboat
+[[ ! -L ~/.config/newsboat ]] &&  ln -sf "$DOTFILES/newsboat" ~/.config/newsboat
 
 # fontconfig
 [[ ! -d ~/.config/fontconfig ]] && mkdir ~/.config/fontconfig
