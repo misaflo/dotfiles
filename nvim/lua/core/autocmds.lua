@@ -30,4 +30,3 @@ autocmd('BufWinEnter', {
   end,
   group = augroup('help'),
 })
-
