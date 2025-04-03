@@ -35,6 +35,11 @@ map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
 
+-- Toggle diagnostic
+map('n', '<leader>dt', function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end)
+
 -- Forgit log in terminal
 map('n', '<leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
 map('n', '<leader>gL', ':lua git_log()<CR>')
