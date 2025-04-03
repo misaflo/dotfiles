@@ -7,14 +7,6 @@ return {
       'barreiroleo/ltex_extra.nvim',
     },
     config = function()
-      -- Global mappings.
-      -- Open float when jumping to diagnostic
-      vim.keymap.set('n', '[d', function()
-        vim.diagnostic.jump({ count = -1, float = true })
-      end)
-      vim.keymap.set('n', ']d', function()
-        vim.diagnostic.jump({ count = 1, float = true })
-      end)
       vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
       -- Use LspAttach autocommand to only map the following keys

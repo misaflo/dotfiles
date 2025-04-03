@@ -29,3 +29,5 @@ opt.dictionary = '/usr/share/dict/words' -- For completion of words (<C-x><C-k>)
 if opt.diff:get() then
   opt.cursorline = false
 end
+
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
