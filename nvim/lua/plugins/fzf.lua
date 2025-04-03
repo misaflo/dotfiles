@@ -7,6 +7,8 @@ return {
     { '<leader>fo', ':FzfLua oldfiles<CR>' },
     { '<leader>b', ':FzfLua buffers<CR>' },
     { '<leader>fr', ':FzfLua registers<CR>' },
+    { '<leader>fm', ':FzfLua marks<CR>' },
+    { 'z=', ':FzfLua spell_suggest<CR>' },
   },
   config = function()
     require('fzf-lua').setup({
