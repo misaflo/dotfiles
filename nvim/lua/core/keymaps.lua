@@ -17,12 +17,12 @@ map('', '<leader>y', '"+y')
 map('n', '<leader>p', '"+p')
 
 -- Email Signature
-map('n', '<Leader>sd', ':read ~/.config/neomutt/signature_dio<CR>')
-map('n', '<Leader>sp', ':read ~/.config/neomutt/signature_dio_permanence<CR>')
-map('n', '<Leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
+map('n', '<leader>sd', ':read ~/.config/neomutt/signature_dio<CR>')
+map('n', '<leader>sp', ':read ~/.config/neomutt/signature_dio_permanence<CR>')
+map('n', '<leader>so', ':read ~/.config/neomutt/signature_obspm_dio<CR>')
 
 -- Search email in LDAP
-map('n', '<Leader>ls', ':lua ldap_lookup()<CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
+map('n', '<leader>ls', ':lua ldap_lookup()<CR>:s/<C-R><C-W>/<C-R>a<BACKSPACE>/g<CR>:noh<CR>$')
 
 -- Spellchecking
 map('n', '<leader>sf', ':set spell spelllang=fr<CR>')
@@ -36,5 +36,5 @@ map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 -- Forgit log in terminal
-map('n', '<Leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
-map('n', '<Leader>gL', ':lua git_log()<CR>')
+map('n', '<leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
+map('n', '<leader>gL', ':lua git_log()<CR>')
