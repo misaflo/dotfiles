@@ -13,6 +13,7 @@ opt.cursorline = true -- Highlight the screen line of the cursor
 opt.ignorecase = true -- Ignoring case in a pattern
 opt.smartcase = true -- Ignore uppercase letters unless the search term has an uppercase letter
 opt.smartindent = true -- Do smart autoindenting when starting a new line
+opt.breakindent = true -- Preserve horizontal blocks for wrapped lines
 opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
 opt.shiftwidth = 2 -- Alignment with '<' and '>'
 opt.expandtab = true -- Use spaces instead of tab
