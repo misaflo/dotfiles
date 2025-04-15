@@ -27,14 +27,13 @@ return {
 
       -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
       if vim.fn.executable('ltex-ls-plus') == 1 then
-        require('lspconfig').ltex_plus.setup({
-          autostart = false,
+        vim.lsp.enable('ltex_plus')
+        vim.lsp.config('ltex_plus', {
           settings = {
             ltex = {
               language = 'fr',
             },
           },
-
           on_attach = function(client, bufnr)
             require('ltex_extra').setup({
               load_langs = { 'fr' },
@@ -46,7 +45,8 @@ return {
 
       -- solargraph (Ruby)
       if vim.fn.executable('solargraph') == 1 then
-        require('lspconfig').solargraph.setup({
+        vim.lsp.enable('solargraph')
+        vim.lsp.config('solargraph', {
           capabilities = capabilities,
         })
       end
