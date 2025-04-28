@@ -29,11 +29,11 @@ map('n', '<leader>sf', ':set spell spelllang=fr<CR>')
 map('n', '<leader>se', ':set spell spelllang=en<CR>')
 map('n', '<leader>sn', ':set nospell<CR>')
 
--- Resize with arrows
-map('n', '<C-Up>', ':resize -2<CR>')
-map('n', '<C-Down>', ':resize +2<CR>')
-map('n', '<C-Left>', ':vertical resize -2<CR>')
-map('n', '<C-Right>', ':vertical resize +2<CR>')
+-- Resize window using <ctrl> arrow keys
+map('n', '<C-Up>', ':resize +2<CR>', { desc = 'Increase Window Height' })
+map('n', '<C-Down>', ':resize -2<CR>', { desc = 'Decrease Window Height' })
+map('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Decrease Window Width' })
+map('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Increase Window Width' })
 
 -- Toggle diagnostic
 map('n', '<leader>dt', function()
