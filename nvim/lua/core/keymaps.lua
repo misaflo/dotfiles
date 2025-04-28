@@ -43,3 +43,6 @@ end)
 -- Forgit log in terminal
 map('n', '<leader>gl', ':lua git_log(vim.api.nvim_buf_get_name(0))<CR>')
 map('n', '<leader>gL', ':lua git_log()<CR>')
+
+-- Duplicate line and comment the first line
+map('n', 'ycc', 'yygccp', { remap = true })
