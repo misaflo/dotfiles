@@ -3,7 +3,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'williamboman/mason.nvim',
+      'mason-org/mason.nvim',
       'barreiroleo/ltex_extra.nvim',
     },
     config = function()
@@ -55,7 +55,7 @@ return {
 
   -- Install and manage LSP servers, DAP servers, linters, and formatters
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     dependencies = { 'ibhagwan/fzf-lua' },
     build = ':MasonUpdate',
     config = true,
