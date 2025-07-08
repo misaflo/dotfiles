@@ -27,7 +27,6 @@ return {
 
       -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
       if vim.fn.executable('ltex-ls-plus') == 1 then
-        vim.lsp.enable('ltex_plus')
         vim.lsp.config('ltex_plus', {
           settings = {
             ltex = {
