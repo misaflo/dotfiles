@@ -1,1 +1,0 @@
-vim.diagnostic.enable(false)
