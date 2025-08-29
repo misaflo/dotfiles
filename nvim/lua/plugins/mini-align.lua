@@ -1,6 +1,6 @@
 -- Align text interactively
 return {
-  'echasnovski/mini.align',
+  'nvim-mini/mini.align',
   event = 'VeryLazy',
   config = true,
 }
