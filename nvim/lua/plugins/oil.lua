@@ -17,6 +17,18 @@ return {
       win_options = {
         winbar = '%!v:lua.get_oil_winbar()',
       },
+      git = {
+        -- Return true to automatically git add/mv/rm files
+        add = function(path)
+          return false
+        end,
+        mv = function(src_path, dest_path)
+          return true
+        end,
+        rm = function(path)
+          return true
+        end,
+      },
     })
 
     vim.keymap.set('n', '-', ':Oil<CR>')
