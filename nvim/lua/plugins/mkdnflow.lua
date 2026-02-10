@@ -19,7 +19,6 @@ return {
         yaml = false,
         cmp = false,
       },
-      filetypes = { md = true, mdwn = true, markdown = true },
     })
   end,
 }
