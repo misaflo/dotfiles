@@ -17,7 +17,7 @@ return {
         paths = false,
         tables = false,
         yaml = false,
-        cmp = false,
+        completion = false,
       },
     })
   end,
