@@ -1,0 +1,32 @@
+-- File explorer: edit your filesystem like a buffer
+vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+
+function _G.get_oil_winbar()
+  local dir = require('oil').get_current_dir()
+  if dir then
+    return vim.fn.fnamemodify(dir, ':~')
+  else
+    -- If there is no current directory (e.g. over ssh), just show the buffer name
+    return vim.api.nvim_buf_get_name(0)
+  end
+end
+
+require('oil').setup({
+  win_options = {
+    winbar = '%!v:lua.get_oil_winbar()',
+  },
+  git = {
+    -- Return true to automatically git add/mv/rm files
+    add = function(path)
+      return false
+    end,
+    mv = function(src_path, dest_path)
+      return true
+    end,
+    rm = function(path)
+      return true
+    end,
+  },
+})
+
+vim.keymap.set('n', '-', ':Oil<CR>')
