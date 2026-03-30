@@ -46,3 +46,8 @@ map('n', '<leader>gL', ':lua git_log()<CR>')
 
 -- Duplicate line and comment the first line
 map('n', 'ycc', 'yygccp', { remap = true })
+
+-- Update plugins
+vim.api.nvim_create_user_command('PackUpdate', function()
+  vim.pack.update()
+end, { desc = 'Update plugins' })
