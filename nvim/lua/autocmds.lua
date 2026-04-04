@@ -32,7 +32,7 @@ autocmd('BufWinEnter', {
 })
 
 -- Close some filetypes with <q>
-vim.api.nvim_create_autocmd('FileType', {
+autocmd('FileType', {
   pattern = {
     'help',
     'qf',
