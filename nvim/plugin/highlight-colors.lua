@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'css',
     'swayconfig',
   },
-  callback = function(event)
+  callback = function()
     hlc.turnOn()
   end,
   group = vim.api.nvim_create_augroup('misaflo_hlc', { clear = true }),
