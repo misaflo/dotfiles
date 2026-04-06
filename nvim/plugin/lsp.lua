@@ -22,14 +22,33 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    -- Buffer local mappings.
+    -- Buffer local mappings
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+
+    -- Autocompletion for LSP
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client ~= nil and client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {
+        autotrigger = true,
+        convert = function(item)
+          -- Remove parameters (already in popupmenu)
+          -- https://www.reddit.com/r/neovim/comments/1mglgn4/simple_native_autocompletion_with_autocomplete/
+          local abbr = item.label
+          abbr = abbr:gsub('%b()', ''):gsub('%b{}', '')
+          -- abbr = abbr:match('[%w.]+.*') or abbr
+          -- Remove return value
+          local menu = ''
+
+          return { abbr = abbr, menu = menu }
+        end,
+      })
+    end
   end,
+  group = vim.api.nvim_create_augroup('misaflo_lsp_config', { clear = true }),
 })
 
 -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
