@@ -32,9 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- ltex-ls-plus (Grammar/Spell Checker Using LanguageTool)
 vim.lsp.config('ltex_plus', {
   settings = {
@@ -52,9 +49,6 @@ vim.lsp.config('ltex_plus', {
 
 -- solargraph (Ruby)
 vim.lsp.enable('solargraph')
-vim.lsp.config('solargraph', {
-  capabilities = capabilities,
-})
 
 -- Install and manage LSP servers, DAP servers, linters, and formatters
 require('mason').setup()
