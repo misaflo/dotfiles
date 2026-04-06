@@ -31,3 +31,28 @@ if opt.diff:get() then
 end
 
 vim.diagnostic.config({ virtual_lines = { current_line = true } })
+
+-- Completion
+opt.pumborder = 'rounded' -- Border style of popupmenu windows
+opt.pummaxwidth = 45 -- Maximum width for the popup menu
+opt.pumheight = 10 -- Maximum number of items to show in the popup menu
+opt.completeopt = 'menuone,popup,noselect' -- Options for Insert mode completion
+
+-- Enable autocompletion for LSP
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client ~= nil and client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {
+        autotrigger = true,
+        convert = function(item)
+          local abbr = item.label
+          -- Remove return value
+          local menu = ''
+
+          return { abbr = abbr, menu = menu }
+        end,
+      })
+    end
+  end,
+})
