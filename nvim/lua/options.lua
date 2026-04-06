@@ -46,7 +46,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, ev.buf, {
         autotrigger = true,
         convert = function(item)
+          -- Remove parameters (already in popupmenu)
+          -- https://www.reddit.com/r/neovim/comments/1mglgn4/simple_native_autocompletion_with_autocomplete/
           local abbr = item.label
+          abbr = abbr:gsub('%b()', ''):gsub('%b{}', '')
+          -- abbr = abbr:match('[%w.]+.*') or abbr
           -- Remove return value
           local menu = ''
 
