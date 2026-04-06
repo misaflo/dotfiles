@@ -56,10 +56,6 @@ vim.lsp.enable('lua_ls')
 -- for neovim specific config
 vim.lsp.config('lua_ls', {
   on_init = function(client)
-    -- Disable lua_ls formater (EmmyLuaCodeStyle), use stylua with conform
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentFormattingRangeProvider = false
-
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
       if
@@ -70,6 +66,7 @@ vim.lsp.config('lua_ls', {
       end
     end
 
+    -- See https://luals.github.io/wiki/settings/
     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
       runtime = {
         -- Tell the language server which version of Lua you're using (most
@@ -89,6 +86,7 @@ vim.lsp.config('lua_ls', {
           vim.env.VIMRUNTIME,
         },
       },
+      format = { enable = false }, -- use stylua via conform plugin
     })
   end,
   settings = {
