@@ -59,4 +59,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
   end,
+  group = vim.api.nvim_create_augroup('misaflo_lsp_completion', { clear = true }),
 })
