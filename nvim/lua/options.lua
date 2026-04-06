@@ -19,7 +19,6 @@ opt.shiftwidth = 2 -- Alignment with '<' and '>'
 opt.expandtab = true -- Use spaces instead of tab
 opt.list = true -- Show hidden characters
 opt.title = true -- Show the title of the window
-opt.mouse = '' -- Disable mouse
 opt.grepprg = 'rg --vimgrep' -- Use default rg options
 
 -- Spellcheck
