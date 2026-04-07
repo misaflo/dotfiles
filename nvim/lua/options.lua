@@ -34,6 +34,5 @@ vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
 -- Completion
 opt.pumborder = 'rounded' -- Border style of popupmenu windows
-opt.pummaxwidth = 45 -- Maximum width for the popup menu
 opt.pumheight = 10 -- Maximum number of items to show in the popup menu
 opt.completeopt = 'menuone,popup,noselect' -- Options for Insert mode completion
