@@ -9,3 +9,6 @@ vim.api.nvim_create_user_command('PackUpdate', function()
   vim.api.nvim_set_hl(0, '@markup.raw.block', { fg = 'fg' })
   vim.pack.update()
 end, { desc = 'Update plugins' })
+
+-- Enable UI2
+require('vim._core.ui2').enable()
